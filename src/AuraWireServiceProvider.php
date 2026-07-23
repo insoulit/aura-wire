@@ -11,9 +11,6 @@ class AuraWireServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {
-        /*
-         * Package Service Provider configuration
-         */
         $package
             ->name('aura-wire')
             ->hasConfigFile('aura-wire')
@@ -25,6 +22,15 @@ class AuraWireServiceProvider extends PackageServiceProvider
     public function packageBooted(): void
     {
         $prefix = config('aura-wire.prefix', 'aura');
+
+        // Register main components root
         Blade::anonymousComponentPath(__DIR__.'/../resources/views/components', $prefix);
+
+        // Register group subfolders for direct tag access (e.g. <aura:input>, <aura:heading>)
+        $groups = ['button', 'typography', 'form', 'display', 'layout', 'overlay', 'table'];
+
+        foreach ($groups as $group) {
+            Blade::anonymousComponentPath(__DIR__."/../resources/views/components/{$group}", $prefix);
+        }
     }
 }

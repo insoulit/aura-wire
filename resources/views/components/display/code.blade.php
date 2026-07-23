@@ -95,7 +95,9 @@
     </div>
 
     {{-- Formatted Code Display Area --}}
-    <div x-show="tab === 'code'" class="bg-zinc-950 text-zinc-100 dark:bg-black p-4 overflow-x-auto font-mono text-xs leading-relaxed border-t border-zinc-900" style="display: none;">
-        <pre x-ref="codeContent"><code>@if (isset($codeSlot)){{ $codeSlot }}@elseif($rawCode){{ $rawCode }}@else{{ $slot }}@endif</code></pre>
+    <div x-show="tab === 'code'" class="bg-zinc-50 text-zinc-900 border-t border-zinc-200 dark:bg-black dark:text-zinc-100 dark:border-zinc-800 p-5 overflow-x-auto font-mono text-sm sm:text-base leading-relaxed" style="display: none;">
+        <pre x-ref="codeContent" class="font-mono text-sm sm:text-base"><code>@if (isset($codeSlot)){{ $codeSlot }}@elseif($rawCode){{ $rawCode }}@else{{ $slot }}@endif</code></pre>
     </div>
 </div>
+
+
