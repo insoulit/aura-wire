@@ -12,20 +12,19 @@ class AuraWireServiceProvider extends PackageServiceProvider
     public function configurePackage(Package $package): void
     {
         /*
-         * This class is a Package Service Provider
-         *
-         * More info: https://github.com/spatie/laravel-package-tools
+         * Package Service Provider configuration
          */
         $package
             ->name('aura-wire')
-            ->hasConfigFile()
-            ->hasViews()
+            ->hasConfigFile('aura-wire')
+            ->hasViews('aura-wire')
             ->hasMigration('create_aura_wire_table')
             ->hasCommand(AuraWireCommand::class);
     }
 
     public function packageBooted(): void
     {
-        Blade::anonymousComponentPath(__DIR__.'/../resources/views/components', 'aura');
+        $prefix = config('aura-wire.prefix', 'aura');
+        Blade::anonymousComponentPath(__DIR__.'/../resources/views/components', $prefix);
     }
 }
