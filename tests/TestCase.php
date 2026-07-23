@@ -29,4 +29,3 @@ class TestCase extends Orchestra
         config()->set('database.default', 'testing');
     }
 }
-

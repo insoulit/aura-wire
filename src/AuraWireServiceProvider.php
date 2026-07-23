@@ -29,4 +29,3 @@ class AuraWireServiceProvider extends PackageServiceProvider
         Blade::anonymousComponentPath(__DIR__.'/../resources/views/components', 'aura');
     }
 }
-
