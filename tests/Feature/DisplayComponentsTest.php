@@ -53,3 +53,12 @@ it('renders table component with headers and rows', function () {
         ->toContain('Alex')
         ->toContain('<table');
 });
+
+it('renders code preview component', function () {
+    $html = Blade::render('<x-aura::code title="Button Snippet" code="&lt;aura:button&gt;Click&lt;/aura:button&gt;"><x-aura::button>Click</x-aura::button></x-aura::code>');
+
+    expect($html)->toContain('Button Snippet')
+        ->toContain('Copy')
+        ->toContain('Click');
+});
+
