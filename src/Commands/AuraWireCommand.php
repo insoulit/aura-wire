@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Insoulit\AuraWire\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class AuraWireCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'aura-wire';
 
     public $description = 'My command';
 
