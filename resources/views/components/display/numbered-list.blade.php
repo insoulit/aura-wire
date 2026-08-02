@@ -14,11 +14,21 @@
 
             <div class="space-y-2">
                 <p class="text-base sm:text-lg font-bold text-zinc-900 dark:text-white leading-tight tracking-tight">
-                    {{ is_array($item) ? ($item[$titleKey] ?? '') : ($item->{$titleKey} ?? '') }}
+                    @if(is_array($item))
+                        {{ $item[$titleKey] ?? $item[0] ?? '' }}
+                    @elseif(is_object($item))
+                        {{ $item->{$titleKey} ?? '' }}
+                    @else
+                        {{ $item }}
+                    @endif
                 </p>
-                @if(is_array($item) ? isset($item[$subtitleKey]) : isset($item->{$subtitleKey}))
+                @if(is_array($item) && isset($item[$subtitleKey]))
                     <p class="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 font-medium">
-                        {{ is_array($item) ? ($item[$subtitleKey] ?? '') : ($item->{$subtitleKey} ?? '') }}
+                        {{ $item[$subtitleKey] }}
+                    </p>
+                @elseif(is_object($item) && isset($item->{$subtitleKey}))
+                    <p class="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 font-medium">
+                        {{ $item->{$subtitleKey} }}
                     </p>
                 @endif
             </div>
