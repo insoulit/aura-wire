@@ -10,19 +10,18 @@
     $tag = $as;
 
     $sizeClasses = match ($size) {
-        'xl' => 'text-lg sm:text-xl leading-relaxed',
-        'lg' => 'text-base sm:text-lg leading-relaxed',
-        'md' => 'text-sm sm:text-base leading-relaxed',
-        'sm' => 'text-xs sm:text-sm leading-normal',
-        'xs' => 'text-xs leading-normal',
-        default => 'text-sm sm:text-base leading-relaxed',
+        'xl' => 'text-xl sm:text-2xl leading-relaxed',
+        'lg' => 'text-lg sm:text-xl leading-relaxed',
+        'md' => 'text-base sm:text-lg leading-relaxed',
+        'sm' => 'text-sm sm:text-base leading-normal',
+        'xs' => 'text-xs sm:text-sm leading-normal',
+        default => 'text-base sm:text-lg leading-relaxed',
     };
 
     $variantClasses = match ($variant) {
         'default' => 'text-zinc-900 dark:text-zinc-100',
         'subtle', 'muted' => 'text-zinc-600 dark:text-zinc-400',
-        'accent', 'indigo' => 'text-indigo-600 dark:text-indigo-400',
-        'blue' => 'text-blue-600 dark:text-blue-400',
+        'accent' => 'text-zinc-900 dark:text-white font-semibold',
         'positive', 'green' => 'text-emerald-600 dark:text-emerald-400',
         'warning', 'yellow' => 'text-amber-600 dark:text-amber-400',
         'danger', 'negative', 'red' => 'text-red-600 dark:text-red-400',

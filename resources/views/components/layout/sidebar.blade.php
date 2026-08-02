@@ -40,7 +40,7 @@
     {{-- Sidebar Panel Container --}}
     <aside
         :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'"
-        {{ $attributes->merge(['class' => 'fixed top-0 bottom-0 left-0 z-40 w-64 bg-white dark:bg-zinc-950 border-r border-zinc-200 dark:border-zinc-800 p-4 flex flex-col justify-between transition-transform duration-200 ease-in-out overflow-y-auto scrollbar-thin']) }}
+        {{ $attributes->merge(['class' => 'fixed lg:sticky top-0 bottom-0 lg:h-screen left-0 z-40 lg:z-30 w-64 shrink-0 bg-white dark:bg-zinc-950 border-r border-zinc-200 dark:border-zinc-800 p-4 flex flex-col justify-between transition-transform duration-200 ease-in-out overflow-y-auto scrollbar-thin']) }}
     >
         <div class="space-y-6">
             {{-- Header / Brand --}}

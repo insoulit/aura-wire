@@ -2,7 +2,7 @@
     'sticky' => true,
 ])
 
-<header {{ $attributes->merge(['class' => 'w-full bg-white dark:bg-zinc-950 border-b border-zinc-200 dark:border-zinc-800 px-4 sm:px-6 py-3 transition-colors z-30 ' . ($sticky ? 'sticky top-0' : '')]) }}>
+<header {{ $attributes->merge(['class' => 'w-full bg-white/90 dark:bg-zinc-950/90 backdrop-blur-md border-b border-zinc-200/80 dark:border-zinc-800/80 px-4 sm:px-6 py-3 transition-all z-30 ' . ($sticky ? 'sticky top-0' : '')]) }}>
     <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
         @if (isset($brand))
             <div class="flex items-center gap-3 font-bold text-zinc-900 dark:text-white shrink-0">
@@ -10,12 +10,12 @@
             </div>
         @endif
 
-        <div class="flex-1 flex items-center justify-center gap-4">
+        <nav class="flex-1 flex items-center justify-center gap-1.5 overflow-x-auto scrollbar-none py-0.5">
             {{ $slot }}
-        </div>
+        </nav>
 
         @if (isset($actions))
-            <div class="flex items-center gap-3 shrink-0">
+            <div class="flex items-center gap-2.5 shrink-0">
                 {{ $actions }}
             </div>
         @endif

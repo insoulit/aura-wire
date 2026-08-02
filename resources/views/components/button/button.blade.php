@@ -12,7 +12,7 @@
 
 @php
     // Base interactive styles
-    $baseClasses = 'inline-flex items-center justify-center font-medium transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none aria-disabled:opacity-50 aria-disabled:pointer-events-none';
+    $baseClasses = 'inline-flex items-center justify-center font-medium cursor-pointer select-none transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none aria-disabled:opacity-50 aria-disabled:pointer-events-none';
 
     // Variant classes
     $variantClasses = match ($variant) {
@@ -26,13 +26,13 @@
         default => 'bg-white text-zinc-800 border border-zinc-300 hover:bg-zinc-50 dark:bg-zinc-800 dark:text-zinc-200 dark:border-zinc-700 shadow-sm',
     };
 
-    // Size classes (normal vs square)
+    // Size classes (pill & circular square)
     $sizeClasses = match ($size) {
-        'xs' => $square ? 'p-1 text-xs rounded' : 'px-2 py-1 text-xs gap-1 rounded-md',
-        'sm' => $square ? 'p-1.5 text-xs rounded-md' : 'px-2.5 py-1.5 text-xs gap-1.5 rounded-md',
-        'md' => $square ? 'p-2 text-sm rounded-lg' : 'px-3.5 py-2 text-sm gap-2 rounded-lg',
-        'lg' => $square ? 'p-2.5 text-base rounded-lg' : 'px-4.5 py-2.5 text-base gap-2.5 rounded-lg',
-        default => $square ? 'p-2 text-sm rounded-lg' : 'px-3.5 py-2 text-sm gap-2 rounded-lg',
+        'xs' => $square ? 'w-7 h-7 p-0 text-xs rounded-full shrink-0' : 'px-3 py-1 text-xs gap-1 rounded-full',
+        'sm' => $square ? 'w-8 h-8 p-0 text-xs rounded-full shrink-0' : 'px-3.5 py-1.5 text-xs gap-1.5 rounded-full',
+        'md' => $square ? 'w-9 h-9 p-0 text-sm rounded-full shrink-0' : 'px-4.5 py-2 text-sm gap-2 rounded-full',
+        'lg' => $square ? 'w-10 h-10 p-0 text-base rounded-full shrink-0' : 'px-5 py-2.5 text-base gap-2.5 rounded-full',
+        default => $square ? 'w-9 h-9 p-0 text-sm rounded-full shrink-0' : 'px-4.5 py-2 text-sm gap-2 rounded-full',
     };
 
     $classes = "{$baseClasses} {$variantClasses} {$sizeClasses}";

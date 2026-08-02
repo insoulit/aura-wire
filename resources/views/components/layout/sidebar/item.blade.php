@@ -25,7 +25,7 @@
     </div>
 
     @if ($badge)
-        <span class="shrink-0 px-2 py-0.5 text-[10px] font-mono font-bold uppercase rounded-md {{ $active ? 'bg-white/20 text-white dark:bg-zinc-900/20 dark:text-zinc-900' : 'bg-zinc-100 text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400' }}">
+        <span class="shrink-0 px-2 py-0.5 text-xs font-mono font-bold uppercase rounded-md {{ $active ? 'bg-white/20 text-white dark:bg-zinc-900/20 dark:text-zinc-900' : 'bg-zinc-100 text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400' }}">
             {{ $badge }}
         </span>
     @endif

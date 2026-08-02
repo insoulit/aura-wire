@@ -1,7 +1,7 @@
 @props([
     'percent' => 0,
     'size' => 'md', // 'sm' | 'md' | 'lg'
-    'variant' => 'default', // 'default' | 'emerald' | 'indigo' | 'amber' | 'red'
+    'variant' => 'default', // 'default' | 'subtle' | 'danger'
 ])
 
 @php
@@ -13,11 +13,9 @@
     };
 
     $fillClasses = match ($variant) {
-        'emerald', 'success' => 'bg-emerald-600 dark:bg-emerald-500',
-        'indigo', 'primary' => 'bg-indigo-600 dark:bg-indigo-500',
-        'amber', 'warning' => 'bg-amber-500 dark:bg-amber-400',
-        'red', 'danger' => 'bg-red-600 dark:bg-red-500',
-        default => 'bg-zinc-900 dark:bg-zinc-100',
+        'subtle', 'secondary' => 'bg-zinc-500 dark:bg-zinc-400',
+        'danger', 'red' => 'bg-red-600 dark:bg-red-500',
+        default => 'bg-zinc-900 dark:bg-white',
     };
 
     $clampedPercent = max(0, min(100, (float) $percent));
