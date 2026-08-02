@@ -39,3 +39,16 @@ it('renders main layout container component', function () {
     expect($html)->toContain('Dashboard Content')
         ->toContain('lg:pl-64');
 });
+
+it('renders sidebar dropdown collapsible menu component', function () {
+    $html = Blade::render('
+        <x-aura::sidebar.dropdown label="Management" badge="New" :active="true">
+            <x-aura::sidebar.item href="/roles">Roles</x-aura::sidebar.item>
+        </x-aura::sidebar.dropdown>
+    ');
+
+    expect($html)->toContain('Management')
+        ->toContain('New')
+        ->toContain('Roles')
+        ->toContain('href="/roles"');
+});
