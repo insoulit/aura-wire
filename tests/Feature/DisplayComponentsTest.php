@@ -61,4 +61,3 @@ it('renders code preview component', function () {
         ->toContain('Copy')
         ->toContain('Click');
 });
-
