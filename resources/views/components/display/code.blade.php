@@ -59,7 +59,7 @@
         </div>
 
         <div class="flex items-center gap-2">
-            <span class="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded bg-zinc-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400" style="font-family: 'JetBrains Mono', monospace;">
+            <span class="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded bg-zinc-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 font-mono">
                 {{ $language }}
             </span>
 
@@ -94,8 +94,8 @@
         @endif
     </div>
 
-    {{-- Formatted Code Display Area --}}
-    <div x-show="tab === 'code'" class="bg-zinc-50 text-zinc-900 border-t border-zinc-200 dark:bg-black dark:text-zinc-100 dark:border-zinc-800 p-5 overflow-x-auto text-sm sm:text-base leading-relaxed" style="display: none; font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;">
-        <pre x-ref="codeContent" class="text-sm sm:text-base" style="font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;"><code style="font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;">@if (isset($codeSlot)){{ $codeSlot }}@elseif($rawCode){{ $rawCode }}@else{{ $slot }}@endif</code></pre>
+    {{-- Formatted Code Display Area (Always Black Theme) --}}
+    <div x-show="tab === 'code'" class="bg-zinc-950 text-zinc-100 border-t border-zinc-900 p-5 overflow-x-auto text-sm sm:text-base leading-relaxed font-mono selection:bg-zinc-800 selection:text-white" style="display: none;">
+        <pre x-ref="codeContent" class="text-sm sm:text-base font-mono text-zinc-100"><code class="font-mono text-zinc-100">@if (isset($codeSlot)){{ $codeSlot }}@elseif($rawCode){{ $rawCode }}@else{{ $slot }}@endif</code></pre>
     </div>
 </div>

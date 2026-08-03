@@ -6,17 +6,17 @@
 
 @php
     $trackSize = match ($size) {
-        'sm' => 'w-8 h-4.5',
-        'md' => 'w-10 h-5.5',
-        'lg' => 'w-12 h-6.5',
-        default => 'w-10 h-5.5',
+        'sm' => 'w-8 h-4',
+        'md' => 'w-10 h-5',
+        'lg' => 'w-12 h-6',
+        default => 'w-10 h-5',
     };
 
     $thumbSize = match ($size) {
-        'sm' => 'w-3.5 h-3.5 peer-checked:translate-x-3.5',
-        'md' => 'w-4.5 h-4.5 peer-checked:translate-x-4.5',
-        'lg' => 'w-5.5 h-5.5 peer-checked:translate-x-5.5',
-        default => 'w-4.5 h-4.5 peer-checked:translate-x-4.5',
+        'sm' => 'w-3 h-3 peer-checked:translate-x-4',
+        'md' => 'w-4 h-4 peer-checked:translate-x-5',
+        'lg' => 'w-5 h-5 peer-checked:translate-x-6',
+        default => 'w-4 h-4 peer-checked:translate-x-5',
     };
 @endphp
 

@@ -15,7 +15,6 @@ class AuraWireServiceProvider extends PackageServiceProvider
             ->name('aura-wire')
             ->hasConfigFile('aura-wire')
             ->hasViews('aura-wire')
-            ->hasMigration('create_aura_wire_table')
             ->hasCommand(AuraWireCommand::class);
     }
 

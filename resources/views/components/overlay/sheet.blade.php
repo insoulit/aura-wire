@@ -10,6 +10,8 @@
         'right' => 'right-0 justify-end',
         default => 'right-0 justify-end',
     };
+
+    $borderSideClass = ($side === 'left') ? 'border-r' : 'border-l';
 @endphp
 
 <div
@@ -18,7 +20,7 @@
     x-on:open-sheet.window="if ($event.detail === '{{ $name }}') open = true"
     x-on:close-sheet.window="if ($event.detail === '{{ $name }}') open = false"
     x-on:keydown.escape.window="open = false"
-    class="fixed inset-0 z-50 flex"
+    class="fixed inset-0 z-50 flex {{ $sideClasses }}"
     style="display: none;"
     {{ $attributes }}
 >
@@ -44,7 +46,7 @@
         x-transition:leave="transition ease-in-out duration-300 transform"
         x-transition:leave-start="translate-x-0"
         x-transition:leave-end="{{ $side === 'left' ? '-translate-x-full' : 'translate-x-full' }}"
-        class="relative flex h-full w-full {{ $maxW }} flex-col overflow-y-auto bg-white dark:bg-zinc-900 shadow-2xl z-10 border-l border-zinc-200 dark:border-zinc-800 p-6"
+        class="relative flex h-full w-full {{ $maxW }} flex-col overflow-y-auto bg-white dark:bg-zinc-900 shadow-2xl z-10 {{ $borderSideClass }} border-zinc-200 dark:border-zinc-800 p-6"
     >
         {{-- Close Button --}}
         <button

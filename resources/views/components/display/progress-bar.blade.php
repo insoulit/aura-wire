@@ -14,7 +14,9 @@
 
     $fillClasses = match ($variant) {
         'subtle', 'secondary' => 'bg-zinc-500 dark:bg-zinc-400',
-        'danger', 'red' => 'bg-red-600 dark:bg-red-500',
+        'emerald', 'success', 'positive', 'green' => 'bg-emerald-600 dark:bg-emerald-500',
+        'amber', 'warning', 'yellow' => 'bg-amber-500 dark:bg-amber-400',
+        'danger', 'red', 'negative' => 'bg-red-600 dark:bg-red-500',
         default => 'bg-zinc-900 dark:bg-white',
     };
 

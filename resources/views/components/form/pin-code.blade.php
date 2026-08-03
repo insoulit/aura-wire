@@ -18,13 +18,32 @@
         : 'border-zinc-300 dark:border-zinc-700 focus:border-zinc-900 dark:focus:border-zinc-100 focus:ring-1 focus:ring-zinc-900 dark:focus:ring-zinc-100';
 @endphp
 
-<div {{ $attributes->merge(['class' => 'flex items-center gap-2']) }}>
+<div
+    x-data="{
+        handleInput(e, index) {
+            if (e.target.value.length >= 1) {
+                let next = this.$refs['pin_' + (index + 1)];
+                if (next) next.focus();
+            }
+        },
+        handleKeydown(e, index) {
+            if (e.key === 'Backspace' && !e.target.value) {
+                let prev = this.$refs['pin_' + (index - 1)];
+                if (prev) prev.focus();
+            }
+        }
+    }"
+    {{ $attributes->merge(['class' => 'flex items-center gap-2']) }}
+>
     @for ($i = 0; $i < $length; $i++)
         <input
             type="text"
             maxlength="1"
             inputmode="numeric"
             pattern="[0-9]*"
+            x-ref="pin_{{ $i }}"
+            x-on:input="handleInput($event, {{ $i }})"
+            x-on:keydown="handleKeydown($event, {{ $i }})"
             @if($disabled) disabled @endif
             class="block bg-zinc-50 dark:bg-zinc-900/90 text-center font-semibold text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 border transition-all duration-150 shadow-2xs outline-none disabled:opacity-50 disabled:cursor-not-allowed {{ $sizeClasses }} {{ $borderClasses }}"
         />

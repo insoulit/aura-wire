@@ -4,7 +4,7 @@
     'disabled' => false,
 ])
 
-<div {{ $attributes->merge(['class' => 'flex w-full items-center justify-center']) }}>
+<div class="flex w-full items-center justify-center">
     <label
         class="relative flex h-52 w-full cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed border-zinc-300 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-900/50 hover:bg-zinc-100 dark:hover:bg-zinc-800/80 hover:border-zinc-400 dark:hover:border-zinc-600 transition-all duration-200 group {{ $disabled ? 'opacity-50 cursor-not-allowed pointer-events-none' : '' }}"
     >
@@ -33,8 +33,8 @@
         </div>
         <input
             type="file"
-            class="hidden"
             @if($disabled) disabled @endif
+            {{ $attributes->merge(['class' => 'hidden']) }}
         />
     </label>
 </div>
