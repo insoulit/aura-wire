@@ -18,7 +18,11 @@
     <div class="flex items-center gap-3 min-w-0">
         @if (isset($icon) && $icon)
             <span class="shrink-0 transition-colors {{ $active ? 'text-current' : 'text-zinc-400 group-hover:text-zinc-700 dark:text-zinc-500 dark:group-hover:text-zinc-200' }}">
-                {{ $icon }}
+                @if (is_string($icon))
+                    <x-aura::icon :name="$icon" size="sm" />
+                @else
+                    {{ $icon }}
+                @endif
             </span>
         @endif
         <span class="truncate">{{ $slot }}</span>

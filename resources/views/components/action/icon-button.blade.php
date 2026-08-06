@@ -1,7 +1,7 @@
 @props([
     'variant' => 'secondary',
     'size' => 'md',
-    'shape' => 'circle',
+    'shape' => 'square',
     'type' => 'button',
     'href' => null,
     'icon' => null,
@@ -30,7 +30,7 @@
     };
 
     // Shape radius
-    $isSquare = in_array($shape, ['square', 'rounded', 'rect']);
+    $isSquare = in_array($shape, ['square', 'rounded', 'rect', 'default']);
     
     // Size classes (sleek tighter border-radius for square/rectangular buttons)
     $sizeClasses = match ($size) {

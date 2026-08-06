@@ -22,8 +22,16 @@
         default => 'py-2 px-3.5 text-sm rounded-md',
     };
 
-    $paddingLeft = (isset($icon) && $icon) ? 'pl-10' : '';
-    $paddingRight = (isset($iconTrailing) && $iconTrailing) ? 'pr-10' : '';
+    $iconSize = match ($size) {
+        'sm' => 'xs',
+        'lg' => 'md',
+        default => 'sm',
+    };
+
+    $paddingLeft = (isset($icon) && $icon) ? ($size === 'sm' ? 'pl-8' : ($size === 'lg' ? 'pl-11' : 'pl-9')) : '';
+    $paddingRight = (isset($iconTrailing) && $iconTrailing) ? ($size === 'sm' ? 'pr-8' : ($size === 'lg' ? 'pr-11' : 'pr-9')) : '';
+    $iconLeftPos = $size === 'sm' ? 'left-2.5' : 'left-3';
+    $iconRightPos = $size === 'sm' ? 'right-2.5' : 'right-3';
 
     $isInvalid = $invalid || ($name && isset($errors) && $errors->has($name));
 
@@ -42,9 +50,9 @@
 
         <div class="relative flex items-center w-full">
             @if (isset($icon) && $icon)
-                <div class="absolute left-3 inset-y-0 flex items-center justify-center pointer-events-none text-zinc-400 dark:text-zinc-500">
+                <div class="absolute {{ $iconLeftPos }} inset-y-0 flex items-center justify-center pointer-events-none text-zinc-400 dark:text-zinc-500">
                     @if (is_string($icon))
-                        <x-aura::icon :name="$icon" size="sm" />
+                        <x-aura::icon :name="$icon" :size="$iconSize" />
                     @else
                         {{ $icon }}
                     @endif
@@ -58,9 +66,9 @@
             />
 
             @if (isset($iconTrailing) && $iconTrailing)
-                <div class="absolute right-3 inset-y-0 flex items-center justify-center pointer-events-none text-zinc-400 dark:text-zinc-500">
+                <div class="absolute {{ $iconRightPos }} inset-y-0 flex items-center justify-center pointer-events-none text-zinc-400 dark:text-zinc-500">
                     @if (is_string($iconTrailing))
-                        <x-aura::icon :name="$iconTrailing" size="sm" />
+                        <x-aura::icon :name="$iconTrailing" :size="$iconSize" />
                     @else
                         {{ $iconTrailing }}
                     @endif
@@ -77,9 +85,9 @@
 @else
     <div class="relative flex items-center w-full">
         @if (isset($icon) && $icon)
-            <div class="absolute left-3 inset-y-0 flex items-center justify-center pointer-events-none text-zinc-400 dark:text-zinc-500">
+            <div class="absolute {{ $iconLeftPos }} inset-y-0 flex items-center justify-center pointer-events-none text-zinc-400 dark:text-zinc-500">
                 @if (is_string($icon))
-                    <x-aura::icon :name="$icon" size="sm" />
+                    <x-aura::icon :name="$icon" :size="$iconSize" />
                 @else
                     {{ $icon }}
                 @endif
@@ -93,9 +101,9 @@
         />
 
         @if (isset($iconTrailing) && $iconTrailing)
-            <div class="absolute right-3 inset-y-0 flex items-center justify-center pointer-events-none text-zinc-400 dark:text-zinc-500">
+            <div class="absolute {{ $iconRightPos }} inset-y-0 flex items-center justify-center pointer-events-none text-zinc-400 dark:text-zinc-500">
                 @if (is_string($iconTrailing))
-                    <x-aura::icon :name="$iconTrailing" size="sm" />
+                    <x-aura::icon :name="$iconTrailing" :size="$iconSize" />
                 @else
                     {{ $iconTrailing }}
                 @endif
