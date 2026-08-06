@@ -16,14 +16,14 @@
 
     // Variant classes
     $variantClasses = match ($variant) {
-        'primary' => 'bg-zinc-900 text-white hover:bg-zinc-800 active:bg-zinc-950 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-100 dark:active:bg-zinc-200 shadow-sm border border-transparent',
-        'secondary' => 'bg-white text-zinc-800 border border-zinc-300 hover:bg-zinc-50 active:bg-zinc-100 dark:bg-zinc-800 dark:text-zinc-200 dark:border-zinc-700 dark:hover:bg-zinc-700 dark:active:bg-zinc-800 shadow-sm',
+        'primary' => 'bg-zinc-900 text-white hover:bg-zinc-800 active:bg-zinc-950 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-100 dark:active:bg-zinc-200 shadow-xs border border-transparent',
+        'secondary' => 'bg-white text-zinc-800 border border-zinc-300 hover:bg-zinc-50 active:bg-zinc-100 dark:bg-zinc-800 dark:text-zinc-200 dark:border-zinc-700 dark:hover:bg-zinc-700 dark:active:bg-zinc-800 shadow-xs',
         'filled', 'subtle' => 'bg-zinc-100 text-zinc-900 hover:bg-zinc-200 active:bg-zinc-300 dark:bg-zinc-800 dark:text-zinc-100 dark:hover:bg-zinc-700 dark:active:bg-zinc-600 border border-transparent',
         'outline' => 'bg-transparent text-zinc-700 border border-zinc-300 hover:bg-zinc-50 active:bg-zinc-100 dark:text-zinc-300 dark:border-zinc-700 dark:hover:bg-zinc-800 dark:active:bg-zinc-700',
         'ghost' => 'bg-transparent text-zinc-700 hover:bg-zinc-100 hover:text-zinc-900 active:bg-zinc-200 dark:text-zinc-300 dark:hover:bg-zinc-800 dark:hover:text-white dark:active:bg-zinc-700 border border-transparent',
-        'danger' => 'bg-red-600 text-white hover:bg-red-500 active:bg-red-700 dark:bg-red-600 dark:hover:bg-red-500 dark:active:bg-red-700 shadow-sm border border-transparent',
+        'danger' => 'bg-red-600 text-white hover:bg-red-500 active:bg-red-700 dark:bg-red-600 dark:hover:bg-red-500 dark:active:bg-red-700 shadow-xs border border-transparent',
         'link' => 'bg-transparent text-indigo-600 hover:underline dark:text-indigo-400 border border-transparent p-0 focus-visible:ring-0',
-        default => 'bg-white text-zinc-800 border border-zinc-300 hover:bg-zinc-50 dark:bg-zinc-800 dark:text-zinc-200 dark:border-zinc-700 shadow-sm',
+        default => 'bg-white text-zinc-800 border border-zinc-300 hover:bg-zinc-50 dark:bg-zinc-800 dark:text-zinc-200 dark:border-zinc-700 shadow-xs',
     };
 
     // Size classes (pill & circular square)
@@ -33,6 +33,16 @@
         'md' => $square ? 'w-9 h-9 p-0 text-sm rounded-full shrink-0' : 'px-4 py-2 text-sm gap-2 rounded-full',
         'lg' => $square ? 'w-10 h-10 p-0 text-base rounded-full shrink-0' : 'px-5 py-2.5 text-base gap-2.5 rounded-full',
         default => $square ? 'w-9 h-9 p-0 text-sm rounded-full shrink-0' : 'px-4 py-2 text-sm gap-2 rounded-full',
+    };
+
+    // Proportional icon size matching button scale
+    $iconSize = match ($size) {
+        'xs' => 'xs', // 14px in 28px button
+        'sm' => 'sm', // 16px in 32px button
+        'md' => 'sm', // 16px in 36px button (matching text-sm)
+        'lg' => 'md', // 20px in 40px button (matching text-base)
+        'xl' => 'lg', // 24px in 48px button (matching text-lg)
+        default => 'sm',
     };
 
     $classes = "{$baseClasses} {$variantClasses} {$sizeClasses}";
@@ -69,19 +79,27 @@
     {{-- Leading Icon --}}
     @if (isset($icon) && $icon)
         <span class="inline-flex shrink-0">
-            {{ $icon }}
+            @if (is_string($icon))
+                <x-aura::icon :name="$icon" :size="$iconSize" />
+            @else
+                {{ $icon }}
+            @endif
         </span>
     @endif
 
     {{-- Button Slot Content --}}
     @if ($slot->isNotEmpty())
-        <span>{{ $slot }}</span>
+        <span class="inline-flex items-center gap-1.5">{{ $slot }}</span>
     @endif
 
     {{-- Trailing Icon --}}
     @if (isset($iconTrailing) && $iconTrailing)
         <span class="inline-flex shrink-0">
-            {{ $iconTrailing }}
+            @if (is_string($iconTrailing))
+                <x-aura::icon :name="$iconTrailing" :size="$iconSize" />
+            @else
+                {{ $iconTrailing }}
+            @endif
         </span>
     @endif
 </{{ $tag }}>

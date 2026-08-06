@@ -8,9 +8,9 @@
 @php
     $sizeClasses = match ($size) {
         'sm' => 'h-10 w-10 text-base rounded-md',
-        'md' => 'h-12 w-12 text-lg rounded-lg',
-        'lg' => 'h-14 w-14 text-xl rounded-xl',
-        default => 'h-12 w-12 text-lg rounded-lg',
+        'md' => 'h-12 w-12 text-lg rounded-md',
+        'lg' => 'h-14 w-14 text-xl rounded-lg',
+        default => 'h-12 w-12 text-lg rounded-md',
     };
 
     $borderClasses = $invalid

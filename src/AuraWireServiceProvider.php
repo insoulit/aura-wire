@@ -26,7 +26,7 @@ class AuraWireServiceProvider extends PackageServiceProvider
         Blade::anonymousComponentPath(__DIR__.'/../resources/views/components', $prefix);
 
         // Register group subfolders for direct tag access (e.g. <aura:input>, <aura:heading>, <aura:icon.edit>)
-        $groups = ['button', 'typography', 'form', 'display', 'layout', 'overlay', 'table', 'feedback', 'navigation', 'icon'];
+        $groups = ['action', 'typography', 'form', 'display', 'layout', 'overlay', 'feedback', 'navigation', 'icon'];
 
         foreach ($groups as $group) {
             Blade::anonymousComponentPath(__DIR__."/../resources/views/components/{$group}", $prefix);

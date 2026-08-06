@@ -27,7 +27,7 @@
             }
         }
     }"
-    {{ $attributes->merge(['class' => 'rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 overflow-hidden shadow-2xs transition-all']) }}
+    {{ $attributes->merge(['class' => 'rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 shadow-2xs transition-all']) }}
 >
     {{-- Header Bar with Title & Preview / Code Tabs & Copy Button --}}
     <div class="px-4 py-3 bg-zinc-50 dark:bg-zinc-900/60 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between gap-4 select-none">
