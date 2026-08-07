@@ -6,6 +6,8 @@
     'icon' => null,
     'iconTrailing' => null,
     'square' => false,
+    'pill' => false,
+    'shape' => null, // 'square' | 'pill' | 'circle' | 'default'
     'disabled' => false,
     'loading' => null,
 ])
@@ -26,13 +28,16 @@
         default => 'bg-white text-zinc-800 border border-zinc-300 hover:bg-zinc-50 dark:bg-zinc-800 dark:text-zinc-200 dark:border-zinc-700 shadow-xs',
     };
 
-    // Size classes (square uses rounded-lg/rounded-md, normal uses rounded-lg/rounded-md)
+    $isPill = $pill || in_array($shape, ['pill', 'circle']);
+    $radiusClass = $isPill ? 'rounded-full' : ($size === 'xs' || $size === 'sm' ? 'rounded-md' : 'rounded-lg');
+
+    // Size classes (square/pill use rounded-full or rounded-md/rounded-lg)
     $sizeClasses = match ($size) {
-        'xs' => $square ? 'w-7 h-7 p-0 text-xs rounded-md shrink-0' : 'px-2.5 py-1 text-xs gap-1 rounded-md',
-        'sm' => $square ? 'w-8 h-8 p-0 text-xs rounded-md shrink-0' : 'px-3 py-1.5 text-xs gap-1.5 rounded-md',
-        'md' => $square ? 'w-9 h-9 p-0 text-sm rounded-lg shrink-0' : 'px-4 py-2 text-sm gap-2 rounded-lg',
-        'lg' => $square ? 'w-10 h-10 p-0 text-base rounded-lg shrink-0' : 'px-5 py-2.5 text-base gap-2.5 rounded-lg',
-        default => $square ? 'w-9 h-9 p-0 text-sm rounded-lg shrink-0' : 'px-4 py-2 text-sm gap-2 rounded-lg',
+        'xs' => $square ? "w-7 h-7 p-0 text-xs {$radiusClass} shrink-0" : "px-3 py-1 text-xs gap-1 {$radiusClass}",
+        'sm' => $square ? "w-8 h-8 p-0 text-xs {$radiusClass} shrink-0" : "px-3.5 py-1.5 text-xs gap-1.5 {$radiusClass}",
+        'md' => $square ? "w-9 h-9 p-0 text-sm {$radiusClass} shrink-0" : "px-4 py-2 text-sm gap-2 {$radiusClass}",
+        'lg' => $square ? "w-10 h-10 p-0 text-base {$radiusClass} shrink-0" : "px-5.5 py-2.5 text-base gap-2.5 {$radiusClass}",
+        default => $square ? "w-9 h-9 p-0 text-sm {$radiusClass} shrink-0" : "px-4 py-2 text-sm gap-2 {$radiusClass}",
     };
 
     // Proportional icon size matching button scale

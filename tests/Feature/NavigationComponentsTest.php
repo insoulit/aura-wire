@@ -12,7 +12,23 @@ it('renders header and header item components', function () {
 
     expect($html)->toContain('App Logo')
         ->toContain('Dashboard')
-        ->toContain('href="/dashboard"');
+        ->toContain('href="/dashboard"')
+        ->toContain('mobileOpen')
+        ->toContain('Toggle navigation menu');
+});
+
+it('renders non-responsive header with horizontal scrolling when responsive is false', function () {
+    $html = Blade::render('
+        <x-aura::header :responsive="false">
+            <x-slot:brand>App Logo</x-slot:brand>
+            <x-aura::header.item href="/dashboard" active>Dashboard</x-aura::header.item>
+        </x-aura::header>
+    ');
+
+    expect($html)->toContain('App Logo')
+        ->toContain('Dashboard')
+        ->toContain('overflow-x-auto')
+        ->toNotContain('mobileOpen');
 });
 
 it('renders sidebar layout and item components', function () {

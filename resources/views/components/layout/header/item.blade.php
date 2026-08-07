@@ -2,12 +2,18 @@
     'href' => '#',
     'active' => false,
     'icon' => null,
+    'variant' => 'default', // 'default', 'dark'
 ])
 
 @php
-    $activeClasses = $active
-        ? 'text-zinc-900 dark:text-white bg-zinc-900/10 dark:bg-white/15 font-semibold shadow-2xs'
-        : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-900/5 dark:hover:bg-white/10 font-medium border border-transparent';
+    $activeClasses = match ($variant) {
+        'dark' => $active
+            ? 'text-white bg-zinc-800 font-semibold shadow-2xs'
+            : 'text-zinc-400 hover:text-white hover:bg-zinc-900 font-medium border border-transparent',
+        default => $active
+            ? 'text-zinc-900 dark:text-white bg-zinc-900/10 dark:bg-white/15 font-semibold shadow-2xs'
+            : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-900/5 dark:hover:bg-white/10 font-medium border border-transparent',
+    };
 @endphp
 
 <a

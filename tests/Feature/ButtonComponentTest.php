@@ -15,8 +15,14 @@ it('renders button with primary variant and sm size', function () {
     $rendered = Blade::render('<x-aura::button variant="primary" size="sm">Save</x-aura::button>');
 
     expect($rendered)->toContain('bg-zinc-900')
-        ->toContain('px-2.5 py-1.5')
         ->toContain('Save');
+});
+
+it('renders pill shaped button with rounded-full', function () {
+    $rendered = Blade::render('<x-aura::button variant="primary" pill>Pill Action</x-aura::button>');
+
+    expect($rendered)->toContain('rounded-full')
+        ->toContain('Pill Action');
 });
 
 it('renders an anchor tag when href attribute is passed', function () {

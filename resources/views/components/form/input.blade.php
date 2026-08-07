@@ -38,6 +38,8 @@
     $borderClasses = $isInvalid
         ? 'border-red-600 dark:border-red-500 focus:border-red-600 focus:ring-1 focus:ring-red-600'
         : 'border-zinc-300 dark:border-zinc-700 focus:border-zinc-900 dark:focus:border-zinc-100 focus:ring-1 focus:ring-zinc-900 dark:focus:ring-zinc-100';
+
+    $inputClasses = "w-full bg-zinc-50 dark:bg-zinc-900/90 text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 border transition-all duration-150 shadow-2xs outline-none disabled:opacity-50 disabled:cursor-not-allowed {$sizeClasses} {$paddingLeft} {$paddingRight} {$borderClasses}";
 @endphp
 
 @if ($label || $hint || $error || ($name && isset($errors) && $errors->has($name)))
@@ -48,7 +50,7 @@
             </x-aura::label>
         @endif
 
-        <div class="relative flex items-center w-full">
+        <div {{ $attributes->only('class')->merge(['class' => 'relative flex items-center w-full']) }}>
             @if (isset($icon) && $icon)
                 <div class="absolute {{ $iconLeftPos }} inset-y-0 flex items-center justify-center pointer-events-none text-zinc-400 dark:text-zinc-500">
                     @if (is_string($icon))
@@ -62,7 +64,7 @@
             <input
                 @if($id) id="{{ $id }}" @endif
                 type="{{ $type }}"
-                {{ $attributes->merge(['class' => "w-full bg-zinc-50 dark:bg-zinc-900/90 text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 border transition-all duration-150 shadow-2xs outline-none disabled:opacity-50 disabled:cursor-not-allowed {$sizeClasses} {$paddingLeft} {$paddingRight} {$borderClasses}"]) }}
+                {{ $attributes->except('class')->merge(['class' => $inputClasses]) }}
             />
 
             @if (isset($iconTrailing) && $iconTrailing)
@@ -83,7 +85,7 @@
         <x-aura::error :name="$name" :message="$error" />
     </div>
 @else
-    <div class="relative flex items-center w-full">
+    <div {{ $attributes->only('class')->merge(['class' => 'relative flex items-center w-full']) }}>
         @if (isset($icon) && $icon)
             <div class="absolute {{ $iconLeftPos }} inset-y-0 flex items-center justify-center pointer-events-none text-zinc-400 dark:text-zinc-500">
                 @if (is_string($icon))
@@ -97,7 +99,7 @@
         <input
             @if($id) id="{{ $id }}" @endif
             type="{{ $type }}"
-            {{ $attributes->merge(['class' => "w-full bg-zinc-50 dark:bg-zinc-900/90 text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 border transition-all duration-150 shadow-2xs outline-none disabled:opacity-50 disabled:cursor-not-allowed {$sizeClasses} {$paddingLeft} {$paddingRight} {$borderClasses}"]) }}
+            {{ $attributes->except('class')->merge(['class' => $inputClasses]) }}
         />
 
         @if (isset($iconTrailing) && $iconTrailing)

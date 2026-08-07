@@ -1,20 +1,52 @@
 @props([
     'sticky' => true,
     'variant' => 'default', // 'default', 'dark', 'minimal', 'bordered'
+    'border' => false,
+    'responsive' => true,
 ])
 
 @php
     $variantClasses = match ($variant) {
-        'dark' => 'bg-zinc-950 text-white border-b border-zinc-800/80 shadow-md',
-        'minimal' => 'bg-transparent border-b border-zinc-200/50 dark:border-zinc-800/50',
-        'bordered' => 'bg-white dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800 shadow-2xs',
-        default => 'bg-white/90 dark:bg-zinc-950/90 backdrop-blur-md border-b border-zinc-200/80 dark:border-zinc-800/80 shadow-2xs',
+        'dark' => 'bg-zinc-950 text-white shadow-md',
+        'minimal' => 'bg-transparent',
+        'bordered' => 'bg-white dark:bg-zinc-900 shadow-2xs',
+        default => 'bg-white/90 dark:bg-zinc-950/90 backdrop-blur-md shadow-2xs',
+    };
+
+    $borderClasses = ($border || $variant === 'bordered')
+        ? match ($variant) {
+            'dark' => 'border-b border-zinc-800/80',
+            'minimal' => 'border-b border-zinc-200/50 dark:border-zinc-800/50',
+            default => 'border-b border-zinc-200/80 dark:border-zinc-800/80',
+          }
+        : '';
+
+    $buttonTextClasses = match ($variant) {
+        'dark' => 'text-zinc-300 hover:text-white hover:bg-zinc-800/80',
+        default => 'text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800/60',
+    };
+
+    $drawerBorderClasses = match ($variant) {
+        'dark' => 'border-t border-zinc-800/80',
+        'minimal' => 'border-t border-zinc-200/50 dark:border-zinc-800/50',
+        default => ($border || $variant === 'bordered') ? 'border-t border-zinc-200/80 dark:border-zinc-800/80' : '',
+    };
+
+    $drawerNavClasses = match ($variant) {
+        'dark' => 'flex flex-col gap-1 [&_div]:flex [&_div]:flex-col [&_div]:gap-1 [&_a]:w-full [&_a]:justify-start [&_a]:text-zinc-300 [&_a:hover]:text-white [&_a:hover]:bg-zinc-900',
+        default => 'flex flex-col gap-1 [&_div]:flex [&_div]:flex-col [&_div]:gap-1 [&_a]:w-full [&_a]:justify-start',
     };
 
     $stickyClass = $sticky ? 'sticky top-0 z-30' : 'relative z-10';
+    $navClasses = $responsive
+        ? 'hidden md:flex flex-1 items-center justify-center gap-1.5'
+        : 'flex-1 flex items-center justify-start sm:justify-center gap-1.5 overflow-x-auto scrollbar-none py-0.5';
 @endphp
 
-<header {{ $attributes->merge(['class' => "w-full px-4 sm:px-6 py-3 transition-all {$variantClasses} {$stickyClass}"]) }}>
+<header
+    @if ($responsive) x-data="{ mobileOpen: false }" @endif
+    {{ $attributes->merge(['class' => "w-full px-4 sm:px-6 py-3 transition-all {$variantClasses} {$borderClasses} {$stickyClass}"]) }}
+>
     <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
         @if (isset($brand))
             <div class="flex items-center gap-3 font-bold text-zinc-900 dark:text-white shrink-0">
@@ -22,14 +54,53 @@
             </div>
         @endif
 
-        <nav class="flex-1 flex items-center justify-start sm:justify-center gap-1.5 overflow-x-auto scrollbar-none py-0.5">
+        <nav class="{{ $navClasses }}">
             {{ $slot }}
         </nav>
 
-        @if (isset($actions))
-            <div class="flex items-center gap-2.5 shrink-0">
+        <div class="flex items-center gap-2.5 shrink-0">
+            @if (isset($actions))
                 {{ $actions }}
-            </div>
-        @endif
+            @endif
+
+            @if ($responsive)
+                <button
+                    type="button"
+                    x-on:click="mobileOpen = !mobileOpen"
+                    class="md:hidden inline-flex items-center justify-center p-2 rounded-xl {{ $buttonTextClasses }} transition-colors focus:outline-hidden cursor-pointer"
+                    aria-label="Toggle navigation menu"
+                >
+                    <svg x-show="!mobileOpen" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                    <svg x-show="mobileOpen" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="display: none;">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            @endif
+        </div>
     </div>
+
+    @if ($responsive)
+        {{-- Mobile Collapsible Navigation Menu --}}
+        <div
+            x-show="mobileOpen"
+            x-transition:enter="transition ease-out duration-200"
+            x-transition:enter-start="opacity-0 -translate-y-2"
+            x-transition:enter-end="opacity-100 translate-y-0"
+            x-transition:leave="transition ease-in duration-150"
+            x-transition:leave-start="opacity-100 translate-y-0"
+            x-transition:leave-end="opacity-0 -translate-y-2"
+            class="md:hidden pt-3 pb-2 mt-3 {{ $drawerBorderClasses }}"
+            style="display: none;"
+        >
+            <nav class="{{ $drawerNavClasses }}">
+                @if (isset($mobileNav))
+                    {{ $mobileNav }}
+                @else
+                    {{ $slot }}
+                @endif
+            </nav>
+        </div>
+    @endif
 </header>
