@@ -4,6 +4,7 @@ namespace Insoulit\AuraWire\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Insoulit\AuraWire\AuraWireServiceProvider;
+use Livewire\LivewireServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
@@ -20,7 +21,7 @@ class TestCase extends Orchestra
     protected function getPackageProviders($app)
     {
         return [
-            \Livewire\LivewireServiceProvider::class,
+            LivewireServiceProvider::class,
             AuraWireServiceProvider::class,
         ];
     }
