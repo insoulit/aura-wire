@@ -28,7 +28,7 @@ it('renders non-responsive header with horizontal scrolling when responsive is f
     expect($html)->toContain('App Logo')
         ->toContain('Dashboard')
         ->toContain('overflow-x-auto')
-        ->toNotContain('mobileOpen');
+        ->not->toContain('mobileOpen');
 });
 
 it('renders sidebar layout and item components', function () {

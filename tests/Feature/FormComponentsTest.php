@@ -51,10 +51,10 @@ it('renders checkbox component', function () {
 
 it('renders radio group component', function () {
     $html = Blade::render('
-        <x-aura::radio.group label="Plan">
+        <x-aura::form.radio-group label="Plan">
             <x-aura::radio name="plan" value="free" label="Free Plan" />
             <x-aura::radio name="plan" value="pro" label="Pro Plan" />
-        </x-aura::radio.group>
+        </x-aura::form.radio-group>
     ');
 
     expect($html)->toContain('type="radio"')

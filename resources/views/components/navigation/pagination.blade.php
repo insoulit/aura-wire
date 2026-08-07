@@ -159,7 +159,7 @@
                     Showing <span class="font-bold text-zinc-900 dark:text-white">{{ $from }}</span> to <span class="font-bold text-zinc-900 dark:text-white">{{ $to }}</span> of <span class="font-bold text-zinc-900 dark:text-white">{{ $total }}</span> items
                 </div>
             @else
-                <div></div>
+                <div>{{ $slot }}</div>
             @endif
 
             <div class="flex items-center gap-1.5">

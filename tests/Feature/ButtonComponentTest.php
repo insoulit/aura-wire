@@ -41,10 +41,10 @@ it('renders disabled state properly', function () {
 
 it('renders button group container', function () {
     $rendered = Blade::render('
-        <x-aura::button.group>
+        <x-aura::action.group>
             <x-aura::button>Left</x-aura::button>
             <x-aura::button>Right</x-aura::button>
-        </x-aura::button.group>
+        </x-aura::action.group>
     ');
 
     expect($rendered)->toContain('role="group"')
