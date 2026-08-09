@@ -8,7 +8,7 @@
     'href' => null,
 ])
 
-<div {{ $attributes->merge(['class' => 'group relative flex flex-col overflow-hidden rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-xs hover:shadow-xl hover:shadow-zinc-900/5 dark:hover:shadow-white/5 transition-all duration-300']) }}>
+<div {{ $attributes->merge(['class' => 'group relative flex flex-col overflow-hidden rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-xs hover:shadow-xl hover:shadow-zinc-900/5 dark:hover:shadow-white/5 transition-all duration-300']) }}>
     @if ($badge)
         <div class="absolute top-3 left-3 z-10">
             <span class="inline-flex items-center rounded-full bg-zinc-900/90 dark:bg-white/90 backdrop-blur-md px-3 py-1 text-xs font-semibold text-white dark:text-zinc-900 shadow-sm">

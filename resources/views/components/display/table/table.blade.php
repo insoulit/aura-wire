@@ -5,7 +5,7 @@
     'compact' => false,
 ])
 
-<div class="w-full overflow-x-auto rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-2xs">
+<div class="w-full overflow-x-auto rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-2xs">
     <table {{ $attributes->merge(['class' => 'w-full text-left border-collapse text-sm']) }}>
         @if (isset($header))
             <thead class="bg-zinc-50/80 dark:bg-zinc-800/60 border-b border-zinc-200 dark:border-zinc-800 text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 select-none">

@@ -38,7 +38,7 @@
         'bg-indigo-950/90 text-indigo-100 border-indigo-800 shadow-indigo-950/30': (typeof t !== 'undefined' && t.variant === 'info'),
         'bg-amber-950/90 text-amber-100 border-amber-800 shadow-amber-950/30': (typeof t !== 'undefined' && t.variant === 'warning')
     }"
-    {{ $attributes->merge(['class' => "rounded-2xl border p-4 shadow-xl flex items-center gap-3.5 transition-all duration-200 w-full max-w-sm relative pointer-events-auto {$variantClasses}"]) }}
+    {{ $attributes->merge(['class' => "rounded-xl border p-4 shadow-xl flex items-center gap-3.5 transition-all duration-200 w-full max-w-sm relative pointer-events-auto {$variantClasses}"]) }}
     role="alert"
 >
     {{-- Status Icon --}}

@@ -15,7 +15,7 @@
     };
 @endphp
 
-<div {{ $attributes->merge(['class' => 'p-6 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl shadow-2xs space-y-3']) }}>
+<div {{ $attributes->merge(['class' => 'p-6 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-2xs space-y-3']) }}>
     <div class="flex items-center justify-between gap-2">
         <span class="text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             {{ $label }}

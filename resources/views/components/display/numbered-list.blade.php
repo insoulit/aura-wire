@@ -226,7 +226,7 @@
                 $subtitle = is_array($item) ? ($item[$subtitleKey] ?? null) : (is_object($item) ? ($item->{$subtitleKey} ?? null) : null);
                 $image = is_array($item) ? ($item[$imageKey] ?? $item['avatar'] ?? null) : (is_object($item) ? ($item->{$imageKey} ?? $item->avatar ?? null) : null);
             @endphp
-            <div class="group relative bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-5 sm:p-6 hover:shadow-xl hover:shadow-zinc-900/5 dark:hover:shadow-white/5 hover:-translate-y-0.5 transition-all duration-300">
+            <div class="group relative bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-5 sm:p-6 hover:shadow-xl hover:shadow-zinc-900/5 dark:hover:shadow-white/5 hover:-translate-y-0.5 transition-all duration-300">
                 @if ($numbered)
                     <div class="absolute -top-3 -left-3 w-8 h-8 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 rounded-full flex items-center justify-center font-bold text-xs shadow-md transform group-hover:scale-110 transition-transform duration-300">
                         {{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}

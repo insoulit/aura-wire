@@ -44,7 +44,7 @@
 <div
     role="alert"
     @if ($dismissible) x-data="{ show: true }" x-show="show" x-transition @endif
-    {{ $attributes->merge(['class' => "relative flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 sm:p-5 rounded-2xl border transition-all duration-200 shadow-2xs {$variantClasses}"]) }}
+    {{ $attributes->merge(['class' => "relative flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 sm:p-5 rounded-xl border transition-all duration-200 shadow-2xs {$variantClasses}"]) }}
 >
     <div class="flex items-start sm:items-center gap-3.5 min-w-0">
         @if ($badge)

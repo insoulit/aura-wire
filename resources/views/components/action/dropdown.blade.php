@@ -33,7 +33,7 @@
         x-transition:leave="transition ease-in duration-100"
         x-transition:leave-start="transform opacity-100 scale-100 translate-y-0"
         x-transition:leave-end="transform opacity-0 scale-95 -translate-y-1"
-        class="absolute {{ $alignmentClasses }} {{ $widthClass }} z-50 mt-2 rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200/90 dark:border-zinc-800 shadow-xl p-1.5 space-y-0.5"
+        class="absolute {{ $alignmentClasses }} {{ $widthClass }} z-50 mt-2 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200/90 dark:border-zinc-800 shadow-xl p-1.5 space-y-0.5"
         style="display: none;"
     >
         {{ $slot }}

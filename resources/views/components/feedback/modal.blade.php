@@ -68,7 +68,7 @@
                     x-transition:leave="ease-in duration-150"
                     x-transition:leave-start="opacity-100 scale-100"
                     x-transition:leave-end="opacity-0 scale-95"
-                    class="pointer-events-auto w-full {{ $maxWidthClass }} max-h-[90vh] overflow-y-auto bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-6 shadow-2xl space-y-5 transform transition-all {{ $isCentered ? 'text-center flex flex-col items-center' : 'text-left' }}"
+                    class="pointer-events-auto w-full {{ $maxWidthClass }} max-h-[90vh] overflow-y-auto bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-6 shadow-2xl space-y-5 transform transition-all {{ $isCentered ? 'text-center flex flex-col items-center' : 'text-left' }}"
                 >
                     {{-- Header --}}
                     @if ($isCentered)
@@ -81,7 +81,7 @@
                             @endif
 
                             @if ($icon || $isDanger || $isSuccess)
-                                <div class="w-12 h-12 rounded-2xl {{ $iconBgClass }} flex items-center justify-center shrink-0 shadow-2xs">
+                                <div class="w-12 h-12 rounded-xl {{ $iconBgClass }} flex items-center justify-center shrink-0 shadow-2xs">
                                     @if ($icon && is_string($icon) && view()->exists("aura::components.icon.{$icon}"))
                                         <x-dynamic-component :component="'aura::icon.'.$icon" size="md" />
                                     @elseif ($icon)

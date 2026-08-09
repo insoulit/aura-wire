@@ -106,7 +106,7 @@
     <button
         type="button"
         @click="open = !open"
-        class="w-full bg-zinc-50 dark:bg-zinc-900/90 text-zinc-900 dark:text-white border border-zinc-300 dark:border-zinc-700 rounded-md p-3 text-sm text-left flex items-center justify-between shadow-2xs outline-none focus:border-zinc-900 dark:focus:border-zinc-100 cursor-pointer"
+        class="w-full bg-zinc-50 dark:bg-zinc-900/90 text-zinc-900 dark:text-white border border-zinc-300 dark:border-zinc-700 rounded-lg p-3 text-sm text-left flex items-center justify-between shadow-2xs outline-none focus:border-zinc-900 dark:focus:border-zinc-100 cursor-pointer"
     >
         <span x-text="displayValue || '{{ $placeholder }}'" :class="{ 'text-zinc-400': !displayValue }"></span>
         <svg class="w-4 h-4 text-zinc-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -122,7 +122,7 @@
         x-transition:leave="transition ease-in duration-75"
         x-transition:leave-start="opacity-100 scale-100"
         x-transition:leave-end="opacity-0 scale-95"
-        class="absolute left-0 z-50 mt-1 p-3 w-64 rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-xl space-y-3"
+        class="absolute left-0 z-50 mt-1 p-3 w-64 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-xl space-y-3"
         style="display: none;"
     >
         {{-- Header Month Nav --}}
