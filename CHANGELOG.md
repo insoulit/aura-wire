@@ -2,6 +2,17 @@
 
 All notable changes to `insoulit/aura-wire` will be documented in this file.
 
+## [1.3.0] - 2026-08-09
+
+### Added
+- Advanced UI components: Accordion, Skeleton, Stat, Timeline, Stepper, Combobox, Date Picker, Rating, Command Palette, Popover, and Tooltip.
+- Comprehensive feature tests covering typography, actions, forms, display, navigation, and overlay components.
+- Inspiration & AI generation attribution notes in documentation.
+
+### Changed
+- Refactored component test assertions and feature specifications for component robustness.
+- Streamlined `README.md` documentation for concise setup and quick start usage.
+
 ## [1.2.0] - 2026-08-07
 
 ### Added
