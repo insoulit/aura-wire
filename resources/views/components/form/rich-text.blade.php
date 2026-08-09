@@ -11,7 +11,7 @@
 
 @php
     $wireModel = $attributes->wire('model');
-    $hasWireModel = $wireModel->value() !== null;
+    $hasWireModel = $wireModel->value() !== null && isset($__livewire);
 
     $borderClasses = $invalid
         ? 'border-red-600 dark:border-red-500 focus-within:border-red-600 focus-within:ring-1 focus-within:ring-red-600'

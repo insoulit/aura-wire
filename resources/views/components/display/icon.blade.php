@@ -27,8 +27,18 @@
     $iconName = 'lucide-'.$mappedName;
     $extraClasses = $attributes->get('class', '');
     $attributesToPass = $attributes->except('class')->toArray();
+
+    try {
+        $svgHtml = function_exists('svg') ? svg($iconName, "shrink-0 {$sizeClasses} {$extraClasses}", $attributesToPass)->toHtml() : null;
+    } catch (\Throwable $e) {
+        $svgHtml = null;
+    }
 @endphp
 
-@if (function_exists('svg'))
-    {!! svg($iconName, "shrink-0 {$sizeClasses} {$extraClasses}", $attributesToPass)->toHtml() !!}
+@if ($svgHtml)
+    {!! $svgHtml !!}
+@else
+    <svg class="shrink-0 {{ $sizeClasses }} {{ $extraClasses }}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <circle cx="12" cy="12" r="9" stroke-width="2" />
+    </svg>
 @endif

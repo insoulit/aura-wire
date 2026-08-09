@@ -68,3 +68,27 @@ it('renders switch toggle component', function () {
     expect($html)->toContain('type="checkbox"')
         ->toContain('Enable Notifications');
 });
+
+it('renders textarea component with rows and placeholder', function () {
+    $html = Blade::render('<x-aura::textarea name="bio" rows="5" placeholder="Tell us about yourself..." />');
+
+    expect($html)->toContain('<textarea')
+        ->toContain('id="bio"')
+        ->toContain('rows="5"')
+        ->toContain('placeholder="Tell us about yourself..."');
+});
+
+it('renders error validation message component', function () {
+    $html = Blade::render('<x-aura::error message="The email field is required." />');
+
+    expect($html)->toContain('The email field is required.')
+        ->toContain('text-red-600');
+});
+
+it('renders rich-text editor component container', function () {
+    $html = Blade::render('<x-aura::rich-text name="content" placeholder="Write something awesome..." />');
+
+    expect($html)->toContain('name="content"')
+        ->toContain('Write something awesome...');
+});
+

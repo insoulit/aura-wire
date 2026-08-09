@@ -20,10 +20,20 @@ class TestCase extends Orchestra
 
     protected function getPackageProviders($app)
     {
-        return [
+        $providers = [
             LivewireServiceProvider::class,
             AuraWireServiceProvider::class,
         ];
+
+        if (class_exists(\BladeUI\Icons\BladeIconsServiceProvider::class)) {
+            $providers[] = \BladeUI\Icons\BladeIconsServiceProvider::class;
+        }
+
+        if (class_exists(\BladeUI\Lucide\BladeLucideIconsServiceProvider::class)) {
+            $providers[] = \BladeUI\Lucide\BladeLucideIconsServiceProvider::class;
+        }
+
+        return $providers;
     }
 
     public function getEnvironmentSetUp($app)

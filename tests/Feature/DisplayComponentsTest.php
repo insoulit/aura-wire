@@ -61,3 +61,35 @@ it('renders code preview component', function () {
         ->toContain('Copy')
         ->toContain('Click');
 });
+
+it('renders list component with items', function () {
+    $items = [
+        ['title' => 'Feature One', 'subtitle' => 'Description 1'],
+        ['title' => 'Feature Two', 'subtitle' => 'Description 2'],
+    ];
+
+    $html = Blade::render('<x-aura::list :items="$items" />', ['items' => $items]);
+
+    expect($html)->toContain('Feature One')
+        ->toContain('Feature Two');
+});
+
+it('renders icon component with size attribute', function () {
+    $html = Blade::render('<x-aura::icon name="check" size="lg" />');
+
+    expect($html)->toBeString();
+});
+
+it('renders tabs component with active item', function () {
+    $html = Blade::render('
+        <x-aura::tabs active="account">
+            <x-aura::tabs.item name="account">Account</x-aura::tabs.item>
+            <x-aura::tabs.item name="security">Security</x-aura::tabs.item>
+        </x-aura::tabs>
+    ');
+
+    expect($html)->toContain('Account')
+        ->toContain('Security')
+        ->toContain("activeTab: 'account'");
+});
+
