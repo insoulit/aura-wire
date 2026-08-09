@@ -91,3 +91,55 @@ it('renders rich-text editor component container', function () {
     expect($html)->toContain('name="content"')
         ->toContain('Write something awesome...');
 });
+
+it('renders combobox searchable select component with monochrome checkmark', function () {
+    $options = [
+        ['value' => 'us', 'label' => 'United States'],
+        ['value' => 'ca', 'label' => 'Canada'],
+    ];
+
+    $html = Blade::render('<x-aura::combobox :options="$options" value="us" name="country" placeholder="Choose Country" />', ['options' => $options]);
+
+    expect($html)->toContain('Choose Country')
+        ->toContain('United States')
+        ->toContain('Canada')
+        ->toContain('name="country"')
+        ->toContain('text-zinc-900 dark:text-white');
+});
+
+it('renders date picker calendar input component with token date formatting', function () {
+    $html = Blade::render('<x-aura::date-picker name="dob" value="2026-05-04" format="MMMM D, YYYY" placeholder="Select Date of Birth" />');
+
+    expect($html)->toContain('Select Date of Birth')
+        ->toContain('name="dob"')
+        ->toContain('daysInMonth')
+        ->toContain('MMMM D, YYYY')
+        ->toContain('formatDate')
+        ->toContain('rounded-full');
+});
+
+it('renders rating star control component with half star clipping', function () {
+    $html = Blade::render('<x-aura::rating rating="4.5" max="5" name="user_rating" />');
+
+    expect($html)->toContain('name="user_rating"')
+        ->toContain('width: 50%')
+        ->toContain('text-zinc-900 dark:text-white')
+        ->toContain('Rate 1 out of 5')
+        ->toContain('Rate 5 out of 5');
+});
+
+it('renders file-upload component with label and hint', function () {
+    $html = Blade::render('<x-aura::file-upload label="Upload Document" hint="PDF or DOCX up to 10MB" />');
+
+    expect($html)->toContain('Upload Document')
+        ->toContain('PDF or DOCX up to 10MB')
+        ->toContain('type="file"');
+});
+
+it('renders pin-code component with length', function () {
+    $html = Blade::render('<x-aura::pin-code length="6" size="lg" />');
+
+    expect($html)->toContain('pin_0')
+        ->toContain('pin_5')
+        ->toContain('inputmode="numeric"');
+});
