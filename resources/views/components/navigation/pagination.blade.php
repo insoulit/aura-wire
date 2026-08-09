@@ -6,7 +6,7 @@
     'variant' => 'numbers', // 'numbers', 'pills', 'simple', 'compact', 'card'
     'shape' => 'circle', // 'circle', 'square'
     'size' => 'md', // 'sm', 'md', 'lg'
-    'iconsOnly' => false,
+    'iconsOnly' => true,
     'align' => 'center', // 'start', 'center', 'end', 'left', 'right'
     'paginator' => null,
 ])
@@ -56,7 +56,7 @@
         <div class="flex items-center justify-between gap-4 p-2">
             @if ($iconsOnly)
                 <x-aura::icon-button variant="secondary" size="{{ $size === 'lg' ? 'md' : 'sm' }}" :shape="$shape" :disabled="$isFirst" label="Previous">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                    <x-aura::icon name="chevron-left" class="w-4 h-4 text-zinc-900 dark:text-white" />
                 </x-aura::icon-button>
             @else
                 <x-aura::button variant="secondary" size="{{ $size === 'lg' ? 'md' : 'sm' }}" :disabled="$isFirst">
@@ -70,7 +70,7 @@
 
             @if ($iconsOnly)
                 <x-aura::icon-button variant="secondary" size="{{ $size === 'lg' ? 'md' : 'sm' }}" :shape="$shape" :disabled="$isLast" label="Next">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    <x-aura::icon name="chevron-right" class="w-4 h-4 text-zinc-900 dark:text-white" />
                 </x-aura::icon-button>
             @else
                 <x-aura::button variant="secondary" size="{{ $size === 'lg' ? 'md' : 'sm' }}" :disabled="$isLast">
@@ -83,7 +83,7 @@
         {{-- Compact Icon-Only Pagination --}}
         <div class="flex items-center {{ $alignClasses }} gap-2">
             <x-aura::icon-button variant="secondary" size="{{ $size }}" :shape="$shape" :disabled="$isFirst" label="Previous Page">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                <x-aura::icon name="chevron-left" class="w-4 h-4 text-zinc-900 dark:text-white" />
             </x-aura::icon-button>
 
             <span class="px-3 text-xs sm:text-sm font-semibold text-zinc-700 dark:text-zinc-300">
@@ -91,7 +91,7 @@
             </span>
 
             <x-aura::icon-button variant="secondary" size="{{ $size }}" :shape="$shape" :disabled="$isLast" label="Next Page">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                <x-aura::icon name="chevron-right" class="w-4 h-4 text-zinc-900 dark:text-white" />
             </x-aura::icon-button>
         </div>
 
@@ -100,7 +100,7 @@
         <div class="flex items-center {{ $alignClasses }} w-full">
             <div class="flex items-center justify-center gap-1.5 p-1.5 rounded-full bg-zinc-100/90 dark:bg-zinc-800/90 border border-zinc-200 dark:border-zinc-700/80 inline-flex shadow-2xs">
                 <x-aura::icon-button variant="ghost" size="sm" shape="circle" :disabled="$isFirst" label="Previous">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                    <x-aura::icon name="chevron-left" class="w-4 h-4 text-zinc-900 dark:text-white" />
                 </x-aura::icon-button>
 
                 @for ($i = 1; $i <= min($lastPage, 5); $i++)
@@ -116,7 +116,7 @@
                 @endfor
 
                 <x-aura::icon-button variant="ghost" size="sm" shape="circle" :disabled="$isLast" label="Next">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    <x-aura::icon name="chevron-right" class="w-4 h-4 text-zinc-900 dark:text-white" />
                 </x-aura::icon-button>
             </div>
         </div>
@@ -134,7 +134,7 @@
 
             <div class="flex items-center gap-1.5">
                 <x-aura::icon-button variant="subtle" size="sm" :shape="$shape" :disabled="$isFirst" label="Previous">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                    <x-aura::icon name="chevron-left" class="w-4 h-4 text-zinc-900 dark:text-white" />
                 </x-aura::icon-button>
 
                 @for ($i = $startPage; $i <= $endPage; $i++)
@@ -146,7 +146,7 @@
                 @endfor
 
                 <x-aura::icon-button variant="subtle" size="sm" :shape="$shape" :disabled="$isLast" label="Next">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    <x-aura::icon name="chevron-right" class="w-4 h-4 text-zinc-900 dark:text-white" />
                 </x-aura::icon-button>
             </div>
         </div>
@@ -165,8 +165,8 @@
             <div class="flex items-center gap-1.5">
                 {{-- Previous Button (Icon-Only or Text) --}}
                 @if ($iconsOnly)
-                    <x-aura::icon-button variant="secondary" size="sm" :shape="$shape" :disabled="$isFirst" label="Previous Page">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                    <x-aura::icon-button variant="subtle" size="sm" :shape="$shape" :disabled="$isFirst" label="Previous Page">
+                        <x-aura::icon name="chevron-left" class="w-4 h-4 text-zinc-900 dark:text-white" />
                     </x-aura::icon-button>
                 @else
                     <x-aura::button variant="secondary" size="sm" :disabled="$isFirst">
@@ -201,8 +201,8 @@
 
                 {{-- Next Button (Icon-Only or Text) --}}
                 @if ($iconsOnly)
-                    <x-aura::icon-button variant="secondary" size="sm" :shape="$shape" :disabled="$isLast" label="Next Page">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    <x-aura::icon-button variant="subtle" size="sm" :shape="$shape" :disabled="$isLast" label="Next Page">
+                        <x-aura::icon name="chevron-right" class="w-4 h-4 text-zinc-900 dark:text-white" />
                     </x-aura::icon-button>
                 @else
                     <x-aura::button variant="secondary" size="sm" :disabled="$isLast">
