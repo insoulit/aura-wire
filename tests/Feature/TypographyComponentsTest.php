@@ -26,9 +26,14 @@ it('renders kicker metadata component', function () {
         ->toContain('uppercase');
 });
 
-it('renders subheading lead component', function () {
-    $html = Blade::render('<x-aura::subheading>Lead paragraph</x-aura::subheading>');
+it('renders subheading lead component with size variants', function () {
+    $html = Blade::render('
+        <x-aura::subheading size="sm">Small Lead</x-aura::subheading>
+        <x-aura::subheading size="lg">Large Lead</x-aura::subheading>
+    ');
 
-    expect($html)->toContain('Lead paragraph')
-        ->toContain('text-zinc-600');
+    expect($html)->toContain('Small Lead')
+        ->toContain('text-xs sm:text-sm')
+        ->toContain('Large Lead')
+        ->toContain('text-base sm:text-lg');
 });
