@@ -2,6 +2,8 @@
 
 namespace Insoulit\AuraWire\Tests;
 
+use BladeUI\Icons\BladeIconsServiceProvider;
+use BladeUI\Lucide\BladeLucideIconsServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Insoulit\AuraWire\AuraWireServiceProvider;
 use Livewire\LivewireServiceProvider;
@@ -25,12 +27,12 @@ class TestCase extends Orchestra
             AuraWireServiceProvider::class,
         ];
 
-        if (class_exists(\BladeUI\Icons\BladeIconsServiceProvider::class)) {
-            $providers[] = \BladeUI\Icons\BladeIconsServiceProvider::class;
+        if (class_exists(BladeIconsServiceProvider::class)) {
+            $providers[] = BladeIconsServiceProvider::class;
         }
 
-        if (class_exists(\BladeUI\Lucide\BladeLucideIconsServiceProvider::class)) {
-            $providers[] = \BladeUI\Lucide\BladeLucideIconsServiceProvider::class;
+        if (class_exists(BladeLucideIconsServiceProvider::class)) {
+            $providers[] = BladeLucideIconsServiceProvider::class;
         }
 
         return $providers;

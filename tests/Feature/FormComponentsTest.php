@@ -91,4 +91,3 @@ it('renders rich-text editor component container', function () {
     expect($html)->toContain('name="content"')
         ->toContain('Write something awesome...');
 });
-

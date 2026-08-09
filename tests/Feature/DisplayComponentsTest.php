@@ -92,4 +92,3 @@ it('renders tabs component with active item', function () {
         ->toContain('Security')
         ->toContain("activeTab: 'account'");
 });
-
