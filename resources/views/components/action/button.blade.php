@@ -29,7 +29,7 @@
     };
 
     $isPill = $pill || in_array($shape, ['pill', 'circle']);
-    $radiusClass = $isPill ? 'rounded-full' : ($size === 'xs' || $size === 'sm' ? 'rounded-md' : 'rounded-lg');
+    $radiusClass = $isPill ? 'rounded-full' : ($size === 'xs' ? 'rounded' : 'rounded-md');
 
     // Size classes (square/pill use rounded-full or rounded-md/rounded-lg)
     $sizeClasses = match ($size) {

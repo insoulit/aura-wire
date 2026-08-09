@@ -17,9 +17,9 @@
 
     $sizeClasses = match ($size) {
         'sm' => 'py-1.5 px-3 text-xs rounded-md',
-        'md' => 'py-2 px-3.5 text-sm rounded-md',
-        'lg' => 'py-2.5 px-4 text-base rounded-lg',
-        default => 'py-2 px-3.5 text-sm rounded-md',
+        'md' => 'py-2 px-3.5 text-sm rounded-lg',
+        'lg' => 'py-2.5 px-4 text-base rounded-xl',
+        default => 'py-2 px-3.5 text-sm rounded-lg',
     };
 
     $iconSize = match ($size) {

@@ -10,7 +10,7 @@
     <button
         type="button"
         x-on:click="open = !open"
-        {{ $attributes->merge(['class' => 'flex items-center justify-between w-full px-3 py-2 text-sm rounded-lg transition-all duration-150 cursor-pointer select-none group ' . ($active ? 'text-zinc-900 dark:text-white font-semibold' : 'text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800/80 hover:text-zinc-900 dark:hover:text-white font-medium')]) }}
+        {{ $attributes->merge(['class' => 'flex items-center justify-between w-full px-3 py-2 text-sm rounded-md transition-all duration-150 cursor-pointer select-none group ' . ($active ? 'text-zinc-900 dark:text-white font-semibold' : 'text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800/80 hover:text-zinc-900 dark:hover:text-white font-medium')]) }}
     >
         <div class="flex items-center gap-3 min-w-0">
             @if (isset($icon) && $icon)

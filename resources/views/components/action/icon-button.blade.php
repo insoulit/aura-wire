@@ -34,12 +34,12 @@
     
     // Size classes (sleek tighter border-radius for square/rectangular buttons)
     $sizeClasses = match ($size) {
-        'xs' => $isSquare ? 'w-7 h-7 p-0 rounded-md' : 'w-7 h-7 p-0 rounded-full',
+        'xs' => $isSquare ? 'w-7 h-7 p-0 rounded' : 'w-7 h-7 p-0 rounded-full',
         'sm' => $isSquare ? 'w-8 h-8 p-0 rounded-md' : 'w-8 h-8 p-0 rounded-full',
-        'md' => $isSquare ? 'w-9 h-9 p-0 rounded-lg' : 'w-9 h-9 p-0 rounded-full',
-        'lg' => $isSquare ? 'w-10 h-10 p-0 rounded-lg' : 'w-10 h-10 p-0 rounded-full',
-        'xl' => $isSquare ? 'w-12 h-12 p-0 rounded-xl' : 'w-12 h-12 p-0 rounded-full',
-        default => $isSquare ? 'w-9 h-9 p-0 rounded-lg' : 'w-9 h-9 p-0 rounded-full',
+        'md' => $isSquare ? 'w-9 h-9 p-0 rounded-md' : 'w-9 h-9 p-0 rounded-full',
+        'lg' => $isSquare ? 'w-10 h-10 p-0 rounded-md' : 'w-10 h-10 p-0 rounded-full',
+        'xl' => $isSquare ? 'w-12 h-12 p-0 rounded-lg' : 'w-12 h-12 p-0 rounded-full',
+        default => $isSquare ? 'w-9 h-9 p-0 rounded-md' : 'w-9 h-9 p-0 rounded-full',
     };
 
     // Proportional icon size matching button scale

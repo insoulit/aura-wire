@@ -12,10 +12,10 @@
     $sizeClasses = match ($size) {
         'xl' => 'text-xl sm:text-2xl leading-relaxed',
         'lg' => 'text-lg sm:text-xl leading-relaxed',
-        'md' => 'text-base sm:text-lg leading-relaxed',
-        'sm' => 'text-sm sm:text-base leading-normal',
-        'xs' => 'text-xs sm:text-sm leading-normal',
-        default => 'text-base sm:text-lg leading-relaxed',
+        'md' => 'text-base leading-relaxed',
+        'sm' => 'text-sm leading-normal',
+        'xs' => 'text-xs leading-normal',
+        default => 'text-base leading-relaxed',
     };
 
     $variantClasses = match ($variant) {

@@ -32,7 +32,7 @@ php artisan vendor:publish --tag="aura-wire-config"
 <x-aura::button variant="primary">Save Changes</x-aura::button>
 ```
 
-You can also use shorthand syntax:
+Shorthand tag syntax:
 
 ```html
 <aura:button variant="primary">Save Changes</aura:button>

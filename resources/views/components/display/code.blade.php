@@ -8,11 +8,12 @@
 
 @php
     $rawCode = $code ?? (isset($codeSlot) ? (string) $codeSlot : null);
+    $initialTab = (!isset($preview) && !$showTabs) ? 'code' : $active;
 @endphp
 
 <div
     x-data="{
-        tab: '{{ $active }}',
+        tab: '{{ $initialTab }}',
         copied: false,
         codeText: @js($rawCode),
         copy() {

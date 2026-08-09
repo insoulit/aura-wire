@@ -22,7 +22,7 @@ it('renders kicker metadata component', function () {
     $html = Blade::render('<x-aura::kicker>Overview</x-aura::kicker>');
 
     expect($html)->toContain('Overview')
-        ->toContain('font-mono')
+        ->toContain('font-sans')
         ->toContain('uppercase');
 });
 

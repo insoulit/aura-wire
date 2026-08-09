@@ -29,7 +29,7 @@
         <textarea
             @if($id) id="{{ $id }}" @endif
             rows="{{ $rows }}"
-            {{ $attributes->merge(['class' => "w-full bg-zinc-50 dark:bg-zinc-900/90 text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 border rounded-md p-3 text-sm transition-all duration-150 shadow-2xs outline-none disabled:opacity-50 disabled:cursor-not-allowed {$borderClasses}"]) }}
+            {{ $attributes->merge(['class' => "w-full bg-zinc-50 dark:bg-zinc-900/90 text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 border rounded-lg p-3 text-sm transition-all duration-150 shadow-2xs outline-none disabled:opacity-50 disabled:cursor-not-allowed {$borderClasses}"]) }}
         >{{ $slot }}</textarea>
 
         @if ($hint)
@@ -42,6 +42,6 @@
     <textarea
         @if($id) id="{{ $id }}" @endif
         rows="{{ $rows }}"
-        {{ $attributes->merge(['class' => "w-full bg-zinc-50 dark:bg-zinc-900/90 text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 border rounded-md p-3 text-sm transition-all duration-150 shadow-2xs outline-none disabled:opacity-50 disabled:cursor-not-allowed {$borderClasses}"]) }}
+        {{ $attributes->merge(['class' => "w-full bg-zinc-50 dark:bg-zinc-900/90 text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 border rounded-lg p-3 text-sm transition-all duration-150 shadow-2xs outline-none disabled:opacity-50 disabled:cursor-not-allowed {$borderClasses}"]) }}
     >{{ $slot }}</textarea>
 @endif

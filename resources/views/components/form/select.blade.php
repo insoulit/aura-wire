@@ -19,9 +19,9 @@
 
     $sizeClasses = match ($size) {
         'sm' => 'py-1.5 pl-3 pr-8 text-xs rounded-md',
-        'md' => 'py-2 pl-3.5 pr-9 text-sm rounded-md',
-        'lg' => 'py-2.5 pl-4 pr-10 text-base rounded-lg',
-        default => 'py-2 pl-3.5 pr-9 text-sm rounded-md',
+        'md' => 'py-2 pl-3.5 pr-9 text-sm rounded-lg',
+        'lg' => 'py-2.5 pl-4 pr-10 text-base rounded-xl',
+        default => 'py-2 pl-3.5 pr-9 text-sm rounded-lg',
     };
 
     $borderClasses = $isInvalid
