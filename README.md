@@ -100,6 +100,9 @@ AuraWire provides over 30 UI components organized into 7 functional categories:
 | **Input** | `<aura:input type="email" label="Email">` | Standard & floating text input fields. |
 | **Textarea** | `<aura:textarea rows="4">` | Multi-line text input areas. |
 | **Select** | `<aura:select :options="$options">` | Custom styled select dropdowns. |
+| **Combobox** | `<aura:combobox :options="$options">` | Searchable filter select dropdown with live search. |
+| **DatePicker** | `<aura:date-picker name="dob">` | Interactive calendar date selection control. |
+| **Rating** | `<aura:rating rating="4">` | Interactive & display star rating control. |
 | **Checkbox** | `<aura:checkbox label="Remember me">` | Single and grouped checkboxes. |
 | **Radio** | `<aura:radio name="plan">` | Radio selection controls. |
 | **Switch** | `<aura:switch label="Notifications">` | Toggle switch controls. |
@@ -111,6 +114,7 @@ AuraWire provides over 30 UI components organized into 7 functional categories:
 ### 4. 📊 Data Display
 | Component | Syntax | Description |
 | :--- | :--- | :--- |
+| **Accordion** | `<aura:accordion>` | Expandable vertical accordion group with single/multiple modes. |
 | **Avatar** | `<aura:avatar src="..." name="User">` | User avatar images and initials fallback. |
 | **Badge** | `<aura:badge variant="positive">` | Status indicators and tag badges (`neutral`, `positive`, `negative`, `warning`). |
 | **Card** | `<aura:card>` | Container card with header, body, and footer slots. |
@@ -120,14 +124,18 @@ AuraWire provides over 30 UI components organized into 7 functional categories:
 | **Product Card** | `<aura:product-card>` | Specialized layout for e-commerce or item showcases. |
 | **Progress Bar** | `<aura:progress-bar value="75">` | Visual progress indicator bars. |
 | **Separator** | `<aura:separator>` | Horizontal and vertical divider lines. |
+| **Skeleton** | `<aura:skeleton variant="avatar">` | Pulsing animated loading placeholders for text, avatars, buttons, and cards. |
+| **Stat Card** | `<aura:stat label="Revenue" value="$48k">` | KPI metric display card with trend badges and icons. |
 | **Table** | `<aura:table>` | Structured data table grid. |
 | **Tabs** | `<aura:tabs>` | Tabbed content switching layout. |
+| **Timeline** | `<aura:timeline>` | Chronological event & activity history tracker. |
 
 ### 5. 🧭 Navigation
 | Component | Syntax | Description |
 | :--- | :--- | :--- |
 | **Breadcrumbs** | `<aura:breadcrumbs>` | Hierarchical path navigation links. |
 | **Pagination** | `<aura:pagination :paginator="$items">` | Page controls for data sets. |
+| **Stepper** | `<aura:stepper active="2">` | Step-by-step workflow progress tracker. |
 
 ### 6. 🏗️ Layout & Structural
 | Component | Syntax | Description |
@@ -142,11 +150,14 @@ AuraWire provides over 30 UI components organized into 7 functional categories:
 | Component | Syntax | Description |
 | :--- | :--- | :--- |
 | **Banner** | `<aura:banner variant="warning">` | Alert and notification banner strips. |
+| **Command Palette** | `<aura:command key="k">` | `Cmd+K` / `Ctrl+K` keyboard-driven modal search palette. |
 | **Modal** | `<aura:modal id="confirm">` | Pop-up dialog modals with focus trapping. |
+| **Popover** | `<aura:popover>` | Floating content popover panel. |
 | **Sheet Drawer** | `<aura:sheet side="right">` | Slide-over drawer panels. |
 | **Spinner** | `<aura:spinner size="sm">` | Loading indicator spinners. |
 | **Tag** | `<aura:tag>` | Categorization chips and removable tags. |
 | **Toast** | `<aura:toast>` | Temporary feedback notification popups. |
+| **Tooltip** | `<aura:tooltip text="...">` | Hover & focus tooltip with placement options. |
 
 ---
 

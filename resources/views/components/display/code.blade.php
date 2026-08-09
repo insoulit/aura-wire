@@ -27,7 +27,7 @@
             }
         }
     }"
-    {{ $attributes->merge(['class' => 'rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 shadow-2xs transition-all overflow-hidden']) }}
+    {{ $attributes->merge(['class' => 'rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 shadow-2xs transition-all relative']) }}
 >
     {{-- Header Bar with Title & Preview / Code Tabs & Copy Button --}}
     <div class="px-3.5 sm:px-4 py-3 bg-zinc-50 dark:bg-zinc-900/60 border-b border-zinc-200 dark:border-zinc-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-4 select-none">
@@ -86,7 +86,7 @@
     </div>
 
     {{-- Live Component Preview Area --}}
-    <div x-show="tab === 'preview'" class="p-3.5 sm:p-6 bg-white dark:bg-zinc-950 flex flex-wrap items-center justify-center gap-4 min-h-[120px]">
+    <div x-show="tab === 'preview'" class="p-6 sm:p-8 bg-white dark:bg-zinc-950 flex flex-wrap items-center justify-center gap-4 min-h-[140px] relative">
         @if (isset($preview))
             {{ $preview }}
         @else
