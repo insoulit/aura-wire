@@ -42,7 +42,7 @@
         :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'"
         {{ $attributes->merge(['class' => 'fixed lg:sticky top-0 bottom-0 lg:h-screen left-0 z-40 lg:z-30 w-64 shrink-0 bg-white dark:bg-zinc-950 border-r border-zinc-200 dark:border-zinc-800 p-4 flex flex-col justify-between transition-transform duration-200 ease-in-out overflow-y-auto scrollbar-thin']) }}
     >
-        <div class="space-y-6">
+        <div class="space-y-6 flex-1 flex flex-col">
             {{-- Header / Brand --}}
             <div class="flex items-center justify-between px-2 py-1">
                 @if (isset($header))
@@ -65,7 +65,7 @@
             </div>
 
             {{-- Nav items --}}
-            <nav class="space-y-1">
+            <nav class="space-y-1 flex-1 flex flex-col">
                 {{ $slot }}
             </nav>
         </div>
