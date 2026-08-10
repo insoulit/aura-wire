@@ -80,10 +80,10 @@ it('renders badge component with variants', function () {
 
 it('renders tabs component with active item', function () {
     $html = Blade::render('
-        <x-aura::tabs active="tab-1">
-            <x-aura::tabs.item name="tab-1">Overview</x-aura::tabs.item>
-            <x-aura::tabs.item name="tab-2">Settings</x-aura::tabs.item>
-        </x-aura::tabs>
+        <x-aura::tab active="tab-1">
+            <x-aura::tab.item name="tab-1">Overview</x-aura::tab.item>
+            <x-aura::tab.item name="tab-2">Settings</x-aura::tab.item>
+        </x-aura::tab>
     ');
 
     expect($html)->toContain('Overview')
