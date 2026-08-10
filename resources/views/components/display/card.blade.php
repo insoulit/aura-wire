@@ -10,7 +10,7 @@
     $footerClass = $hasCustomPadding ? 'p-4 border-t border-zinc-200 dark:border-zinc-800' : 'mt-4 pt-4 border-t border-zinc-100 dark:border-zinc-800/80';
 @endphp
 
-<div {{ $attributes->merge(['class' => "bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl {$paddingClass} shadow-sm flex flex-col justify-between transition-all duration-200"]) }}>
+<div {{ $attributes->merge(['class' => "bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl {$paddingClass} shadow-sm flex flex-col justify-between transition-all duration-200"]) }}>
     @if ($title || isset($header))
         <div class="{{ $headerClass }} flex items-center justify-between">
             @if (isset($header))

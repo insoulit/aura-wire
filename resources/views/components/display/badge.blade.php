@@ -2,6 +2,9 @@
     'variant' => 'neutral',
     'size' => 'md',
     'icon' => null,
+    'shape' => 'pill', // 'pill' | 'rounded'
+    'pill' => false,
+    'rounded' => false,
 ])
 
 @php
@@ -15,14 +18,19 @@
     };
 
     $sizeClasses = match ($size) {
-        'sm' => 'px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider rounded-full',
-        'md' => 'px-3 py-1.5 text-xs font-bold uppercase tracking-wider rounded-full',
-        'lg' => 'px-3.5 py-2 text-xs sm:text-sm font-semibold tracking-wide rounded-full',
-        default => 'px-3 py-1.5 text-xs font-bold uppercase tracking-wider rounded-full',
+        'sm' => 'px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
+        'md' => 'px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider',
+        'lg' => 'px-3 py-1 text-xs font-bold uppercase tracking-wider',
+        default => 'px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider',
+    };
+
+    $shapeClass = match (true) {
+        $rounded || $shape === 'rounded' => 'rounded-md',
+        default => 'rounded-full',
     };
 @endphp
 
-<span {{ $attributes->merge(['class' => "inline-flex items-center justify-center gap-1.5 font-mono select-none leading-none align-middle {$variantClasses} {$sizeClasses}"]) }}>
+<span {{ $attributes->merge(['class' => "inline-flex items-center justify-center gap-1.5 font-mono select-none leading-none align-middle {$shapeClass} {$variantClasses} {$sizeClasses}"]) }}>
     @if (isset($icon) && $icon)
         <span class="shrink-0 flex items-center justify-center leading-none">{{ $icon }}</span>
     @endif
