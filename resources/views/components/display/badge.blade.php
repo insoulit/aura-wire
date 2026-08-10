@@ -30,7 +30,7 @@
     };
 @endphp
 
-<span {{ $attributes->merge(['class' => "inline-flex items-center justify-center gap-1.5 font-mono select-none leading-none align-middle {$shapeClass} {$variantClasses} {$sizeClasses}"]) }}>
+<span {{ $attributes->merge(['class' => "inline-flex items-center justify-center w-fit gap-1.5 font-mono select-none leading-none align-middle {$shapeClass} {$variantClasses} {$sizeClasses}"]) }}>
     @if (isset($icon) && $icon)
         <span class="shrink-0 flex items-center justify-center leading-none">{{ $icon }}</span>
     @endif

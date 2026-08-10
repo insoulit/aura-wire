@@ -29,6 +29,6 @@
     };
 @endphp
 
-<span {{ $attributes->merge(['class' => "inline-flex items-center transition-all duration-150 {$shapeClass} {$sizeClasses} {$variantClasses}"]) }}>
+<span {{ $attributes->merge(['class' => "inline-flex items-center w-fit transition-all duration-150 {$shapeClass} {$sizeClasses} {$variantClasses}"]) }}>
     {{ $slot }}
 </span>
