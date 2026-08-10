@@ -86,7 +86,7 @@ it('renders breadcrumbs component with items', function () {
         ['label' => 'Settings'],
     ];
 
-    $html = Blade::render('<x-aura::breadcrumbs :items="$items" />', ['items' => $items]);
+    $html = Blade::render('<x-aura::breadcrumb :items="$items" />', ['items' => $items]);
 
     expect($html)->toContain('Dashboard')
         ->toContain('Settings')
