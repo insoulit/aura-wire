@@ -22,8 +22,8 @@
         : 'px-3.5 sm:px-4 py-3 bg-zinc-50 dark:bg-zinc-900/60 border-b border-zinc-200 dark:border-zinc-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-4 select-none text-left';
 
     $titleClasses = $isDark
-        ? 'text-xs font-bold uppercase tracking-wider text-zinc-300 font-sans shrink-0 text-left'
-        : 'text-xs font-bold uppercase tracking-wider text-zinc-900 dark:text-white font-sans shrink-0 text-left';
+        ? 'text-xs font-bold tracking-wider text-zinc-300 font-sans shrink-0 text-left'
+        : 'text-xs font-bold tracking-wider text-zinc-900 dark:text-white font-sans shrink-0 text-left';
 
     $langBadgeClasses = $isDark
         ? 'text-[10px] uppercase tracking-wider px-2 py-0.5 rounded bg-zinc-800 text-zinc-400 font-mono'
