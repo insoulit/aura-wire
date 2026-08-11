@@ -2,6 +2,27 @@
 
 All notable changes to `insoulit/aura-wire` will be documented in this file.
 
+## [1.5.0] - 2026-08-11
+
+### Added
+- Dedicated layout component suite: Header (`x-aura::header`), Sidebar (`x-aura::sidebar`), Main container (`x-aura::main`), Footer (`x-aura::footer`), and Navbar (`x-aura::navbar`).
+- Mobile navigation drawer action slots in `x-aura::header`.
+
+### Changed
+- Refactored typography component text colors, spacing, and tracking settings for enhanced dark mode contrast.
+- Enforced left-alignment for code display blocks and removed uppercase transformation from code title classes.
+
+## [1.4.0] - 2026-08-11
+
+### Added
+- Configurable size variants for `x-aura::subheading`.
+- Border radius options and configurable shapes for display components.
+- `w-fit` layout utility for badge and tag components to prevent line overflow.
+
+### Changed
+- Standardized component border radii across the UI library.
+- Renamed `breadcrumbs` component to `breadcrumb` and `tabs` items for semantic naming consistency.
+
 ## [1.3.0] - 2026-08-09
 
 ### Added

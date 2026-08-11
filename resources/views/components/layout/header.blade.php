@@ -104,15 +104,12 @@
                 @endif
             </nav>
 
-            {{-- Actions inside Mobile Drawer: Packagist Button First, Theme Switcher Centered --}}
-            <div class="pt-3 border-t border-zinc-100 dark:border-zinc-800/60 flex flex-col items-center gap-3 px-1">
-                <x-aura::button variant="outline" size="md" icon="package" href="https://packagist.org/packages/insoulit/aura-wire" target="_blank" rel="noopener noreferrer" class="w-full justify-center rounded-lg">
-                    Packagist
-                </x-aura::button>
-                <div class="flex items-center justify-center w-full pt-1">
-                    <x-theme-switcher />
+            {{-- Actions inside Mobile Drawer --}}
+            @if (isset($mobileActions) || isset($actions))
+                <div class="pt-3 border-t border-zinc-100 dark:border-zinc-800/60 flex flex-col items-center gap-3 px-1">
+                    {{ $mobileActions ?? $actions }}
                 </div>
-            </div>
+            @endif
         </div>
     @endif
 </header>

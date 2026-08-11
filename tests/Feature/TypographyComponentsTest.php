@@ -15,7 +15,7 @@ it('renders text component with variants and sizes', function () {
 
     expect($html)->toContain('<p')
         ->toContain('Section description')
-        ->toContain('text-zinc-600');
+        ->toContain('text-zinc-700');
 });
 
 it('renders kicker metadata component', function () {
