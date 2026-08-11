@@ -28,12 +28,12 @@
             }
         }
     }"
-    {{ $attributes->merge(['class' => 'rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 shadow-2xs transition-all relative overflow-hidden']) }}
+    {{ $attributes->merge(['class' => 'rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 shadow-2xs transition-all relative overflow-hidden text-left']) }}
 >
     {{-- Header Bar with Title & Preview / Code Tabs & Copy Button --}}
-    <div class="px-3.5 sm:px-4 py-3 bg-zinc-50 dark:bg-zinc-900/60 border-b border-zinc-200 dark:border-zinc-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-4 select-none">
+    <div class="px-3.5 sm:px-4 py-3 bg-zinc-50 dark:bg-zinc-900/60 border-b border-zinc-200 dark:border-zinc-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-4 select-none text-left">
         @if ($title)
-            <h4 class="text-xs font-bold uppercase tracking-wider text-zinc-900 dark:text-white font-sans shrink-0">{{ $title }}</h4>
+            <h4 class="text-xs font-bold uppercase tracking-wider text-zinc-900 dark:text-white font-sans shrink-0 text-left">{{ $title }}</h4>
         @endif
 
         <div class="flex items-center justify-between sm:justify-end gap-2.5 w-full sm:w-auto">
@@ -95,8 +95,8 @@
         @endif
     </div>
 
-    {{-- Formatted Code Display Area (Always Black Theme) --}}
-    <div x-show="tab === 'code'" class="bg-zinc-950 text-zinc-100 border-t border-zinc-900 p-5 overflow-x-auto text-sm sm:text-base leading-relaxed font-mono selection:bg-zinc-800 selection:text-white" style="display: none;">
-        <pre x-ref="codeContent" class="text-sm sm:text-base font-mono text-zinc-100"><code class="font-mono text-zinc-100">@if (isset($codeSlot)){{ $codeSlot }}@elseif($rawCode){{ $rawCode }}@else{{ $slot }}@endif</code></pre>
+    {{-- Formatted Code Display Area (Always Black Theme & Left Aligned) --}}
+    <div x-show="tab === 'code'" class="bg-zinc-950 text-zinc-100 border-t border-zinc-900 p-5 overflow-x-auto text-sm sm:text-base leading-relaxed font-mono selection:bg-zinc-800 selection:text-white text-left" style="display: none;">
+        <pre x-ref="codeContent" class="text-sm sm:text-base font-mono text-zinc-100 text-left"><code class="font-mono text-zinc-100 text-left">@if (isset($codeSlot)){{ $codeSlot }}@elseif($rawCode){{ $rawCode }}@else{{ $slot }}@endif</code></pre>
     </div>
 </div>
