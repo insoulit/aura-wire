@@ -20,7 +20,7 @@
 
     $variantClasses = match ($variant) {
         'default' => 'text-zinc-900 dark:text-zinc-100',
-        'subtle', 'muted' => 'text-zinc-600 dark:text-zinc-400',
+        'subtle', 'muted' => 'text-zinc-700 dark:text-zinc-300',
         'accent' => 'text-zinc-900 dark:text-white font-semibold',
         'positive', 'green' => 'text-emerald-600 dark:text-emerald-400',
         'warning', 'yellow' => 'text-amber-600 dark:text-amber-400',
