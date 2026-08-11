@@ -4,11 +4,34 @@
     'language' => 'blade',
     'active' => 'preview', // 'preview' | 'code'
     'showTabs' => true,
+    'variant' => 'default', // 'default' | 'dark'
 ])
 
 @php
     $rawCode = $code ?? (isset($codeSlot) ? (string) $codeSlot : null);
     $initialTab = (!isset($preview) && !$showTabs) ? 'code' : $active;
+
+    $isDark = $variant === 'dark';
+
+    $containerClasses = $isDark
+        ? 'rounded-2xl border border-zinc-800 bg-zinc-950 text-zinc-100 shadow-2xs transition-all relative overflow-hidden text-left'
+        : 'rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 shadow-2xs transition-all relative overflow-hidden text-left';
+
+    $headerClasses = $isDark
+        ? 'px-3.5 sm:px-4 py-3 bg-zinc-900 border-b border-zinc-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-4 select-none text-left'
+        : 'px-3.5 sm:px-4 py-3 bg-zinc-50 dark:bg-zinc-900/60 border-b border-zinc-200 dark:border-zinc-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-4 select-none text-left';
+
+    $titleClasses = $isDark
+        ? 'text-xs font-bold uppercase tracking-wider text-zinc-300 font-sans shrink-0 text-left'
+        : 'text-xs font-bold uppercase tracking-wider text-zinc-900 dark:text-white font-sans shrink-0 text-left';
+
+    $langBadgeClasses = $isDark
+        ? 'text-[10px] uppercase tracking-wider px-2 py-0.5 rounded bg-zinc-800 text-zinc-400 font-mono'
+        : 'text-[10px] uppercase tracking-wider px-2 py-0.5 rounded bg-zinc-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 font-mono';
+
+    $copyBtnClasses = $isDark
+        ? 'inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium font-sans rounded-md text-zinc-300 hover:bg-zinc-800 transition-colors cursor-pointer'
+        : 'inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium font-sans rounded-md text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200/60 dark:hover:bg-zinc-800 transition-colors cursor-pointer';
 @endphp
 
 <div
@@ -28,12 +51,12 @@
             }
         }
     }"
-    {{ $attributes->merge(['class' => 'rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 shadow-2xs transition-all relative overflow-hidden text-left']) }}
+    {{ $attributes->merge(['class' => $containerClasses]) }}
 >
     {{-- Header Bar with Title & Preview / Code Tabs & Copy Button --}}
-    <div class="px-3.5 sm:px-4 py-3 bg-zinc-50 dark:bg-zinc-900/60 border-b border-zinc-200 dark:border-zinc-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-4 select-none text-left">
+    <div class="{{ $headerClasses }}">
         @if ($title)
-            <h4 class="text-xs font-bold uppercase tracking-wider text-zinc-900 dark:text-white font-sans shrink-0 text-left">{{ $title }}</h4>
+            <h4 class="{{ $titleClasses }}">{{ $title }}</h4>
         @endif
 
         <div class="flex items-center justify-between sm:justify-end gap-2.5 w-full sm:w-auto">
@@ -59,7 +82,7 @@
             @endif
 
             <div class="flex items-center gap-2">
-                <span class="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded bg-zinc-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 font-mono">
+                <span class="{{ $langBadgeClasses }}">
                     {{ $language }}
                 </span>
 
@@ -67,7 +90,7 @@
                 <button
                     type="button"
                     x-on:click="copy()"
-                    class="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium font-sans rounded-md text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200/60 dark:hover:bg-zinc-800 transition-colors cursor-pointer"
+                    class="{{ $copyBtnClasses }}"
                     title="Copy code to clipboard"
                 >
                     <template x-if="!copied">
@@ -76,7 +99,7 @@
                         </svg>
                     </template>
                     <template x-if="copied">
-                        <svg class="w-3.5 h-3.5 text-zinc-900 dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
                         </svg>
                     </template>

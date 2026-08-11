@@ -2,7 +2,7 @@
     'brand' => null,
 ])
 
-<footer {{ $attributes->merge(['class' => 'w-full border-t border-zinc-200 dark:border-zinc-800 bg-white/50 dark:bg-zinc-950/40 py-8 text-xs text-zinc-600 dark:text-zinc-400 transition-colors']) }}>
+<footer {{ $attributes->merge(['class' => 'w-full border-t border-zinc-200 dark:border-zinc-800 bg-white/50 dark:bg-zinc-950/40 py-8 text-sm text-zinc-600 dark:text-zinc-400 transition-colors']) }}>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
         <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
             @if (isset($brand))
