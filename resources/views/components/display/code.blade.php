@@ -17,8 +17,8 @@
     $isDark = $variant === 'dark';
 
     $containerClasses = $isDark
-        ? 'rounded-2xl border border-zinc-800 bg-zinc-950 text-zinc-100 shadow-2xs transition-all relative overflow-hidden text-left'
-        : 'rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 shadow-2xs transition-all relative overflow-hidden text-left';
+        ? 'w-full rounded-2xl border border-zinc-800 bg-zinc-950 text-zinc-100 shadow-2xs transition-all relative overflow-hidden text-left'
+        : 'w-full rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 shadow-2xs transition-all relative overflow-hidden text-left';
 
     $headerClasses = $isDark
         ? 'px-3.5 sm:px-4 py-3 bg-zinc-900 border-b border-zinc-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-4 select-none text-left'
