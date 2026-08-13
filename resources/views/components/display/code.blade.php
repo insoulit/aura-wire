@@ -8,7 +8,10 @@
 ])
 
 @php
-    $rawCode = $code ?? (isset($codeSlot) ? (string) $codeSlot : null);
+    $inputCode = $code ?? (isset($codeSlot) ? (string) $codeSlot : (string) $slot);
+    $rawCode = html_entity_decode($inputCode, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+    $displayCode = htmlspecialchars($rawCode, ENT_NOQUOTES, 'UTF-8');
+
     $initialTab = (!isset($preview) && !$showTabs) ? 'code' : $active;
 
     $isDark = $variant === 'dark';
@@ -49,9 +52,6 @@
                 textToCopy = this.$refs.codeContent.innerText.trim();
             }
             if (textToCopy) {
-                const txt = document.createElement('textarea');
-                txt.innerHTML = textToCopy;
-                textToCopy = txt.value;
                 navigator.clipboard.writeText(textToCopy);
                 this.copied = true;
                 setTimeout(() => this.copied = false, 2000);
@@ -127,6 +127,6 @@
 
     {{-- Formatted Code Display Area (Always Black Theme & Left Aligned) --}}
     <div x-show="tab === 'code'" class="bg-zinc-950 text-zinc-100 border-t border-zinc-900 p-5 overflow-x-auto text-sm sm:text-base leading-relaxed font-mono selection:bg-zinc-800 selection:text-white text-left" style="display: none;">
-        <pre x-ref="codeContent" class="text-sm sm:text-base font-mono text-zinc-100 text-left"><code class="font-mono text-zinc-100 text-left">@if (isset($codeSlot)){{ e($codeSlot) }}@elseif($rawCode){{ e($rawCode) }}@else{{ e($slot) }}@endif</code></pre>
+        <pre x-ref="codeContent" class="text-sm sm:text-base font-mono text-zinc-100 text-left"><code class="font-mono text-zinc-100 text-left">{!! $displayCode !!}</code></pre>
     </div>
 </div>
