@@ -5,11 +5,11 @@
 ])
 
 @php
-    $baseClasses = 'animate-pulse bg-zinc-200 dark:bg-zinc-800 rounded-lg';
+    $baseClasses = 'animate-pulse bg-zinc-200 dark:bg-zinc-800';
 
     $variantClasses = match ($variant) {
-        'avatar' => 'w-10 h-10 rounded-full',
-        'button' => 'w-24 h-10 rounded-xl',
+        'avatar', 'circle' => 'w-10 h-10 rounded-full shrink-0',
+        'button' => 'w-24 h-10 rounded-xl shrink-0',
         'card' => 'w-full h-48 rounded-2xl',
         default => 'w-full h-4 rounded-md',
     };

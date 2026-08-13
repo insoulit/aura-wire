@@ -32,6 +32,10 @@
     $copyBtnClasses = $isDark
         ? 'inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium font-sans rounded-md text-zinc-300 hover:bg-zinc-800 transition-colors cursor-pointer'
         : 'inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium font-sans rounded-md text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200/60 dark:hover:bg-zinc-800 transition-colors cursor-pointer';
+
+    $checkIconClasses = $isDark
+        ? 'w-3.5 h-3.5 text-white'
+        : 'w-3.5 h-3.5 text-zinc-900 dark:text-white';
 @endphp
 
 <div
@@ -102,7 +106,7 @@
                         </svg>
                     </template>
                     <template x-if="copied">
-                        <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="{{ $checkIconClasses }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
                         </svg>
                     </template>
@@ -123,6 +127,6 @@
 
     {{-- Formatted Code Display Area (Always Black Theme & Left Aligned) --}}
     <div x-show="tab === 'code'" class="bg-zinc-950 text-zinc-100 border-t border-zinc-900 p-5 overflow-x-auto text-sm sm:text-base leading-relaxed font-mono selection:bg-zinc-800 selection:text-white text-left" style="display: none;">
-        <pre x-ref="codeContent" class="text-sm sm:text-base font-mono text-zinc-100 text-left"><code class="font-mono text-zinc-100 text-left">@if (isset($codeSlot)){{ $codeSlot }}@elseif($rawCode){{ $rawCode }}@else{{ $slot }}@endif</code></pre>
+        <pre x-ref="codeContent" class="text-sm sm:text-base font-mono text-zinc-100 text-left"><code class="font-mono text-zinc-100 text-left">@if (isset($codeSlot)){{ e($codeSlot) }}@elseif($rawCode){{ e($rawCode) }}@else{{ e($slot) }}@endif</code></pre>
     </div>
 </div>
