@@ -45,6 +45,9 @@
                 textToCopy = this.$refs.codeContent.innerText.trim();
             }
             if (textToCopy) {
+                const txt = document.createElement('textarea');
+                txt.innerHTML = textToCopy;
+                textToCopy = txt.value;
                 navigator.clipboard.writeText(textToCopy);
                 this.copied = true;
                 setTimeout(() => this.copied = false, 2000);
