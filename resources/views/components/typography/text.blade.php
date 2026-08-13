@@ -40,6 +40,6 @@
     $truncateClass = $truncate ? 'truncate' : '';
 @endphp
 
-<{{ $tag }} {{ $attributes->merge(['class' => "transition-colors {$sizeClasses} {$variantClasses} {$weightClasses} {$truncateClass}"]) }}>
+<{{ $tag }} {{ $attributes->merge(['class' => "transition-colors group-hover:text-inherit {$sizeClasses} {$variantClasses} {$weightClasses} {$truncateClass}"]) }}>
     {{ $slot }}
 </{{ $tag }}>

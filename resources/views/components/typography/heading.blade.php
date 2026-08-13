@@ -45,6 +45,6 @@
     };
 @endphp
 
-<{{ $tag }} {{ $attributes->merge(['class' => "text-zinc-900 dark:text-white transition-colors {$sizeClasses} {$weightClasses}"]) }}>
+<{{ $tag }} {{ $attributes->merge(['class' => "text-zinc-900 dark:text-white group-hover:text-inherit transition-colors {$sizeClasses} {$weightClasses}"]) }}>
     {{ $slot }}
 </{{ $tag }}>

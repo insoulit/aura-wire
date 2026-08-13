@@ -14,6 +14,14 @@ it('renders card component with header and content', function () {
         ->toContain('Card body paragraph content.');
 });
 
+it('renders card component as anchor tag when href is provided', function () {
+    $html = Blade::render('<x-aura::card href="/components/footer">Card content</x-aura::card>');
+
+    expect($html)->toContain('<a')
+        ->toContain('href="/components/footer"')
+        ->toContain('Card content');
+});
+
 it('renders avatar component with initials fallback', function () {
     $html = Blade::render('<x-aura::avatar initials="JD" status="online" size="md" />');
 
