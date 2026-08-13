@@ -100,7 +100,7 @@
     @endif
 
     @if ($name)
-        <input ref="hiddenInput" type="hidden" name="{{ $name }}" :value="selectedDate" />
+        <input x-ref="hiddenInput" type="hidden" name="{{ $name }}" :value="selectedDate" />
     @endif
 
     <button

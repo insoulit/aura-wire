@@ -34,7 +34,7 @@
             <p class="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed">{{ $description }}</p>
         @endif
 
-        @if (trim($slot) !== '')
+        @if ($slot->isNotEmpty())
             <div class="pt-1 text-xs text-zinc-600 dark:text-zinc-300">
                 {{ $slot }}
             </div>

@@ -51,7 +51,7 @@
     @endif
 
     @if ($name)
-        <input ref="hiddenInput" type="hidden" name="{{ $name }}" :value="selected" />
+        <input x-ref="hiddenInput" type="hidden" name="{{ $name }}" :value="selected" />
     @endif
 
     <button

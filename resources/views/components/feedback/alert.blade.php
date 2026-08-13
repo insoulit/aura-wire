@@ -55,8 +55,8 @@
 
         @if ($icon)
             <div class="shrink-0 pt-0.5 sm:pt-0">
-                @if (is_string($icon) && view()->exists("aura::components.icon.{$icon}"))
-                    <x-dynamic-component :component="'aura::icon.'.$icon" size="sm" />
+                @if (is_string($icon) && !empty($icon))
+                    <x-aura::icon :name="$icon" size="sm" />
                 @else
                     {{ $icon }}
                 @endif

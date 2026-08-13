@@ -45,7 +45,7 @@
     {{ $attributes->merge(['class' => 'inline-flex items-center gap-1']) }}
 >
     @if ($name)
-        <input ref="hiddenInput" type="hidden" name="{{ $name }}" :value="rating" />
+        <input x-ref="hiddenInput" type="hidden" name="{{ $name }}" :value="rating" />
     @endif
 
     @for ($i = 1; $i <= (int) $max; $i++)

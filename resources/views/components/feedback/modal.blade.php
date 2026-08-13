@@ -82,8 +82,8 @@
 
                             @if ($icon || $isDanger || $isSuccess)
                                 <div class="w-12 h-12 rounded-xl {{ $iconBgClass }} flex items-center justify-center shrink-0 shadow-2xs">
-                                    @if ($icon && is_string($icon) && view()->exists("aura::components.icon.{$icon}"))
-                                        <x-dynamic-component :component="'aura::icon.'.$icon" size="md" />
+                                    @if ($icon && is_string($icon) && !empty($icon))
+                                        <x-aura::icon :name="$icon" size="md" />
                                     @elseif ($icon)
                                         {{ $icon }}
                                     @elseif ($isDanger)
@@ -111,8 +111,8 @@
                                     <div class="flex items-center gap-3">
                                         @if ($icon || $isDanger || $isSuccess)
                                             <div class="w-10 h-10 rounded-xl {{ $iconBgClass }} flex items-center justify-center shrink-0 shadow-2xs">
-                                                @if ($icon && is_string($icon) && view()->exists("aura::components.icon.{$icon}"))
-                                                    <x-dynamic-component :component="'aura::icon.'.$icon" size="sm" />
+                                                @if ($icon && is_string($icon) && !empty($icon))
+                                                    <x-aura::icon :name="$icon" size="sm" />
                                                 @elseif ($icon)
                                                     {{ $icon }}
                                                 @elseif ($isDanger)
