@@ -6,7 +6,7 @@
 ])
 
 @php
-    $itemsArray = is_array($items) ? $items : iterator_to_array($items);
+    $itemsArray = is_array($items) ? $items : ($items instanceof \Traversable ? iterator_to_array($items) : []);
 
     $containerClasses = match ($variant) {
         'rectangle', 'bar', 'card' => 'px-4 py-2.5 rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-2xs',

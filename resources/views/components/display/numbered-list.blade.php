@@ -11,7 +11,7 @@
 ])
 
 @php
-    $itemsArray = is_array($items) ? $items : iterator_to_array($items);
+    $itemsArray = is_array($items) ? $items : ($items instanceof \Traversable ? iterator_to_array($items) : []);
 @endphp
 
 @if ($variant === 'media')

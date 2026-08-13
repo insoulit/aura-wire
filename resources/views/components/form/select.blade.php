@@ -15,7 +15,7 @@
     $id = $name ?? $attributes->get('id') ?? ($wireModel->value() ? str_replace('.', '_', $wireModel->value()) : null);
     $isInvalid = $invalid || ($name && isset($errors) && $errors->has($name));
 
-    $optionsArray = is_array($options) ? $options : iterator_to_array($options);
+    $optionsArray = is_array($options) ? $options : ($options instanceof \Traversable ? iterator_to_array($options) : []);
 
     $sizeClasses = match ($size) {
         'sm' => 'py-1.5 pl-3 pr-8 text-xs rounded-md',

@@ -95,7 +95,7 @@
     @endif
 
     {{-- Button Slot Content --}}
-    @if ($slot->isNotEmpty())
+    @if (!$slot->isEmpty())
         <span class="inline-flex items-center gap-1.5">{{ $slot }}</span>
     @endif
 

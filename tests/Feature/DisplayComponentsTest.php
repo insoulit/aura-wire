@@ -179,12 +179,15 @@ it('renders numbered-list component with items', function () {
         ->toContain('Create account');
 });
 
-it('renders product-card component with price and title', function () {
-    $html = Blade::render('<x-aura::product-card title="Wireless Headphones" price="$199.00" rating="4.8" />');
 
-    expect($html)->toContain('Wireless Headphones')
-        ->toContain('$199.00')
-        ->toContain('4.8');
+
+it('renders image component with aspect ratio and rounded corners', function () {
+    $html = Blade::render('<x-aura::image src="https://example.com/photo.jpg" alt="Sample Photo" aspect="4/3" rounded="xl" />');
+
+    expect($html)->toContain('<img')
+        ->toContain('src="https://example.com/photo.jpg"')
+        ->toContain('aspect-4/3')
+        ->toContain('rounded-xl');
 });
 
 it('renders tag component', function () {

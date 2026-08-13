@@ -29,7 +29,7 @@
         <p class="mt-1 text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 max-w-sm leading-relaxed">{{ $description }}</p>
     @endif
 
-    @if (isset($slot) && $slot->isNotEmpty())
+    @if (isset($slot) && !$slot->isEmpty())
         <div class="mt-6 flex flex-wrap items-center justify-center gap-2.5">
             {{ $slot }}
         </div>

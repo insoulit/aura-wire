@@ -28,7 +28,7 @@
         </div>
     </div>
 
-    @if ($label || $slot->isNotEmpty())
+    @if ($label || !$slot->isEmpty())
         <div class="flex flex-col">
             <span class="text-sm font-medium text-zinc-900 dark:text-zinc-100 group-hover:text-zinc-700 dark:group-hover:text-zinc-300">
                 {{ $label ?? $slot }}
