@@ -179,8 +179,6 @@ it('renders numbered-list component with items', function () {
         ->toContain('Create account');
 });
 
-
-
 it('renders image component with aspect ratio and rounded corners', function () {
     $html = Blade::render('<x-aura::image src="https://example.com/photo.jpg" alt="Sample Photo" aspect="4/3" rounded="xl" />');
 
