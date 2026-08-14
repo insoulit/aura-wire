@@ -1,5 +1,6 @@
 @props([
-    'percent' => 0,
+    'percent' => null,
+    'value' => null,
     'size' => 'md', // 'sm' | 'md' | 'lg'
     'variant' => 'default', // 'default' | 'subtle' | 'danger'
 ])
@@ -20,7 +21,8 @@
         default => 'bg-zinc-900 dark:bg-white',
     };
 
-    $clampedPercent = max(0, min(100, (float) $percent));
+    $rawPercent = $percent ?? $value ?? 0;
+    $clampedPercent = max(0, min(100, (float) $rawPercent));
 @endphp
 
 <div {{ $attributes->merge(['class' => "w-full overflow-hidden rounded-full bg-zinc-200 dark:bg-zinc-800 {$sizeClasses}"]) }}>
