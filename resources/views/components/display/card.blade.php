@@ -9,10 +9,10 @@
     $headerClass = $hasCustomPadding ? 'p-4 sm:p-5 border-b border-zinc-200 dark:border-zinc-800' : 'mb-4 pb-4 border-b border-zinc-100 dark:border-zinc-800/80';
     $footerClass = $hasCustomPadding ? 'p-4 border-t border-zinc-200 dark:border-zinc-800' : 'mt-4 pt-4 border-t border-zinc-100 dark:border-zinc-800/80';
     $tag = $attributes->has('href') ? 'a' : 'div';
-    $hoverClass = $attributes->has('href') ? 'hover:bg-zinc-900 hover:text-white hover:border-zinc-900 dark:hover:bg-white dark:hover:text-zinc-900 dark:hover:border-white hover:shadow-lg' : '';
+    $hoverClass = $attributes->has('href') ? 'hover:bg-zinc-900 hover:text-white hover:border-zinc-900 dark:hover:bg-white dark:hover:text-zinc-900 dark:hover:border-white' : '';
 @endphp
 
-<{{ $tag }} {{ $attributes->merge(['class' => "w-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl {$paddingClass} {$hoverClass} shadow-sm flex flex-col justify-between transition-all duration-200 group"]) }}>
+<{{ $tag }} {{ $attributes->merge(['class' => "w-full h-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl {$paddingClass} {$hoverClass} flex flex-col justify-between transition-all duration-200 group"]) }}>
     @if ($title || isset($header))
         <div class="{{ $headerClass }} flex items-center justify-between">
             @if (isset($header))
