@@ -158,7 +158,7 @@ it('renders timeline activity history component with solid and subtle variants',
 it('renders progress-bar component with percentage', function () {
     $html = Blade::render('<x-aura::progress-bar value="75" max="100" showValue />');
 
-    expect($html)->toContain('value="75"');
+    expect($html)->toContain('aria-valuenow="75"');
 });
 
 it('renders empty-state component with title and description', function () {

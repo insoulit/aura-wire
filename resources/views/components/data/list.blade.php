@@ -10,7 +10,7 @@
     'iconKey' => 'icon',
 ])
 
-<x-aura::display.numbered-list
+<x-aura::data.numbered-list
     :items="$items"
     :variant="$variant"
     :numbered="$numbered"
@@ -23,4 +23,4 @@
     {{ $attributes }}
 >
     {{ $slot }}
-</x-aura::display.numbered-list>
+</x-aura::data.numbered-list>
