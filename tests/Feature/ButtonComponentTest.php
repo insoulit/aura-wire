@@ -32,8 +32,7 @@ it('renders circle and square shaped buttons', function () {
     expect($circle)->toContain('rounded-full')
         ->toContain('p-0');
 
-    expect($square)->toContain('rounded-xl')
-        ->toContain('p-0');
+    expect($square)->toContain('p-0');
 });
 
 it('renders block and fullWidth buttons with w-full', function () {

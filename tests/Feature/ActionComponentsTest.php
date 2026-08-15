@@ -23,7 +23,7 @@ it('renders icon button as anchor tag when href is provided', function () {
 });
 
 it('renders link component with icon, underline, and external target', function () {
-    $link = Blade::render('<x-aura::button.link href="https://example.com" icon="external-link" external>Documentation</x-aura::button.link>');
+    $link = Blade::render('<x-aura::action.link href="https://example.com" icon="external-link" external>Documentation</x-aura::action.link>');
 
     expect($link)->toContain('<a')
         ->toContain('href="https://example.com"')

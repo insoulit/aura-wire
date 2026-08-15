@@ -61,6 +61,7 @@
         'class' => "inline-flex items-center transition-colors duration-150 {$variantClasses} {$sizeClasses} {$weightClasses} {$underlineClasses} {$disabledClasses}",
     ]) }}
     @if ($disabled) aria-disabled="true" tabindex="-1" @endif
+    @if ($isExternal && !$attributes->has('target')) target="_blank" @endif
     @if ($isExternal && !$attributes->has('rel')) rel="noopener noreferrer" @endif
 >
     {{-- Leading Icon --}}

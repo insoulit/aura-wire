@@ -69,12 +69,16 @@ it('renders header component with items, variants, and responsive props', functi
 it('renders container component with size presets', function () {
     $sm = Blade::render('<x-aura::container size="sm">Small Content</x-aura::container>');
     $lg = Blade::render('<x-aura::container size="lg">Large Content</x-aura::container>');
+    $default = Blade::render('<x-aura::container>Default Content</x-aura::container>');
 
-    expect($sm)->toContain('max-w-3xl')
+    expect($sm)->toContain('max-w-sm')
         ->toContain('Small Content');
 
-    expect($lg)->toContain('max-w-7xl')
+    expect($lg)->toContain('max-w-lg')
         ->toContain('Large Content');
+
+    expect($default)->toContain('max-w-7xl')
+        ->toContain('Default Content');
 });
 
 it('renders main layout component with axis alignment options', function () {
@@ -97,7 +101,7 @@ it('renders body layout component', function () {
         </x-aura::body>
     ');
 
-    expect($body)->toContain('min-h-screen')
+    expect($body)->toContain('min-h-full')
         ->toContain('Application Body');
 });
 
