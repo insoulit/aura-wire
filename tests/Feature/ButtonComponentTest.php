@@ -25,6 +25,35 @@ it('renders pill shaped button with rounded-full', function () {
         ->toContain('Pill Action');
 });
 
+it('renders circle and square shaped buttons', function () {
+    $circle = Blade::render('<x-aura::button shape="circle" icon="plus" aria-label="Add" />');
+    $square = Blade::render('<x-aura::button shape="square" icon="plus" aria-label="Add" />');
+
+    expect($circle)->toContain('rounded-full')
+        ->toContain('p-0');
+
+    expect($square)->toContain('rounded-xl')
+        ->toContain('p-0');
+});
+
+it('renders block and fullWidth buttons with w-full', function () {
+    $block = Blade::render('<x-aura::button :block="true">Full Block Button</x-aura::button>');
+    $fullWidth = Blade::render('<x-aura::button :fullWidth="true">Full Width Button</x-aura::button>');
+
+    expect($block)->toContain('w-full')
+        ->toContain('flex');
+
+    expect($fullWidth)->toContain('w-full')
+        ->toContain('flex');
+});
+
+it('renders leading and trailing icons', function () {
+    $rendered = Blade::render('<x-aura::button icon="sparkles" iconTrailing="arrow-right">Generate</x-aura::button>');
+
+    expect($rendered)->toContain('<svg')
+        ->toContain('Generate');
+});
+
 it('renders an anchor tag when href attribute is passed', function () {
     $rendered = Blade::render('<x-aura::button href="https://example.com">Go Link</x-aura::button>');
 

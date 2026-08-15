@@ -2,12 +2,16 @@
 
 use Illuminate\Support\Facades\Blade;
 
-it('renders icon button component with size and variant', function () {
+it('renders icon button component with size, shape, and variant', function () {
     $html = Blade::render('<x-aura::icon-button icon="plus" variant="primary" size="lg" aria-label="Add Item" />');
+    $ghost = Blade::render('<x-aura::icon-button icon="bell" variant="ghost" size="sm" aria-label="Notifications" />');
 
     expect($html)->toContain('<button')
         ->toContain('aria-label="Add Item"')
         ->toContain('w-10 h-10');
+
+    expect($ghost)->toContain('bg-transparent')
+        ->toContain('aria-label="Notifications"');
 });
 
 it('renders icon button as anchor tag when href is provided', function () {
@@ -18,9 +22,19 @@ it('renders icon button as anchor tag when href is provided', function () {
         ->toContain('aria-label="Settings"');
 });
 
+it('renders link component with icon, underline, and external target', function () {
+    $link = Blade::render('<x-aura::button.link href="https://example.com" icon="external-link" external>Documentation</x-aura::button.link>');
+
+    expect($link)->toContain('<a')
+        ->toContain('href="https://example.com"')
+        ->toContain('target="_blank"')
+        ->toContain('rel="noopener noreferrer"')
+        ->toContain('Documentation');
+});
+
 it('renders dropdown with header, items, and separator', function () {
     $html = Blade::render('
-        <x-aura::dropdown>
+        <x-aura::dropdown align="right" width="56">
             <x-slot:trigger>
                 <button>Open Menu</button>
             </x-slot:trigger>
@@ -36,5 +50,7 @@ it('renders dropdown with header, items, and separator', function () {
         ->toContain('Account')
         ->toContain('Profile Settings')
         ->toContain('Logout')
+        ->toContain('right-0')
+        ->toContain('w-56')
         ->toContain('text-red-600');
 });

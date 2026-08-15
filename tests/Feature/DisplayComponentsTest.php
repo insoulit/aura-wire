@@ -54,29 +54,41 @@ it('renders list component with items', function () {
         ->toContain('Item 2');
 });
 
-it('renders code preview component', function () {
+it('renders code preview component with copy button and highlighted syntax support', function () {
     $html = Blade::render('<x-aura::code title="PHP Snippet">echo "Hello";</x-aura::code>');
+    $highlighted = Blade::render('<x-aura::code title="Terminal" :highlighted="true"><span class="text-amber-200">&lt;x-aura::button /&gt;</span></x-aura::code>');
 
     expect($html)->toContain('PHP Snippet')
         ->toContain('echo "Hello";');
+
+    expect($highlighted)->toContain('text-amber-200')
+        ->toContain('&lt;x-aura::button /&gt;');
 });
 
-it('renders table component with headers and rows', function () {
+it('renders table component with headers, columns, cells, and alignment props', function () {
     $html = Blade::render('
         <x-aura::table>
             <x-slot:header>
-                <th>Name</th>
-                <th>Email</th>
+                <x-aura::table.column align="left">Name</x-aura::table.column>
+                <x-aura::table.column align="center">Status</x-aura::table.column>
+                <x-aura::table.column align="right">Amount</x-aura::table.column>
             </x-slot:header>
-            <tr>
-                <td>Alex</td>
-                <td>alex@example.com</td>
-            </tr>
+            <x-aura::table.row>
+                <x-aura::table.cell align="left">Alex</x-aura::table.cell>
+                <x-aura::table.cell align="center">Active</x-aura::table.cell>
+                <x-aura::table.cell align="right">$120.00</x-aura::table.cell>
+            </x-aura::table.row>
         </x-aura::table>
     ');
 
-    expect($html)->toContain('<th>Name</th>')
-        ->toContain('alex@example.com');
+    expect($html)->toContain('Name')
+        ->toContain('Status')
+        ->toContain('Amount')
+        ->toContain('text-left')
+        ->toContain('text-center')
+        ->toContain('text-right')
+        ->toContain('Alex')
+        ->toContain('$120.00');
 });
 
 it('renders badge component with variants', function () {
@@ -126,16 +138,20 @@ it('renders stat kpi card component', function () {
         ->toContain('vs last month');
 });
 
-it('renders skeleton loader component with variants', function () {
+it('renders skeleton loader component with size presets and variants', function () {
     $html = Blade::render('
-        <x-aura::skeleton variant="avatar" />
-        <x-aura::skeleton variant="button" />
+        <x-aura::skeleton variant="avatar" size="sm" />
+        <x-aura::skeleton variant="button" size="xs" />
         <x-aura::skeleton variant="card" />
+        <x-aura::skeleton variant="text" size="lg" />
+        <x-aura::skeleton variant="badge" />
     ');
 
     expect($html)->toContain('rounded-full')
-        ->toContain('rounded-xl')
-        ->toContain('rounded-2xl')
+        ->toContain('w-8 h-8')
+        ->toContain('w-16 h-7')
+        ->toContain('w-full h-40 rounded-2xl')
+        ->toContain('w-16 h-5')
         ->toContain('animate-pulse');
 });
 
