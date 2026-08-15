@@ -3,9 +3,13 @@
     'active' => false,
     'icon' => null,
     'variant' => 'outline', // 'outline', 'ghost', 'default'
+    'fullWidth' => false,
+    'block' => false,
 ])
 
 @php
+    $isFullWidth = $fullWidth || $block;
+    $displayClass = $isFullWidth ? 'flex w-full justify-start' : 'inline-flex';
     $buttonClasses = match ($variant) {
         'ghost' => $active
             ? 'bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 font-semibold shadow-2xs border border-transparent'
@@ -18,7 +22,7 @@
 
 <a
     href="{{ $href }}"
-    {{ $attributes->merge(['class' => "inline-flex items-center gap-2.5 px-3.5 h-10 md:h-9 text-sm rounded-lg whitespace-nowrap transition-all duration-150 cursor-pointer select-none group {$buttonClasses}"]) }}
+    {{ $attributes->merge(['class' => "{$displayClass} items-center gap-2.5 px-3.5 h-10 md:h-9 text-sm rounded-lg whitespace-nowrap transition-all duration-150 cursor-pointer select-none group {$buttonClasses}"]) }}
 >
     @if (isset($icon) && $icon)
         <span class="shrink-0 transition-colors {{ $active ? 'text-current' : 'text-zinc-700 dark:text-zinc-200 group-hover:text-zinc-900 dark:group-hover:text-white' }}">
