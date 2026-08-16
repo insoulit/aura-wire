@@ -15,7 +15,7 @@
 <div class="{{ $wrapperClasses }}">
     <table {{ $attributes->merge(['class' => 'w-full text-left border-collapse text-sm']) }}>
         @if (isset($header))
-            <thead class="bg-zinc-50/80 dark:bg-zinc-800/60 border-b border-zinc-200 dark:border-zinc-800 text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 select-none">
+            <thead class="{{ $borderless ? 'bg-zinc-100/70 dark:bg-zinc-800/60' : 'bg-zinc-50/80 dark:bg-zinc-800/60 border-b border-zinc-200 dark:border-zinc-800' }} text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 select-none">
                 {{ $header }}
             </thead>
         @endif

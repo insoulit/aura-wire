@@ -1,13 +1,17 @@
 @props([
     'title' => null,
     'description' => null,
+    'divided' => true,
 ])
 
 @php
     $hasCustomPadding = str_contains($attributes->get('class', ''), 'p-') || str_contains($attributes->get('class', ''), 'px-') || str_contains($attributes->get('class', ''), 'py-');
     $paddingClass = $hasCustomPadding ? '' : 'p-6';
-    $headerClass = $hasCustomPadding ? 'p-4 sm:p-5 border-b border-zinc-200 dark:border-zinc-800' : 'mb-4 pb-4 border-b border-zinc-100 dark:border-zinc-800/80';
-    $footerClass = $hasCustomPadding ? 'p-4 border-t border-zinc-200 dark:border-zinc-800' : 'mt-4 pt-4 border-t border-zinc-100 dark:border-zinc-800/80';
+    $isDivided = filter_var($divided, FILTER_VALIDATE_BOOLEAN);
+    $headerDivider = $isDivided ? 'mb-4 pb-4 border-b border-zinc-100 dark:border-zinc-800/80' : 'mb-3.5';
+    $footerDivider = $isDivided ? 'mt-4 pt-4 border-t border-zinc-100 dark:border-zinc-800/80' : 'mt-4';
+    $headerClass = $hasCustomPadding ? ($isDivided ? 'p-4 sm:p-5 border-b border-zinc-200 dark:border-zinc-800' : 'p-4 sm:p-5') : $headerDivider;
+    $footerClass = $hasCustomPadding ? ($isDivided ? 'p-4 border-t border-zinc-200 dark:border-zinc-800' : 'p-4') : $footerDivider;
     $tag = $attributes->has('href') ? 'a' : 'div';
     $hoverClass = $attributes->has('href') ? 'hover:bg-zinc-900 hover:text-white hover:border-zinc-900 dark:hover:bg-white dark:hover:text-zinc-900 dark:hover:border-white' : '';
 @endphp

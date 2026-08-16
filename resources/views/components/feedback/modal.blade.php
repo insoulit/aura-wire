@@ -22,9 +22,9 @@
         default => 'sm:max-w-md',
     };
 
-    $isCentered = $variant === 'centered';
-    $isDanger = $variant === 'danger' || $variant === 'destructive';
-    $isSuccess = $variant === 'success';
+    $isCentered = $variant === 'centered' || $attributes->has('centered') || $attributes->get('centered') === true || $attributes->get('align') === 'center';
+    $isDanger = $variant === 'danger' || $variant === 'destructive' || $attributes->has('danger');
+    $isSuccess = $variant === 'success' || $attributes->has('success');
 
     $iconBgClass = match (true) {
         $isDanger => 'bg-red-100 dark:bg-red-950/60 text-red-600 dark:text-red-400 border border-red-200 dark:border-red-800/60',
@@ -98,7 +98,7 @@
                                 <h3 class="text-lg font-bold text-zinc-900 dark:text-white tracking-tight">{{ $title }}</h3>
                             @endif
                             @if ($description)
-                                <p class="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 max-w-xs sm:max-w-sm leading-relaxed">{{ $description }}</p>
+                                <p class="text-sm text-zinc-500 dark:text-zinc-400 max-w-xs sm:max-w-sm leading-relaxed">{{ $description }}</p>
                             @endif
                         </div>
                     @else
