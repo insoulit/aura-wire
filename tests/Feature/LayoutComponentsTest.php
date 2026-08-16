@@ -169,4 +169,3 @@ it('renders stack layout component with spacing and direction', function () {
         ->toContain('Item 1')
         ->toContain('Item 2');
 });
-
