@@ -53,13 +53,6 @@
                         <p class="text-xs text-zinc-600 dark:text-zinc-300 leading-relaxed pt-1">{{ $description }}</p>
                     @endif
                 </div>
-
-                {{-- Individual Circular Action Icon Buttons --}}
-                <div class="flex items-center gap-1.5 shrink-0 pt-2 sm:pt-0">
-                    <x-aura::icon-button icon="show" variant="subtle" size="sm" shape="circle" label="View Item" />
-                    <x-aura::icon-button icon="edit" variant="subtle" size="sm" shape="circle" label="Edit Item" />
-                    <x-aura::icon-button icon="delete" variant="subtle" size="sm" shape="circle" label="Delete Item" />
-                </div>
             </div>
         @endforeach
     </div>
