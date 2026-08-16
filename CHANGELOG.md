@@ -2,6 +2,27 @@
 
 All notable changes to `insoulit/aura-wire` will be documented in this file.
 
+## [1.5.1] - 2026-08-16
+
+### Added
+- Dropdown checkbox component (`x-aura::action.dropdown.checkbox`).
+- Display typography component (`x-aura::typography.display`) with configurable sizes, weights, and gradient options.
+- Configurable link component (`x-aura::typography.link`) with icon support and variant styling.
+- Flex, Stack, and Center layout components (`x-aura::layout.flex`, `x-aura::layout.stack`, `x-aura::layout.center`).
+- Sortable column support, nowrap, and truncate props for table column, cell, and text components.
+- Dynamic sizing support for radio and checkbox components.
+- Variant, shape, and container support for icon component.
+- Highlighted mode and custom slot support for code component.
+- Support for linkable cards and skeleton badge/size variants.
+
+### Changed
+- Reorganized component directory structure across data and feedback namespaces.
+- Enhanced pagination component with configurable wire actions and responsive styling.
+- Standardized action components and modernized stat and progress bar components.
+
+### Fixed
+- HTML entity decoding and clipboard copy handling in code component.
+
 ## [1.5.0] - 2026-08-11
 
 ### Added
