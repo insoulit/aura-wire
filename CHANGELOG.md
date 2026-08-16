@@ -2,6 +2,14 @@
 
 All notable changes to `insoulit/aura-wire` will be documented in this file.
 
+## [1.5.2] - 2026-08-16
+
+### Added
+- Thin scrollbar utility styling (`scrollbar-thin`) to table component wrapper.
+
+### Fixed
+- Improved mobile responsiveness, alignment, and spacing for card, footer, and pagination components.
+
 ## [1.5.1] - 2026-08-16
 
 ### Added
