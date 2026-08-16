@@ -12,7 +12,7 @@
     $hoverClass = $attributes->has('href') ? 'hover:bg-zinc-900 hover:text-white hover:border-zinc-900 dark:hover:bg-white dark:hover:text-zinc-900 dark:hover:border-white' : '';
 @endphp
 
-<{{ $tag }} {{ $attributes->merge(['class' => "w-full h-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl {$paddingClass} {$hoverClass} flex flex-col justify-between transition-all duration-200 group"]) }}>
+<{{ $tag }} {{ $attributes->merge(['class' => "w-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl {$paddingClass} {$hoverClass} flex flex-col transition-all duration-200 group"]) }}>
     @if ($title || isset($header))
         <div class="{{ $headerClass }} flex items-center justify-between">
             @if (isset($header))
@@ -21,14 +21,14 @@
                 <div>
                     <h3 class="text-lg font-bold text-zinc-900 dark:text-white tracking-tight">{{ $title }}</h3>
                     @if ($description)
-                        <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1 leading-relaxed">{{ $description }}</p>
+                        <p class="text-sm text-zinc-500 dark:text-zinc-400 mt-1 leading-relaxed">{{ $description }}</p>
                     @endif
                 </div>
             @endif
         </div>
     @endif
 
-    <div class="flex-1 flex flex-col justify-between">
+    <div class="flex-1">
         {{ $slot }}
     </div>
 

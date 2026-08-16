@@ -118,3 +118,55 @@ it('renders sidebar collapsible dropdown component', function () {
         ->toContain('Settings')
         ->toContain('x-data="{ open:');
 });
+
+it('renders flex layout component with align, justify, gap, and direction props', function () {
+    $flex = Blade::render('
+        <x-aura::flex align="center" justify="between" gap="4">
+            <div>Left</div>
+            <div>Right</div>
+        </x-aura::flex>
+    ');
+
+    $col = Blade::render('<x-aura::flex direction="col" align="start" justify="end" gap="2">Column Content</x-aura::flex>');
+
+    expect($flex)->toContain('flex flex-row')
+        ->toContain('items-center')
+        ->toContain('justify-between')
+        ->toContain('gap-4')
+        ->toContain('Left')
+        ->toContain('Right');
+
+    expect($col)->toContain('flex-col')
+        ->toContain('items-start')
+        ->toContain('justify-end')
+        ->toContain('gap-2');
+});
+
+it('renders center layout component horizontally and vertically', function () {
+    $center = Blade::render('
+        <x-aura::center gap="3">
+            <p>Centered Item</p>
+        </x-aura::center>
+    ');
+
+    expect($center)->toContain('flex')
+        ->toContain('items-center')
+        ->toContain('justify-center')
+        ->toContain('gap-3')
+        ->toContain('Centered Item');
+});
+
+it('renders stack layout component with spacing and direction', function () {
+    $stack = Blade::render('
+        <x-aura::stack gap="6">
+            <p>Item 1</p>
+            <p>Item 2</p>
+        </x-aura::stack>
+    ');
+
+    expect($stack)->toContain('flex flex-col')
+        ->toContain('gap-6')
+        ->toContain('Item 1')
+        ->toContain('Item 2');
+});
+
