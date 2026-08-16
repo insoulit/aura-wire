@@ -21,7 +21,7 @@
     $sortClass = $isSortable ? ' cursor-pointer select-none group/col hover:text-zinc-900 dark:hover:text-white transition-colors' : '';
 @endphp
 
-<th {{ $attributes->merge(['class' => "px-4 py-3 text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 first:rounded-l-xl last:rounded-r-xl {$alignClass}{$sortClass}"]) }}>
+<th {{ $attributes->merge(['class' => "px-4 py-3 align-middle text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 first:rounded-l-xl last:rounded-r-xl {$alignClass}{$sortClass}"]) }}>
     @if ($isSortable)
         <div class="inline-flex items-center gap-1.5 {{ $justifyClass }}">
             <span>{{ $slot }}</span>
