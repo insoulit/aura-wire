@@ -80,7 +80,7 @@
         </div>
 
     @elseif ($variant === 'compact')
-        {{-- Compact Icon-Only Pagination --}}
+        {{-- Compact Icon Only Pagination --}}
         <div class="flex items-center {{ $alignClasses }} gap-2">
             <x-aura::icon-button variant="secondary" size="{{ $size }}" :shape="$shape" :disabled="$isFirst" label="Previous Page">
                 <x-aura::icon name="chevron-left" class="w-4 h-4 text-zinc-900 dark:text-white" />
@@ -152,7 +152,7 @@
         </div>
 
     @else
-        {{-- Numbered Pagination (Text or Icon-Only Previous/Next) --}}
+        {{-- Numbered Pagination (Text or Icon Only Previous/Next) --}}
         <div class="flex flex-col sm:flex-row items-center justify-between gap-4 w-full">
             @if ($total)
                 <div class="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400">
@@ -163,7 +163,7 @@
             @endif
 
             <div class="flex items-center gap-1.5">
-                {{-- Previous Button (Icon-Only or Text) --}}
+                {{-- Previous Button (Icon Only or Text) --}}
                 @if ($iconsOnly)
                     <x-aura::icon-button variant="subtle" size="sm" :shape="$shape" :disabled="$isFirst" label="Previous Page">
                         <x-aura::icon name="chevron-left" class="w-4 h-4 text-zinc-900 dark:text-white" />
@@ -199,7 +199,7 @@
                     <a href="#" class="{{ $inactiveBtnClass }}">{{ $lastPage }}</a>
                 @endif
 
-                {{-- Next Button (Icon-Only or Text) --}}
+                {{-- Next Button (Icon Only or Text) --}}
                 @if ($iconsOnly)
                     <x-aura::icon-button variant="subtle" size="sm" :shape="$shape" :disabled="$isLast" label="Next Page">
                         <x-aura::icon name="chevron-right" class="w-4 h-4 text-zinc-900 dark:text-white" />
