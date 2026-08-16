@@ -9,11 +9,14 @@
     'iconsOnly' => true,
     'align' => 'center', // 'start', 'center', 'end', 'left', 'right'
     'paginator' => null,
+    'wireSetPage' => 'setPage',
+    'wirePreviousPage' => 'previousPage',
+    'wireNextPage' => 'nextPage',
 ])
 
 @php
     $currentPage = (int) ($page ?? 1);
-    $lastPage = (int) ($totalPages ?? 10);
+    $lastPage = max(1, (int) ($totalPages ?? 10));
     $isFirst = $currentPage <= 1;
     $isLast = $currentPage >= $lastPage;
 
@@ -38,14 +41,14 @@
     $btnSizeClasses = match ($size) {
         'sm' => 'w-7 h-7 text-xs',
         'lg' => 'w-10 h-10 text-base',
-        default => 'w-8.5 h-8.5 text-sm',
+        default => 'w-8 h-8 text-xs font-semibold',
     };
 
     $radiusClass = ($shape === 'square') ? 'rounded-xl' : 'rounded-full';
 
     // Active button classes
-    $activeBtnClass = "bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 font-bold shadow-xs {$radiusClass} {$btnSizeClasses} flex items-center justify-center";
-    $inactiveBtnClass = "bg-transparent hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-700 dark:text-zinc-300 font-medium transition-colors {$radiusClass} {$btnSizeClasses} flex items-center justify-center";
+    $activeBtnClass = "bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 shadow-xs {$radiusClass} {$btnSizeClasses} flex items-center justify-center transition-all";
+    $inactiveBtnClass = "bg-transparent hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors {$radiusClass} {$btnSizeClasses} flex items-center justify-center";
 @endphp
 
 <nav role="navigation" aria-label="Pagination Navigation" {{ $attributes->merge(['class' => 'w-full']) }}>
@@ -55,11 +58,11 @@
         {{-- Simple Clean Text Previous / Next with Page Info --}}
         <div class="flex items-center justify-between gap-4 p-2">
             @if ($iconsOnly)
-                <x-aura::icon-button variant="secondary" size="{{ $size === 'lg' ? 'md' : 'sm' }}" :shape="$shape" :disabled="$isFirst" label="Previous">
-                    <x-aura::icon name="chevron-left" class="w-4 h-4 text-zinc-900 dark:text-white" />
-                </x-aura::icon-button>
+                <button type="button" @if($wirePreviousPage) wire:click="{{ $wirePreviousPage }}" @endif @disabled($isFirst) class="p-1.5 rounded-full text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 disabled:opacity-40 disabled:cursor-not-allowed transition-colors" aria-label="Previous Page">
+                    <x-aura::icon name="chevron-left" size="xs" />
+                </button>
             @else
-                <x-aura::button variant="secondary" size="{{ $size === 'lg' ? 'md' : 'sm' }}" :disabled="$isFirst">
+                <x-aura::button variant="secondary" size="{{ $size === 'lg' ? 'md' : 'sm' }}" :disabled="$isFirst" wire:click="{{ $wirePreviousPage }}">
                     Previous
                 </x-aura::button>
             @endif
@@ -69,11 +72,11 @@
             </span>
 
             @if ($iconsOnly)
-                <x-aura::icon-button variant="secondary" size="{{ $size === 'lg' ? 'md' : 'sm' }}" :shape="$shape" :disabled="$isLast" label="Next">
-                    <x-aura::icon name="chevron-right" class="w-4 h-4 text-zinc-900 dark:text-white" />
-                </x-aura::icon-button>
+                <button type="button" @if($wireNextPage) wire:click="{{ $wireNextPage }}({{ $lastPage }})" @endif @disabled($isLast) class="p-1.5 rounded-full text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 disabled:opacity-40 disabled:cursor-not-allowed transition-colors" aria-label="Next Page">
+                    <x-aura::icon name="chevron-right" size="xs" />
+                </button>
             @else
-                <x-aura::button variant="secondary" size="{{ $size === 'lg' ? 'md' : 'sm' }}" :disabled="$isLast">
+                <x-aura::button variant="secondary" size="{{ $size === 'lg' ? 'md' : 'sm' }}" :disabled="$isLast" wire:click="{{ $wireNextPage }}({{ $lastPage }})">
                     Next
                 </x-aura::button>
             @endif
@@ -82,77 +85,41 @@
     @elseif ($variant === 'compact')
         {{-- Compact Icon Only Pagination --}}
         <div class="flex items-center {{ $alignClasses }} gap-2">
-            <x-aura::icon-button variant="secondary" size="{{ $size }}" :shape="$shape" :disabled="$isFirst" label="Previous Page">
-                <x-aura::icon name="chevron-left" class="w-4 h-4 text-zinc-900 dark:text-white" />
-            </x-aura::icon-button>
+            <button type="button" @if($wirePreviousPage) wire:click="{{ $wirePreviousPage }}" @endif @disabled($isFirst) class="p-1.5 rounded-full text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 disabled:opacity-40 disabled:cursor-not-allowed transition-colors" aria-label="Previous Page">
+                <x-aura::icon name="chevron-left" size="xs" />
+            </button>
 
             <span class="px-3 text-xs sm:text-sm font-semibold text-zinc-700 dark:text-zinc-300">
                 {{ $currentPage }} / {{ $lastPage }}
             </span>
 
-            <x-aura::icon-button variant="secondary" size="{{ $size }}" :shape="$shape" :disabled="$isLast" label="Next Page">
-                <x-aura::icon name="chevron-right" class="w-4 h-4 text-zinc-900 dark:text-white" />
-            </x-aura::icon-button>
+            <button type="button" @if($wireNextPage) wire:click="{{ $wireNextPage }}({{ $lastPage }})" @endif @disabled($isLast) class="p-1.5 rounded-full text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 disabled:opacity-40 disabled:cursor-not-allowed transition-colors" aria-label="Next Page">
+                <x-aura::icon name="chevron-right" size="xs" />
+            </button>
         </div>
 
     @elseif ($variant === 'pills')
         {{-- Circular Pill Button Bar with Alignment Support --}}
         <div class="flex items-center {{ $alignClasses }} w-full">
             <div class="flex items-center justify-center gap-1.5 p-1.5 rounded-full bg-zinc-100/90 dark:bg-zinc-800/90 border border-zinc-200 dark:border-zinc-700/80 inline-flex shadow-2xs">
-                <x-aura::icon-button variant="ghost" size="sm" shape="circle" :disabled="$isFirst" label="Previous">
-                    <x-aura::icon name="chevron-left" class="w-4 h-4 text-zinc-900 dark:text-white" />
-                </x-aura::icon-button>
+                <button type="button" @if($wirePreviousPage) wire:click="{{ $wirePreviousPage }}" @endif @disabled($isFirst) class="p-1 rounded-full text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white disabled:opacity-40 disabled:cursor-not-allowed transition-colors" aria-label="Previous">
+                    <x-aura::icon name="chevron-left" size="xs" />
+                </button>
 
                 @for ($i = 1; $i <= min($lastPage, 5); $i++)
-                    @if ($i === $currentPage)
-                        <span class="w-8 h-8 rounded-full bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white font-bold text-xs flex items-center justify-center shadow-xs border border-zinc-200 dark:border-zinc-700">
-                            {{ $i }}
-                        </span>
-                    @else
-                        <a href="#" class="w-8 h-8 rounded-full text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white font-medium text-xs flex items-center justify-center hover:bg-white/60 dark:hover:bg-zinc-700/50 transition-all">
-                            {{ $i }}
-                        </a>
-                    @endif
+                    <button type="button" @if($wireSetPage) wire:click="{{ $wireSetPage }}({{ $i }})" @endif class="w-8 h-8 rounded-full font-bold text-xs flex items-center justify-center transition-all {{ $i === $currentPage ? 'bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white shadow-xs border border-zinc-200 dark:border-zinc-700' : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-white/60 dark:hover:bg-zinc-700/50' }}">
+                        {{ $i }}
+                    </button>
                 @endfor
 
-                <x-aura::icon-button variant="ghost" size="sm" shape="circle" :disabled="$isLast" label="Next">
-                    <x-aura::icon name="chevron-right" class="w-4 h-4 text-zinc-900 dark:text-white" />
-                </x-aura::icon-button>
-            </div>
-        </div>
-
-    @elseif ($variant === 'card' || $variant === 'bar')
-        {{-- Footer Card Bar with Item Count & Numbered Buttons --}}
-        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-2xs w-full">
-            <div class="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400">
-                @if ($total)
-                    Showing <span class="font-bold text-zinc-900 dark:text-white">{{ $from }}</span> to <span class="font-bold text-zinc-900 dark:text-white">{{ $to }}</span> of <span class="font-bold text-zinc-900 dark:text-white">{{ $total }}</span> results
-                @else
-                    Page <span class="font-bold text-zinc-900 dark:text-white">{{ $currentPage }}</span> of <span class="font-bold text-zinc-900 dark:text-white">{{ $lastPage }}</span>
-                @endif
-            </div>
-
-            <div class="flex items-center gap-1.5">
-                <x-aura::icon-button variant="subtle" size="sm" :shape="$shape" :disabled="$isFirst" label="Previous">
-                    <x-aura::icon name="chevron-left" class="w-4 h-4 text-zinc-900 dark:text-white" />
-                </x-aura::icon-button>
-
-                @for ($i = $startPage; $i <= $endPage; $i++)
-                    @if ($i === $currentPage)
-                        <span class="{{ $activeBtnClass }}">{{ $i }}</span>
-                    @else
-                        <a href="#" class="{{ $inactiveBtnClass }}">{{ $i }}</a>
-                    @endif
-                @endfor
-
-                <x-aura::icon-button variant="subtle" size="sm" :shape="$shape" :disabled="$isLast" label="Next">
-                    <x-aura::icon name="chevron-right" class="w-4 h-4 text-zinc-900 dark:text-white" />
-                </x-aura::icon-button>
+                <button type="button" @if($wireNextPage) wire:click="{{ $wireNextPage }}({{ $lastPage }})" @endif @disabled($isLast) class="p-1 rounded-full text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white disabled:opacity-40 disabled:cursor-not-allowed transition-colors" aria-label="Next">
+                    <x-aura::icon name="chevron-right" size="xs" />
+                </button>
             </div>
         </div>
 
     @else
-        {{-- Numbered Pagination (Text or Icon Only Previous/Next) --}}
+        {{-- Numbered Pagination (Default) --}}
         <div class="flex flex-col sm:flex-row items-center justify-between gap-4 w-full">
             @if ($total)
                 <div class="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400">
@@ -163,20 +130,14 @@
             @endif
 
             <div class="flex items-center gap-1.5">
-                {{-- Previous Button (Icon Only or Text) --}}
-                @if ($iconsOnly)
-                    <x-aura::icon-button variant="subtle" size="sm" :shape="$shape" :disabled="$isFirst" label="Previous Page">
-                        <x-aura::icon name="chevron-left" class="w-4 h-4 text-zinc-900 dark:text-white" />
-                    </x-aura::icon-button>
-                @else
-                    <x-aura::button variant="secondary" size="sm" :disabled="$isFirst">
-                        Previous
-                    </x-aura::button>
-                @endif
+                {{-- Previous Button --}}
+                <button type="button" @if($wirePreviousPage) wire:click="{{ $wirePreviousPage }}" @endif @disabled($isFirst) class="p-1.5 rounded-full text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 disabled:opacity-40 disabled:cursor-not-allowed transition-colors" aria-label="Previous Page">
+                    <x-aura::icon name="chevron-left" size="xs" />
+                </button>
 
                 {{-- First Page if window start > 1 --}}
                 @if ($startPage > 1)
-                    <a href="#" class="{{ $inactiveBtnClass }}">1</a>
+                    <button type="button" @if($wireSetPage) wire:click="{{ $wireSetPage }}(1)" @endif class="{{ $inactiveBtnClass }}">1</button>
                     @if ($startPage > 2)
                         <span class="px-1 text-xs text-zinc-400">...</span>
                     @endif
@@ -184,11 +145,9 @@
 
                 {{-- Page Window --}}
                 @for ($i = $startPage; $i <= $endPage; $i++)
-                    @if ($i === $currentPage)
-                        <span class="{{ $activeBtnClass }}">{{ $i }}</span>
-                    @else
-                        <a href="#" class="{{ $inactiveBtnClass }}">{{ $i }}</a>
-                    @endif
+                    <button type="button" @if($wireSetPage) wire:click="{{ $wireSetPage }}({{ $i }})" @endif class="{{ $i === $currentPage ? $activeBtnClass : $inactiveBtnClass }}">
+                        {{ $i }}
+                    </button>
                 @endfor
 
                 {{-- Last Page if window end < lastPage --}}
@@ -196,19 +155,13 @@
                     @if ($endPage < $lastPage - 1)
                         <span class="px-1 text-xs text-zinc-400">...</span>
                     @endif
-                    <a href="#" class="{{ $inactiveBtnClass }}">{{ $lastPage }}</a>
+                    <button type="button" @if($wireSetPage) wire:click="{{ $wireSetPage }}({{ $lastPage }})" @endif class="{{ $inactiveBtnClass }}">{{ $lastPage }}</button>
                 @endif
 
-                {{-- Next Button (Icon Only or Text) --}}
-                @if ($iconsOnly)
-                    <x-aura::icon-button variant="subtle" size="sm" :shape="$shape" :disabled="$isLast" label="Next Page">
-                        <x-aura::icon name="chevron-right" class="w-4 h-4 text-zinc-900 dark:text-white" />
-                    </x-aura::icon-button>
-                @else
-                    <x-aura::button variant="secondary" size="sm" :disabled="$isLast">
-                        Next
-                    </x-aura::button>
-                @endif
+                {{-- Next Button --}}
+                <button type="button" @if($wireNextPage) wire:click="{{ $wireNextPage }}({{ $lastPage }})" @endif @disabled($isLast) class="p-1.5 rounded-full text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 disabled:opacity-40 disabled:cursor-not-allowed transition-colors" aria-label="Next Page">
+                    <x-aura::icon name="chevron-right" size="xs" />
+                </button>
             </div>
         </div>
     @endif
