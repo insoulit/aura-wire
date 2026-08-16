@@ -58,7 +58,7 @@
                 <div class="flex items-center gap-1.5 shrink-0 pt-2 sm:pt-0">
                     <x-aura::icon-button icon="show" variant="subtle" size="sm" shape="circle" label="View Item" />
                     <x-aura::icon-button icon="edit" variant="subtle" size="sm" shape="circle" label="Edit Item" />
-                    <x-aura::icon-button icon="delete" variant="subtle-danger" size="sm" shape="circle" label="Delete Item" />
+                    <x-aura::icon-button icon="delete" variant="subtle" size="sm" shape="circle" label="Delete Item" />
                 </div>
             </div>
         @endforeach
@@ -84,7 +84,7 @@
                         <div></div>
                     @endif
                     @if ($badge)
-                        <x-aura::badge variant="positive" size="sm">{{ $badge }}</x-aura::badge>
+                        <x-aura::badge variant="neutral" size="sm">{{ $badge }}</x-aura::badge>
                     @endif
                 </div>
 
@@ -112,7 +112,7 @@
             @endphp
             <div class="p-4 rounded-xl bg-zinc-50 dark:bg-zinc-900/80 border border-zinc-200 dark:border-zinc-800 flex items-start gap-3">
                 @if ($numbered)
-                    <div class="w-7 h-7 rounded-full bg-indigo-600 text-white text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">
+                    <div class="w-7 h-7 rounded-full bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">
                         {{ $index + 1 }}
                     </div>
                 @endif
@@ -173,7 +173,7 @@
             @endphp
             <div class="flex items-center gap-4 p-4 hover:bg-zinc-50 dark:hover:bg-zinc-800/40 transition-colors">
                 @if ($numbered)
-                    <div class="w-7 h-7 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-white text-xs font-bold flex items-center justify-center shrink-0">
+                    <div class="w-7 h-7 rounded-lg bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 text-xs font-bold flex items-center justify-center shrink-0">
                         {{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}
                     </div>
                 @endif
@@ -187,7 +187,7 @@
                     @endif
                 </div>
                 @if ($badge)
-                    <x-aura::badge variant="positive" size="sm">{{ $badge }}</x-aura::badge>
+                    <x-aura::badge variant="neutral" size="sm">{{ $badge }}</x-aura::badge>
                 @endif
             </div>
         @endforeach
@@ -203,9 +203,9 @@
             @endphp
             <li class="flex items-start gap-3">
                 @if ($numbered)
-                    <span class="text-sm font-bold text-indigo-600 dark:text-indigo-400 font-mono w-5 shrink-0 pt-0.5">{{ $index + 1 }}.</span>
+                    <span class="text-sm font-bold text-zinc-900 dark:text-white font-mono w-5 shrink-0 pt-0.5">{{ $index + 1 }}.</span>
                 @else
-                    <span class="w-1.5 h-1.5 rounded-full bg-indigo-600 dark:bg-indigo-400 shrink-0 mt-2 ml-1"></span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-zinc-900 dark:bg-white shrink-0 mt-2 ml-1"></span>
                 @endif
                 <div>
                     <span class="text-sm font-semibold text-zinc-900 dark:text-white">{{ $title }}</span>
@@ -233,16 +233,16 @@
                     </div>
                 @endif
 
-                <div class="flex items-start gap-4">
+                <div class="flex items-center gap-4">
                     @if ($image)
                         <img src="{{ $image }}" alt="{{ $title }}" class="w-12 h-12 rounded-xl object-cover shrink-0 border border-zinc-200 dark:border-zinc-800" />
                     @endif
                     <div class="space-y-1">
-                        <p class="text-base sm:text-lg font-bold text-zinc-900 dark:text-white leading-tight tracking-tight">
+                        <p class="text-sm sm:text-base font-bold text-zinc-900 dark:text-white leading-snug tracking-tight">
                             {{ $title }}
                         </p>
                         @if ($subtitle)
-                            <p class="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 font-medium">
+                            <p class="text-xs text-zinc-500 dark:text-zinc-400 font-medium">
                                 {{ $subtitle }}
                             </p>
                         @endif
