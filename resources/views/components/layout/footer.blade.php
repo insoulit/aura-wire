@@ -15,18 +15,18 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
         <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
             @if (isset($brand) && $brand)
-                <div class="flex items-center gap-3 font-semibold text-zinc-900 dark:text-white">
+                <div class="flex items-center justify-center sm:justify-start gap-3 font-semibold text-zinc-900 dark:text-white">
                     {{ $brand }}
                 </div>
             @endif
 
-            <div class="flex items-center gap-6 font-medium">
+            <div class="flex flex-wrap items-center justify-center sm:justify-end gap-4 sm:gap-6 font-medium">
                 {{ $slot }}
             </div>
         </div>
 
         @if (isset($bottom))
-            <div class="border-t border-zinc-200/60 dark:border-zinc-800/60 pt-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-zinc-500">
+            <div class="border-t border-zinc-200/60 dark:border-zinc-800/60 pt-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-zinc-500 text-center sm:text-left">
                 {{ $bottom }}
             </div>
         @endif

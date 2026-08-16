@@ -37,7 +37,7 @@
     </div>
 
     @if (isset($footer))
-        <div class="{{ $footerClass }} flex items-center justify-between gap-3">
+        <div class="{{ $footerClass }} flex flex-col sm:flex-row items-center justify-between gap-3 w-full">
             {{ $footer }}
         </div>
     @endif
