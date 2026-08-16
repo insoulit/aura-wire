@@ -54,3 +54,12 @@ it('renders dropdown with header, items, and separator', function () {
         ->toContain('w-56')
         ->toContain('text-red-600');
 });
+
+it('renders dropdown checkbox item for toggle lists', function () {
+    $html = Blade::render('<x-aura::dropdown.checkbox name="show_role" label="Role" :checked="true" />');
+
+    expect($html)->toContain('Role')
+        ->toContain('name="show_role"')
+        ->toContain('checked')
+        ->toContain('type="checkbox"');
+});
