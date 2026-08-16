@@ -4,6 +4,7 @@
     'weight' => 'normal', // 'normal' | 'medium' | 'semibold' | 'bold'
     'as' => 'p',
     'truncate' => false,
+    'nowrap' => false,
 ])
 
 @php
@@ -25,7 +26,7 @@
         'positive', 'green' => 'text-emerald-600 dark:text-emerald-400',
         'warning', 'yellow' => 'text-amber-600 dark:text-amber-400',
         'danger', 'negative', 'red' => 'text-red-600 dark:text-red-400',
-        'mono' => 'font-mono text-zinc-800 dark:text-zinc-200',
+        'mono' => 'font-mono whitespace-nowrap text-zinc-800 dark:text-zinc-200',
         default => 'text-zinc-900 dark:text-zinc-100',
     };
 
@@ -38,8 +39,9 @@
     };
 
     $truncateClass = $truncate ? 'truncate' : '';
+    $nowrapClass = $nowrap ? 'whitespace-nowrap' : '';
 @endphp
 
-<{{ $tag }} {{ $attributes->merge(['class' => "transition-colors group-hover:text-inherit {$sizeClasses} {$variantClasses} {$weightClasses} {$truncateClass}"]) }}>
+<{{ $tag }} {{ $attributes->merge(['class' => "transition-colors group-hover:text-inherit {$sizeClasses} {$variantClasses} {$weightClasses} {$truncateClass} {$nowrapClass}"]) }}>
     {{ $slot }}
 </{{ $tag }}>

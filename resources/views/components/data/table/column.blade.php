@@ -2,6 +2,7 @@
     'align' => 'left', // 'left', 'center', 'right'
     'sortable' => false,
     'sorted' => null, // null, 'asc', 'desc'
+    'nowrap' => false,
 ])
 
 @php
@@ -19,9 +20,10 @@
 
     $isSortable = filter_var($sortable, FILTER_VALIDATE_BOOLEAN) || !empty($sorted);
     $sortClass = $isSortable ? ' cursor-pointer select-none group/col hover:text-zinc-900 dark:hover:text-white transition-colors' : '';
+    $nowrapClass = filter_var($nowrap, FILTER_VALIDATE_BOOLEAN) ? ' whitespace-nowrap' : '';
 @endphp
 
-<th {{ $attributes->merge(['class' => "px-4 py-3 align-middle text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 first:rounded-l-xl last:rounded-r-xl {$alignClass}{$sortClass}"]) }}>
+<th {{ $attributes->merge(['class' => "px-4 py-3 align-middle text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 first:rounded-l-xl last:rounded-r-xl {$alignClass}{$sortClass}{$nowrapClass}"]) }}>
     @if ($isSortable)
         <div class="inline-flex items-center gap-1.5 {{ $justifyClass }}">
             <span>{{ $slot }}</span>
