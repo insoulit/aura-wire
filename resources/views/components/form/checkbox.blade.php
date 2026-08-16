@@ -33,8 +33,8 @@
     };
 @endphp
 
-<label for="{{ $id }}" {{ $attributes->only('class')->merge(['class' => "flex {$alignItems} {$widthClass} gap-2 cursor-pointer group select-none " . ($disabled ? 'opacity-50 cursor-not-allowed' : '')]) }}>
-    <div class="relative flex items-center shrink-0 {{ $description ? 'mt-0.5' : '' }}">
+<label for="{{ $id }}" {{ $attributes->only('class')->merge(['class' => "flex {$alignItems} {$widthClass} gap-2.5 cursor-pointer group select-none " . ($disabled ? 'opacity-50 cursor-not-allowed' : '')]) }}>
+    <div class="relative flex items-center shrink-0 {{ $description ? 'mt-[3px]' : '' }}">
         <input
             type="checkbox"
             id="{{ $id }}"
@@ -53,11 +53,11 @@
 
     @if ($hasContent)
         <div class="flex flex-col flex-1">
-            <span class="text-sm font-medium text-zinc-900 dark:text-zinc-100 group-hover:text-zinc-700 dark:group-hover:text-zinc-300">
+            <span class="text-sm font-medium leading-5 text-zinc-900 dark:text-zinc-100 group-hover:text-zinc-700 dark:group-hover:text-zinc-300">
                 {{ $label ?? $slot }}
             </span>
             @if ($description)
-                <span class="text-xs text-zinc-500 dark:text-zinc-400 leading-normal">{{ $description }}</span>
+                <span class="text-xs text-zinc-500 dark:text-zinc-400 leading-normal mt-0.5">{{ $description }}</span>
             @endif
         </div>
     @endif
