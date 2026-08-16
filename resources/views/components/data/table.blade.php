@@ -8,8 +8,8 @@
 
 @php
     $wrapperClasses = $borderless
-        ? 'w-full overflow-x-auto bg-transparent'
-        : 'w-full overflow-x-auto rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-2xs';
+        ? 'w-full overflow-x-auto scrollbar-thin bg-transparent'
+        : 'w-full overflow-x-auto scrollbar-thin rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-2xs';
 @endphp
 
 <div class="{{ $wrapperClasses }}">
