@@ -13,9 +13,9 @@
 
 <a
     href="{{ $href }}"
-    {{ $attributes->merge(['class' => "flex items-center justify-between px-3 py-2 text-sm rounded-md transition-all duration-150 cursor-pointer select-none group {$activeClasses}"]) }}
+    {{ $attributes->merge(['class' => "flex items-center justify-between px-2.5 py-1.5 text-sm rounded-md transition-all duration-150 cursor-pointer select-none group {$activeClasses}"]) }}
 >
-    <div class="flex items-center gap-3 min-w-0">
+    <div class="flex items-center gap-2.5 min-w-0">
         @if (isset($icon) && $icon)
             <span class="shrink-0 transition-colors {{ $active ? 'text-current' : 'text-zinc-400 group-hover:text-zinc-700 dark:text-zinc-500 dark:group-hover:text-zinc-200' }}">
                 @if (is_string($icon))
