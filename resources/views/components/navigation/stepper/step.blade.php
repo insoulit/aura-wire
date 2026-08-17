@@ -15,7 +15,7 @@
 @endphp
 
 <div {{ $attributes->merge(['class' => 'flex-1 flex items-center gap-3']) }}>
-    <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-xs transition-all {{ $badgeClasses }} {{ $ringClasses }}">
+    <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-xs font-bold font-mono transition-all {{ $badgeClasses }} {{ $ringClasses }}">
         @if ($status === 'completed')
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
@@ -28,7 +28,7 @@
     <div class="hidden sm:block min-w-0">
         <h5 class="text-xs font-bold text-zinc-900 dark:text-white tracking-tight truncate">{{ $title }}</h5>
         @if ($description)
-            <p class="text-[11px] text-zinc-500 dark:text-zinc-400 truncate">{{ $description }}</p>
+            <p class="text-xs text-zinc-500 dark:text-zinc-400 truncate">{{ $description }}</p>
         @endif
     </div>
 </div>

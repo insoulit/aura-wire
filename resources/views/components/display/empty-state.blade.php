@@ -22,11 +22,11 @@
     @endif
 
     @if ($title)
-        <h3 class="text-base sm:text-lg font-bold text-zinc-900 dark:text-white tracking-tight">{{ $title }}</h3>
+        <h3 class="text-base sm:text-lg font-bold text-zinc-900 dark:text-white tracking-tight leading-snug text-balance">{{ $title }}</h3>
     @endif
 
     @if ($description)
-        <p class="mt-1 text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 max-w-sm leading-relaxed">{{ $description }}</p>
+        <p class="mt-1.5 text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 max-w-sm leading-relaxed text-pretty">{{ $description }}</p>
     @endif
 
     @if (isset($slot) && !$slot->isEmpty())

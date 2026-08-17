@@ -39,7 +39,7 @@
         x-collapse
         style="display: none;"
     >
-        <div class="pt-3 text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+        <div class="pt-3 text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed text-pretty">
             {{ $title ? $slot : '' }}
         </div>
     </div>

@@ -23,16 +23,16 @@
                 {{ $header }}
             @else
                 <div>
-                    <h3 class="text-lg font-bold text-zinc-900 dark:text-white tracking-tight">{{ $title }}</h3>
+                    <h3 class="text-base sm:text-lg font-bold text-zinc-900 dark:text-white tracking-tight leading-snug text-balance">{{ $title }}</h3>
                     @if ($description)
-                        <p class="text-sm text-zinc-500 dark:text-zinc-400 mt-1 leading-relaxed">{{ $description }}</p>
+                        <p class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 mt-1 leading-relaxed text-pretty">{{ $description }}</p>
                     @endif
                 </div>
             @endif
         </div>
     @endif
 
-    <div class="flex-1">
+    <div class="flex flex-col">
         {{ $slot }}
     </div>
 

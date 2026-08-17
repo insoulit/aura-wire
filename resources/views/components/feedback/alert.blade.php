@@ -65,10 +65,10 @@
 
         <div class="space-y-0.5 min-w-0">
             @if ($title)
-                <h4 class="text-sm font-bold tracking-tight leading-tight">{{ $title }}</h4>
+                <h4 class="text-sm font-bold tracking-tight leading-tight text-balance">{{ $title }}</h4>
             @endif
             @if ($description)
-                <p class="text-xs sm:text-sm opacity-90 leading-relaxed">{{ $description }}</p>
+                <p class="text-xs sm:text-sm opacity-90 leading-relaxed text-pretty">{{ $description }}</p>
             @endif
             @if (!$title && !$description)
                 <div class="text-sm font-medium leading-normal">

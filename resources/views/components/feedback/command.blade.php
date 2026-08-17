@@ -62,7 +62,9 @@
                         class="w-full bg-transparent px-3 py-4 text-sm text-zinc-900 dark:text-white placeholder-zinc-400 outline-none border-none focus:ring-0"
                         x-init="$watch('open', value => value && setTimeout(() => $el.focus(), 50))"
                     />
-                    <kbd class="hidden sm:inline-block px-2 py-0.5 text-xs font-mono font-semibold text-zinc-400 bg-zinc-100 dark:bg-zinc-800 rounded-md border border-zinc-200 dark:border-zinc-700">ESC</kbd>
+                    <div class="hidden sm:inline-block shrink-0">
+                        <x-aura::kbd size="xs">ESC</x-aura::kbd>
+                    </div>
                 </div>
 
                 {{-- Results Slot --}}

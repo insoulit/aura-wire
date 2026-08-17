@@ -95,10 +95,10 @@
                             @endif
 
                             @if ($title)
-                                <h3 class="text-lg font-bold text-zinc-900 dark:text-white tracking-tight">{{ $title }}</h3>
+                                <h3 class="text-lg font-bold text-zinc-900 dark:text-white tracking-tight leading-snug text-balance">{{ $title }}</h3>
                             @endif
                             @if ($description)
-                                <p class="text-sm text-zinc-500 dark:text-zinc-400 max-w-xs sm:max-w-sm leading-relaxed">{{ $description }}</p>
+                                <p class="text-sm text-zinc-600 dark:text-zinc-400 max-w-xs sm:max-w-sm leading-relaxed text-pretty">{{ $description }}</p>
                             @endif
                         </div>
                     @else
@@ -124,9 +124,9 @@
                                         @endif
 
                                         <div>
-                                            <h3 class="text-base sm:text-lg font-bold text-zinc-900 dark:text-white tracking-tight leading-snug">{{ $title }}</h3>
+                                            <h3 class="text-base sm:text-lg font-bold text-zinc-900 dark:text-white tracking-tight leading-snug text-balance">{{ $title }}</h3>
                                             @if ($description)
-                                                <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">{{ $description }}</p>
+                                                <p class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 mt-0.5 leading-normal text-pretty">{{ $description }}</p>
                                             @endif
                                         </div>
                                     </div>

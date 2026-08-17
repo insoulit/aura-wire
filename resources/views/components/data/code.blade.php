@@ -12,10 +12,11 @@
     $inputCode = $code ?? (isset($codeSlot) ? (string) $codeSlot : (string) $slot);
     $rawCode = $highlighted
         ? ($code ?? strip_tags(html_entity_decode((string)($codeSlot ?? $slot), ENT_QUOTES | ENT_HTML5, 'UTF-8')))
-        : html_entity_decode($inputCode, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+        : html_entity_decode((string) $inputCode, ENT_QUOTES | ENT_HTML5, 'UTF-8');
     $displayCode = htmlspecialchars($rawCode, ENT_NOQUOTES, 'UTF-8');
 
-    $initialTab = (!isset($preview) && !$showTabs) ? 'code' : $active;
+    $hasPreview = isset($preview) || ($showTabs && trim((string)$slot) !== '');
+    $initialTab = (!$hasPreview || !$showTabs) ? 'code' : $active;
 
     $isDark = $variant === 'dark';
 
@@ -70,7 +71,7 @@
         @endif
 
         <div class="flex items-center justify-between sm:justify-end gap-2.5 w-full sm:w-auto">
-            @if ($showTabs)
+            @if ($showTabs && $hasPreview)
                 <div class="flex items-center p-0.5 rounded-lg bg-zinc-200/80 dark:bg-zinc-800 text-xs font-medium font-sans">
                     <button
                         type="button"
@@ -120,16 +121,26 @@
     </div>
 
     {{-- Live Component Preview Area --}}
-    <div x-show="tab === 'preview'" class="p-6 sm:p-8 bg-white dark:bg-zinc-950 flex flex-wrap items-center justify-center gap-4 min-h-[140px] relative">
-        @if (isset($preview))
-            {{ $preview }}
-        @else
-            {{ $slot }}
-        @endif
-    </div>
+    @if ($hasPreview)
+        <div
+            x-show="tab === 'preview'"
+            style="{{ $initialTab === 'preview' ? '' : 'display: none;' }}"
+            class="p-6 sm:p-8 bg-white dark:bg-zinc-950 flex flex-wrap items-center justify-center gap-4 min-h-[120px] relative"
+        >
+            @if (isset($preview))
+                {{ $preview }}
+            @else
+                {{ $slot }}
+            @endif
+        </div>
+    @endif
 
     {{-- Formatted Code Display Area (Always Black Theme & Left Aligned) --}}
-    <div x-show="tab === 'code'" class="bg-zinc-950 text-zinc-100 border-t border-zinc-900 p-5 sm:p-6 overflow-x-auto text-sm sm:text-base leading-relaxed font-mono selection:bg-zinc-800 selection:text-white text-left" style="display: none;">
-        <pre x-ref="codeContent" class="text-sm sm:text-base font-mono text-zinc-100 text-left"><code class="font-mono text-zinc-100 text-left">@if ($highlighted){!! trim($codeSlot ?? $slot) !!}@else{!! $displayCode !!}@endif</code></pre>
+    <div
+        x-show="tab === 'code'"
+        style="{{ $initialTab === 'code' ? '' : 'display: none;' }}"
+        class="bg-zinc-950 text-zinc-100 p-5 sm:p-6 overflow-x-auto text-sm leading-relaxed font-mono selection:bg-zinc-800 selection:text-white text-left"
+    >
+        <pre x-ref="codeContent" class="text-sm font-mono text-zinc-100 text-left"><code class="font-mono text-zinc-100 text-left">@if ($highlighted){!! trim((string)($codeSlot ?? $slot)) !!}@else{!! trim((string)$displayCode) !!}@endif</code></pre>
     </div>
 </div>

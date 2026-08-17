@@ -21,8 +21,8 @@
     </div>
 
     @if ($shortcut)
-        <kbd class="hidden sm:inline-block px-1.5 py-0.5 text-[10px] font-mono font-semibold text-zinc-400 bg-zinc-100 dark:bg-zinc-800/80 rounded border border-zinc-200 dark:border-zinc-700/80 shrink-0">
-            {{ $shortcut }}
-        </kbd>
+        <div class="hidden sm:inline-block shrink-0">
+            <x-aura::kbd size="xs">{{ $shortcut }}</x-aura::kbd>
+        </div>
     @endif
 </{{ $tag }}>

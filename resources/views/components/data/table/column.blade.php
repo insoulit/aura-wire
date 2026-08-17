@@ -23,7 +23,7 @@
     $nowrapClass = filter_var($nowrap, FILTER_VALIDATE_BOOLEAN) ? ' whitespace-nowrap' : '';
 @endphp
 
-<th {{ $attributes->merge(['class' => "px-4 py-3 align-middle text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 first:rounded-l-xl last:rounded-r-xl {$alignClass}{$sortClass}{$nowrapClass}"]) }}>
+<th {{ $attributes->merge(['class' => "px-4 py-3 align-middle text-xs font-bold font-mono uppercase tracking-wider text-zinc-500 dark:text-zinc-400 first:rounded-l-xl last:rounded-r-xl {$alignClass}{$sortClass}{$nowrapClass}"]) }}>
     @if ($isSortable)
         <div class="inline-flex items-center gap-1.5 {{ $justifyClass }}">
             <span>{{ $slot }}</span>

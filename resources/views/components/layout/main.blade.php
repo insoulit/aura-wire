@@ -1,21 +1,22 @@
 @props([
     'container' => true,
     'hasSidebar' => false,
-    'alignX' => 'center', // 'center', 'start', 'end'
-    'alignY' => 'center', // 'center', 'start', 'end'
+    'alignX' => 'stretch', // 'stretch', 'center', 'start', 'end'
+    'alignY' => 'start', // 'start', 'center', 'end'
 ])
 
 @php
     $xClass = match ($alignX) {
         'start' => 'items-start',
         'end' => 'items-end',
-        default => 'items-center',
+        'center' => 'items-center',
+        default => 'items-stretch',
     };
 
     $yClass = match ($alignY) {
-        'start' => 'justify-start',
+        'center' => 'justify-center',
         'end' => 'justify-end',
-        default => 'justify-center',
+        default => 'justify-start',
     };
 @endphp
 

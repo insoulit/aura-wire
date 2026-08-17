@@ -19,7 +19,7 @@
     @if ($label || $icon)
         <div class="flex items-center justify-between gap-3">
             @if ($label)
-                <span class="text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 select-none">
+                <span class="text-xs font-bold uppercase font-mono tracking-wider text-zinc-500 dark:text-zinc-400 select-none">
                     {{ $label }}
                 </span>
             @endif
@@ -33,7 +33,7 @@
     @endif
 
     @if ($value)
-        <div class="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900 dark:text-white break-words">
+        <div class="text-2xl sm:text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white break-words">
             {{ $value }}
         </div>
     @endif
@@ -52,7 +52,7 @@
             @endif
 
             @if ($description)
-                <span class="text-xs text-zinc-500 dark:text-zinc-400">
+                <span class="text-xs text-zinc-500 dark:text-zinc-400 leading-normal text-pretty">
                     {{ $description }}
                 </span>
             @endif
