@@ -1,6 +1,6 @@
 @props([
     'level' => 1, // 1 | 2 | 3 | 4 | 5 | 6
-    'size' => null, // 'display-xl' | 'display-lg' | 'display-md' | 'display-sm' | 'xl' | 'lg' | 'md' | 'sm' | 'xs' | 'xxs'
+    'size' => null, // 'xl' | 'lg' | 'md' | 'sm' | 'xs' | 'xxs'
     'as' => null,
     'weight' => null,
 ])
@@ -21,10 +21,6 @@
     };
 
     $sizeClasses = match ($computedSize) {
-        'display-xl' => 'text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-none',
-        'display-lg' => 'text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-none',
-        'display-md' => 'text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight',
-        'display-sm' => 'text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight leading-tight',
         'xl' => 'text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight',
         'lg' => 'text-2xl sm:text-3xl font-bold tracking-tight leading-snug',
         'md' => 'text-xl sm:text-2xl font-bold tracking-tight leading-snug',
