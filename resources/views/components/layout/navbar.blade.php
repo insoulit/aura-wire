@@ -12,8 +12,8 @@
     };
 @endphp
 
-<header {{ $attributes->merge(['class' => "w-full border-b px-4 sm:px-6 py-3 sticky top-0 z-40 {$variantClasses}"]) }}>
-    <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+<header {{ $attributes->merge(['class' => "w-full border-b sticky top-0 z-40 {$variantClasses}"]) }}>
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between gap-4">
         <div class="flex items-center gap-6">
             @if ($brand || isset($brandSlot))
                 <div class="font-extrabold text-lg tracking-tight text-zinc-900 dark:text-white flex items-center gap-2">

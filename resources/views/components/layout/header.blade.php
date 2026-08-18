@@ -47,69 +47,71 @@
 
 <header
     @if ($responsive) x-data="{ mobileOpen: false }" @endif
-    {{ $attributes->merge(['class' => "w-full px-4 sm:px-6 py-3 sm:py-3.5 transition-all {$variantClasses} {$borderClasses} {$stickyClass}"]) }}
+    {{ $attributes->merge(['class' => "w-full transition-all {$variantClasses} {$borderClasses} {$stickyClass}"]) }}
 >
-    <div class="max-w-7xl mx-auto flex items-center justify-between gap-3 sm:gap-4">
-        @if (isset($brand))
-            <div class="flex items-center gap-2.5 sm:gap-3 font-bold text-zinc-900 dark:text-white shrink-0 min-w-0">
-                {{ $brand }}
-            </div>
-        @endif
-
-        <nav class="{{ $navClasses }}">
-            {{ $slot }}
-        </nav>
-
-        <div class="flex items-center gap-2 sm:gap-3 shrink-0">
-            @if (isset($actions))
-                {{ $actions }}
-            @endif
-
-            @if ($responsive)
-                <button
-                    type="button"
-                    x-on:click="mobileOpen = !mobileOpen"
-                    class="md:hidden inline-flex items-center justify-center p-2 rounded-xl {{ $buttonTextClasses }} transition-colors focus:outline-hidden cursor-pointer shrink-0"
-                    aria-label="Toggle navigation menu"
-                >
-                    <svg x-show="!mobileOpen" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                    </svg>
-                    <svg x-show="mobileOpen" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="display: none;">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
-            @endif
-        </div>
-    </div>
-
-    @if ($responsive)
-        {{-- Mobile Collapsible Navigation Menu --}}
-        <div
-            x-show="mobileOpen"
-            x-transition:enter="transition ease-out duration-200"
-            x-transition:enter-start="opacity-0 -translate-y-2"
-            x-transition:enter-end="opacity-100 translate-y-0"
-            x-transition:leave="transition ease-in duration-150"
-            x-transition:leave-start="opacity-100 translate-y-0"
-            x-transition:leave-end="opacity-0 -translate-y-2"
-            class="md:hidden pt-3 pb-3 mt-3 {{ $drawerBorderClasses }} space-y-3"
-            style="display: none;"
-        >
-            <nav class="flex flex-col gap-2 p-1 [&_a]:w-full [&_a]:justify-start">
-                @if (isset($mobileNav))
-                    {{ $mobileNav }}
-                @else
-                    {{ $slot }}
-                @endif
-            </nav>
-
-            {{-- Actions inside Mobile Drawer --}}
-            @if (isset($mobileActions) || isset($actions))
-                <div class="pt-3 border-t border-zinc-100 dark:border-zinc-800/60 flex flex-col items-center gap-3 px-1">
-                    {{ $mobileActions ?? $actions }}
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between gap-3 sm:gap-4 py-3 sm:py-3.5">
+            @if (isset($brand))
+                <div class="flex items-center gap-2.5 sm:gap-3 font-bold text-zinc-900 dark:text-white shrink-0 min-w-0">
+                    {{ $brand }}
                 </div>
             @endif
+
+            <nav class="{{ $navClasses }}">
+                {{ $slot }}
+            </nav>
+
+            <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+                @if (isset($actions))
+                    {{ $actions }}
+                @endif
+
+                @if ($responsive)
+                    <button
+                        type="button"
+                        x-on:click="mobileOpen = !mobileOpen"
+                        class="md:hidden inline-flex items-center justify-center p-2 rounded-xl {{ $buttonTextClasses }} transition-colors focus:outline-hidden cursor-pointer shrink-0"
+                        aria-label="Toggle navigation menu"
+                    >
+                        <svg x-show="!mobileOpen" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <svg x-show="mobileOpen" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="display: none;">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                @endif
+            </div>
         </div>
-    @endif
+
+        @if ($responsive)
+            {{-- Mobile Collapsible Navigation Menu --}}
+            <div
+                x-show="mobileOpen"
+                x-transition:enter="transition ease-out duration-200"
+                x-transition:enter-start="opacity-0 -translate-y-2"
+                x-transition:enter-end="opacity-100 translate-y-0"
+                x-transition:leave="transition ease-in duration-150"
+                x-transition:leave-start="opacity-100 translate-y-0"
+                x-transition:leave-end="opacity-0 -translate-y-2"
+                class="md:hidden pb-4 pt-1 {{ $drawerBorderClasses }} space-y-3"
+                style="display: none;"
+            >
+                <nav class="flex flex-col gap-2 p-1 [&_a]:w-full [&_a]:justify-start">
+                    @if (isset($mobileNav))
+                        {{ $mobileNav }}
+                    @else
+                        {{ $slot }}
+                    @endif
+                </nav>
+
+                {{-- Actions inside Mobile Drawer --}}
+                @if (isset($mobileActions) || isset($actions))
+                    <div class="pt-3 border-t border-zinc-100 dark:border-zinc-800/60 flex flex-col items-center gap-3 px-1">
+                        {{ $mobileActions ?? $actions }}
+                    </div>
+                @endif
+            </div>
+        @endif
+    </div>
 </header>

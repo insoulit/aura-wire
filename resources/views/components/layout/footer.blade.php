@@ -12,7 +12,7 @@
 @endphp
 
 <footer {{ $attributes->merge(['class' => "w-full border-t py-8 text-sm transition-colors {$variantClasses}"]) }}>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
         <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
             @if (isset($brand) && $brand)
                 <div class="flex items-center justify-center sm:justify-start gap-3 font-semibold text-zinc-900 dark:text-white">
