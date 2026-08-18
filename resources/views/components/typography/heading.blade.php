@@ -27,16 +27,16 @@
     };
 
     $sizeClasses = match ($computedSize) {
-        'display-2xl', '4xl' => 'text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-none',
-        'display-xl', 'display-lg', 'display', '3xl' => 'text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight',
-        '2xl' => 'text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight',
-        'xl' => 'text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight leading-tight',
-        'lg' => 'text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight leading-snug',
-        'md' => 'text-lg sm:text-xl font-bold tracking-tight leading-snug',
-        'sm' => 'text-base sm:text-lg font-bold tracking-tight leading-normal',
-        'xs' => 'text-sm sm:text-base font-semibold tracking-tight leading-normal',
+        'display-2xl', '4xl' => 'text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-none',
+        'display-xl', 'display-lg', 'display', '3xl' => 'text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight',
+        '2xl' => 'text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight',
+        'xl' => 'text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-tight',
+        'lg' => 'text-xl sm:text-2xl lg:text-3xl font-bold leading-snug',
+        'md' => 'text-lg sm:text-xl font-bold leading-snug',
+        'sm' => 'text-base sm:text-lg font-bold leading-normal',
+        'xs' => 'text-sm sm:text-base font-semibold leading-normal',
         'xxs', '2xs' => 'text-xs font-semibold uppercase font-mono tracking-wider leading-normal',
-        default => 'text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight leading-tight',
+        default => 'text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-tight',
     };
 
     $weightClasses = match ($weight) {

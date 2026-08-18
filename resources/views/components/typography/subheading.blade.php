@@ -11,9 +11,9 @@
 
 @php
     $sizeClasses = match ($size) {
-        '2xl' => 'text-xl sm:text-2xl leading-relaxed tracking-tight',
-        'xl' => 'text-lg sm:text-xl leading-relaxed tracking-tight',
-        'lg' => 'text-base sm:text-lg leading-relaxed tracking-tight',
+        '2xl' => 'text-xl sm:text-2xl leading-relaxed tracking-normal',
+        'xl' => 'text-lg sm:text-xl leading-relaxed tracking-normal',
+        'lg' => 'text-base sm:text-lg leading-relaxed tracking-normal',
         'sm' => 'text-xs sm:text-sm leading-normal tracking-normal',
         'xs' => 'text-xs leading-normal tracking-normal',
         default => 'text-sm sm:text-base leading-relaxed tracking-normal',

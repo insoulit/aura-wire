@@ -5,7 +5,7 @@
     'gradient' => false, // false | true | 'default' | 'primary' | 'sunset' | 'ocean' | 'emerald'
     'align' => null, // 'left' | 'center' | 'right' | 'justify'
     'balance' => true,
-    'tracking' => 'tight', // 'tighter' | 'tight' | 'normal' | 'wide'
+    'tracking' => null, // 'tighter' | 'tight' | 'normal' | 'wide'
     'truncate' => false,
     'nowrap' => false,
 ])
@@ -38,7 +38,7 @@
         'tight' => 'tracking-tight',
         'normal' => 'tracking-normal',
         'wide' => 'tracking-wide',
-        default => 'tracking-tight',
+        default => '',
     };
 
     $gradientPreset = ($gradient === true || $gradient === 'true' || $gradient === '1' || $gradient === 1)

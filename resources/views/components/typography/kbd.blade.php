@@ -18,6 +18,6 @@
     };
 @endphp
 
-<kbd {{ $attributes->merge(['class' => "inline-flex items-center justify-center font-mono font-medium rounded-md tracking-tight select-none transition-colors {$sizeClasses} {$variantClasses}"]) }}>
+<kbd {{ $attributes->merge(['class' => "inline-flex items-center justify-center font-mono font-medium rounded-md select-none transition-colors {$sizeClasses} {$variantClasses}"]) }}>
     {{ $slot }}
 </kbd>
