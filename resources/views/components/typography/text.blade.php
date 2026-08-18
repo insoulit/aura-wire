@@ -9,6 +9,7 @@
     'italic' => false,
     'pretty' => false,
     'clamp' => null, // 1 | 2 | 3 | 4 | 5 | 6
+    'tracking' => null, // 'tighter' | 'tight' | 'normal' | 'wide' | 'wider' | 'widest'
 ])
 
 @php
@@ -70,12 +71,22 @@
         default => '',
     };
 
+    $trackingClasses = match ($tracking) {
+        'tighter' => 'tracking-tighter',
+        'tight' => 'tracking-tight',
+        'normal' => 'tracking-normal',
+        'wide' => 'tracking-wide',
+        'wider' => 'tracking-wider',
+        'widest' => 'tracking-widest',
+        default => '',
+    };
+
     $truncateClass = $truncate ? 'truncate' : '';
     $nowrapClass = $nowrap ? 'whitespace-nowrap' : '';
     $italicClass = $italic ? 'italic' : '';
     $prettyClass = $pretty ? 'text-pretty' : '';
 @endphp
 
-<{{ $tag }} {{ $attributes->merge(['class' => "transition-colors group-hover:text-inherit {$sizeClasses} {$variantClasses} {$weightClasses} {$alignClasses} {$clampClasses} {$truncateClass} {$nowrapClass} {$italicClass} {$prettyClass}"]) }}>
+<{{ $tag }} {{ $attributes->merge(['class' => "transition-colors group-hover:text-inherit {$sizeClasses} {$variantClasses} {$weightClasses} {$alignClasses} {$trackingClasses} {$clampClasses} {$truncateClass} {$nowrapClass} {$italicClass} {$prettyClass}"]) }}>
     {{ $slot }}
 </{{ $tag }}>

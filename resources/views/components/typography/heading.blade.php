@@ -1,9 +1,9 @@
 @props([
     'level' => 1, // 1 | 2 | 3 | 4 | 5 | 6
-    'size' => null, // 'display-2xl' | 'display-xl' | 'display-lg' | 'display' | '3xl' | '2xl' | 'xl' | 'lg' | 'md' | 'sm' | 'xs' | 'xxs' | '2xs'
+    'size' => null, // '2xl' | 'xl' | 'lg' | 'md' | 'sm' | 'xs' | '2xs'
     'as' => null,
     'weight' => null, // 'light' | 'normal' | 'medium' | 'semibold' | 'bold' | 'extrabold' | 'black'
-    'variant' => 'default', // 'default' | 'subtle' | 'muted' | 'accent' | 'primary' | 'positive' | 'warning' | 'danger' | 'gradient' | 'inverse' | 'white'
+    'variant' => 'default', // 'default' | 'gradient' | 'subtle' | 'muted' | 'accent' | 'positive' | 'warning' | 'danger'
     'align' => null, // 'left' | 'center' | 'right' | 'justify'
     'balance' => true,
     'truncate' => false,
@@ -22,21 +22,19 @@
         3 => 'md',
         4 => 'sm',
         5 => 'xs',
-        6 => 'xxs',
+        6 => '2xs',
         default => 'xl',
     };
 
     $sizeClasses = match ($computedSize) {
-        'display-2xl', '4xl' => 'text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-none',
-        'display-xl', 'display-lg', 'display', '3xl' => 'text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight',
-        '2xl' => 'text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight',
-        'xl' => 'text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-tight',
-        'lg' => 'text-xl sm:text-2xl lg:text-3xl font-bold leading-snug',
+        '2xl' => 'text-3xl sm:text-4xl font-extrabold leading-tight',
+        'xl' => 'text-2xl sm:text-3xl font-extrabold leading-tight',
+        'lg' => 'text-xl sm:text-2xl font-bold leading-snug',
         'md' => 'text-lg sm:text-xl font-bold leading-snug',
         'sm' => 'text-base sm:text-lg font-bold leading-normal',
         'xs' => 'text-sm sm:text-base font-semibold leading-normal',
-        'xxs', '2xs' => 'text-xs font-semibold uppercase font-mono tracking-wider leading-normal',
-        default => 'text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-tight',
+        '2xs', 'xxs' => 'text-xs font-semibold uppercase font-mono tracking-wider leading-normal',
+        default => 'text-2xl sm:text-3xl font-extrabold leading-tight',
     };
 
     $weightClasses = match ($weight) {
@@ -52,14 +50,12 @@
 
     $variantClasses = match ($variant) {
         'default' => 'text-zinc-900 dark:text-white',
+        'gradient' => 'bg-gradient-to-r from-zinc-950 via-zinc-600 to-zinc-950 dark:from-white dark:via-zinc-400 dark:to-white bg-clip-text text-transparent',
         'subtle', 'muted' => 'text-zinc-600 dark:text-zinc-400',
         'accent' => 'text-zinc-900 dark:text-white',
-        'primary' => 'text-indigo-600 dark:text-indigo-400',
         'positive', 'success' => 'text-emerald-600 dark:text-emerald-400',
         'warning' => 'text-amber-600 dark:text-amber-400',
         'danger', 'error' => 'text-red-600 dark:text-red-400',
-        'gradient' => 'bg-gradient-to-r from-zinc-900 via-zinc-700 to-zinc-900 dark:from-white dark:via-zinc-200 dark:to-zinc-400 bg-clip-text text-transparent',
-        'inverse', 'white' => 'text-white',
         default => 'text-zinc-900 dark:text-white',
     };
 
