@@ -65,9 +65,9 @@ composer test
 
 ## 💡 Inspiration & AI Generation
 
-**AuraWire** drew design inspiration from [Livewire Flux](https://fluxui.dev/) and Uber's [Base Design System](https://baseweb.design/).
+**AuraWire** drew design inspiration from [Livewire Flux](https://fluxui.dev/), [Tailwind CSS](https://tailwindcss.com/), and Uber's [Base Design System](https://baseweb.design/).
 
-This entire package was created completely using AI.
+This entire package is created completely using AI.
 
 ---
 

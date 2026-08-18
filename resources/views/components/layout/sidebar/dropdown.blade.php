@@ -4,12 +4,22 @@
     'badge' => null,
     'open' => false,
     'active' => false,
+    'id' => null,
+    'accordion' => true,
 ])
 
-<div x-data="{ open: @json($open || $active) }" class="space-y-0.5">
+@php
+    $dropdownId = $id ?? ('sidebar-dropdown-' . (\Illuminate\Support\Str::slug($label) ?: uniqid()));
+@endphp
+
+<div
+    x-data="{ open: @json((bool) ($open || $active)) }"
+    x-on:sidebar-dropdown-opened.window="if ($event.detail !== '{{ $dropdownId }}') open = false"
+    class="space-y-0.5"
+>
     <button
         type="button"
-        x-on:click="open = !open"
+        x-on:click="open = !open; if (open) $dispatch('sidebar-dropdown-opened', '{{ $dropdownId }}')"
         {{ $attributes->merge(['class' => 'flex items-center justify-between w-full px-2.5 py-1.5 text-sm rounded-md transition-all duration-150 cursor-pointer select-none group ' . ($active ? 'text-zinc-900 dark:text-white font-semibold' : 'text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800/80 hover:text-zinc-900 dark:hover:text-white font-medium')]) }}
     >
         <div class="flex items-center gap-2.5 min-w-0">
