@@ -9,7 +9,55 @@
 ])
 
 @php
-    $inputCode = $code ?? (isset($codeSlot) ? (string) $codeSlot : (string) $slot);
+    $rawInput = (string) ($code ?? (isset($codeSlot) ? (string) $codeSlot : (string) $slot));
+    
+    // Normalize newlines and convert tabs to spaces
+    $rawInput = str_replace("\r\n", "\n", $rawInput);
+    $rawInput = str_replace("\t", "    ", $rawInput);
+    
+    // Split into lines and trim outer blank lines
+    $lines = explode("\n", $rawInput);
+    while (count($lines) > 0 && trim($lines[0]) === '') {
+        array_shift($lines);
+    }
+    while (count($lines) > 0 && trim(end($lines)) === '') {
+        array_pop($lines);
+    }
+    
+    // Compute minimum indentation across all non-blank lines.
+    // Note: Blade's @verbatim directive strips leading spaces from the first line.
+    // If the first line has 0 indent while subsequent lines are indented, use min non-zero indent.
+    $indents = [];
+    foreach ($lines as $index => $line) {
+        if (trim($line) !== '') {
+            preg_match('/^(\s*)/', $line, $matches);
+            $indents[$index] = strlen($matches[1] ?? '');
+        }
+    }
+    
+    if (!empty($indents)) {
+        $firstIndent = reset($indents);
+        $nonZeroIndents = array_filter($indents, function ($ind) {
+            return $ind > 0;
+        });
+        
+        if ($firstIndent === 0 && !empty($nonZeroIndents)) {
+            $minIndent = min($nonZeroIndents);
+        } else {
+            $minIndent = min($indents);
+        }
+        
+        if ($minIndent > 0) {
+            foreach ($lines as $i => $line) {
+                if (isset($indents[$i]) && $indents[$i] >= $minIndent) {
+                    $lines[$i] = substr($line, $minIndent);
+                }
+            }
+        }
+    }
+    
+    $inputCode = implode("\n", $lines);
+
     $rawCode = $highlighted
         ? ($code ?? strip_tags(html_entity_decode((string)($codeSlot ?? $slot), ENT_QUOTES | ENT_HTML5, 'UTF-8')))
         : html_entity_decode((string) $inputCode, ENT_QUOTES | ENT_HTML5, 'UTF-8');
