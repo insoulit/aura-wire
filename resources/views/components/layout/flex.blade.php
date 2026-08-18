@@ -41,6 +41,7 @@
 
     $gapClass = match ($gap) {
         'none', '0' => 'gap-0',
+        '0.5' => 'gap-0.5',
         'xs', '1' => 'gap-1',
         '1.5' => 'gap-1.5',
         'sm', '2' => 'gap-2',

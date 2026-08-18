@@ -2,9 +2,14 @@
     'size' => '7xl', // 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl', '7xl', 'full'
     'gap' => null,
     'stack' => false,
+    'padding' => true,
 ])
 
 @php
+    $isPadded = filter_var($padding, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE) ?? ($padding !== 'none' && $padding !== '0' && (bool) $padding);
+    $hasCustomPadding = str_contains($attributes->get('class', ''), 'p-') || str_contains($attributes->get('class', ''), 'px-') || str_contains($attributes->get('class', ''), 'py-');
+    $paddingClass = $hasCustomPadding ? '' : ($isPadded ? 'px-4 sm:px-6 lg:px-8 py-8' : '');
+
     $sizeClass = match ($size) {
         'sm' => 'max-w-sm',
         'md' => 'max-w-md',
@@ -36,6 +41,6 @@
     $stackClass = ($stack || $gap !== null) ? "flex flex-col {$gapClass}" : '';
 @endphp
 
-<div {{ $attributes->merge(['class' => "{$sizeClass} mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full {$stackClass}"]) }}>
+<div {{ $attributes->merge(['class' => "{$sizeClass} mx-auto {$paddingClass} w-full {$stackClass}"]) }}>
     {{ $slot }}
 </div>
