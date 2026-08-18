@@ -2,6 +2,8 @@
     'title' => null,
     'description' => null,
     'divided' => true,
+    'gap' => null,
+    'size' => null, // 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl', '7xl', 'full'
 ])
 
 @php
@@ -14,9 +16,37 @@
     $footerClass = $hasCustomPadding ? ($isDivided ? 'p-4 border-t border-zinc-200 dark:border-zinc-800' : 'p-4') : $footerDivider;
     $tag = $attributes->has('href') ? 'a' : 'div';
     $hoverClass = $attributes->has('href') ? 'hover:bg-zinc-900 hover:text-white hover:border-zinc-900 dark:hover:bg-white dark:hover:text-zinc-900 dark:hover:border-white' : '';
+
+    $sizeClass = match ($size) {
+        'sm' => 'max-w-sm',
+        'md' => 'max-w-md',
+        'lg' => 'max-w-lg',
+        'xl' => 'max-w-xl',
+        '2xl' => 'max-w-2xl',
+        '3xl' => 'max-w-3xl',
+        '4xl' => 'max-w-4xl',
+        '5xl' => 'max-w-5xl',
+        '6xl' => 'max-w-6xl',
+        'full' => 'max-w-full',
+        default => $size ? "max-w-{$size}" : '',
+    };
+
+    $gapClass = match ($gap) {
+        'none', '0' => 'gap-0',
+        'xs', '1' => 'gap-1',
+        'sm', '2' => 'gap-2',
+        '3' => 'gap-3',
+        'md', '4' => 'gap-4',
+        '5' => 'gap-5',
+        'lg', '6' => 'gap-6',
+        'xl', '8' => 'gap-8',
+        '10' => 'gap-10',
+        '12' => 'gap-12',
+        default => $gap ? "gap-{$gap}" : '',
+    };
 @endphp
 
-<{{ $tag }} {{ $attributes->merge(['class' => "w-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl {$paddingClass} {$hoverClass} flex flex-col transition-all duration-200 group"]) }}>
+<{{ $tag }} {{ $attributes->merge(['class' => "w-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl {$paddingClass} {$hoverClass} {$sizeClass} flex flex-col transition-all duration-200 group"]) }}>
     @if ($title || isset($header))
         <div class="{{ $headerClass }} flex items-center justify-between">
             @if (isset($header))
@@ -32,7 +62,7 @@
         </div>
     @endif
 
-    <div class="flex flex-col">
+    <div class="flex flex-col {{ $gapClass }}">
         {{ $slot }}
     </div>
 
