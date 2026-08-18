@@ -1,7 +1,6 @@
 @props([
     'size' => '6xl', // 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl', '7xl', 'full'
     'gap' => null,
-    'stack' => false,
     'padding' => true,
 ])
 
@@ -39,9 +38,9 @@
         default => $gap ? "gap-{$gap}" : '',
     };
 
-    $stackClass = ($stack || $gap !== null) ? "flex flex-col {$gapClass}" : '';
+    $flexClass = ($gap !== null) ? "flex flex-col {$gapClass}" : '';
 @endphp
 
-<div {{ $attributes->merge(['class' => "{$sizeClass} mx-auto {$paddingClass} w-full {$stackClass}"]) }}>
+<div {{ $attributes->merge(['class' => "{$sizeClass} mx-auto {$paddingClass} w-full {$flexClass}"]) }}>
     {{ $slot }}
 </div>

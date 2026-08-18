@@ -46,11 +46,10 @@
         : (is_string($gradient) && $gradient !== '' && $gradient !== 'false' && $gradient !== '0' ? $gradient : null);
 
     $colorClasses = match ($gradientPreset) {
-        'default', 'zinc' => 'bg-gradient-to-r from-zinc-900 via-zinc-700 to-zinc-900 dark:from-white dark:via-zinc-200 dark:to-zinc-400 bg-clip-text text-transparent',
-        'primary', 'indigo', 'brand' => 'bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent',
-        'sunset' => 'bg-gradient-to-r from-amber-500 via-orange-600 to-rose-600 bg-clip-text text-transparent',
-        'ocean' => 'bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-600 bg-clip-text text-transparent',
-        'emerald' => 'bg-gradient-to-r from-emerald-500 via-teal-600 to-cyan-600 bg-clip-text text-transparent',
+        'default', 'zinc' => 'bg-gradient-to-r from-zinc-950 via-zinc-600 to-zinc-950 dark:from-white dark:via-zinc-400 dark:to-white bg-clip-text text-transparent',
+        'subtle', 'muted' => 'bg-gradient-to-r from-zinc-900 via-zinc-600 to-zinc-400 dark:from-zinc-100 dark:via-zinc-400 dark:to-zinc-600 bg-clip-text text-transparent',
+        'fade' => 'bg-gradient-to-b from-zinc-950 via-zinc-700 to-zinc-400 dark:from-white dark:via-zinc-300 dark:to-zinc-600 bg-clip-text text-transparent',
+        'contrast' => 'bg-gradient-to-br from-zinc-950 via-zinc-500 to-zinc-800 dark:from-white dark:via-zinc-400 dark:to-zinc-500 bg-clip-text text-transparent',
         default => 'text-zinc-900 dark:text-white',
     };
 

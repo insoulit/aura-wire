@@ -155,17 +155,3 @@ it('renders center layout component horizontally and vertically', function () {
         ->toContain('gap-3')
         ->toContain('Centered Item');
 });
-
-it('renders stack layout component with spacing and direction', function () {
-    $stack = Blade::render('
-        <x-aura::stack gap="6">
-            <p>Item 1</p>
-            <p>Item 2</p>
-        </x-aura::stack>
-    ');
-
-    expect($stack)->toContain('flex flex-col')
-        ->toContain('gap-6')
-        ->toContain('Item 1')
-        ->toContain('Item 2');
-});
