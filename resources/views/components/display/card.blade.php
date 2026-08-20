@@ -60,7 +60,7 @@
     };
 @endphp
 
-<{{ $tag }} {{ $attributes->merge(['class' => "w-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 {$radiusClass} {$paddingClass} {$hoverClass} {$sizeClass} flex flex-col transition-all duration-200 group"]) }}>
+<{{ $tag }} {{ $attributes->merge(['class' => "w-full h-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 {$radiusClass} {$paddingClass} {$hoverClass} {$sizeClass} flex flex-col transition-all duration-200 group"]) }}>
     @if ($title || isset($header))
         <div class="{{ $headerClass }} flex items-center justify-between">
             @if (isset($header))
