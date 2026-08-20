@@ -9,7 +9,7 @@
 ])
 
 @php
-    $rawInput = (string) ($code ?? (isset($codeSlot) ? (string) $codeSlot : (string) $slot));
+    $rawInput = (string) (isset($codeSlot) ? (string) $codeSlot : ($code ?? (string) $slot));
     
     // Normalize newlines and convert tabs to spaces
     $rawInput = str_replace("\r\n", "\n", $rawInput);
@@ -59,7 +59,7 @@
     $inputCode = implode("\n", $lines);
 
     $rawCode = $highlighted
-        ? ($code ?? strip_tags(html_entity_decode((string)($codeSlot ?? $slot), ENT_QUOTES | ENT_HTML5, 'UTF-8')))
+        ? ($code ?? strip_tags(html_entity_decode((string)$inputCode, ENT_QUOTES | ENT_HTML5, 'UTF-8')))
         : html_entity_decode((string) $inputCode, ENT_QUOTES | ENT_HTML5, 'UTF-8');
     $displayCode = htmlspecialchars($rawCode, ENT_NOQUOTES, 'UTF-8');
 
@@ -189,6 +189,6 @@
         style="{{ $initialTab === 'code' ? '' : 'display: none;' }}"
         class="bg-zinc-950 text-zinc-100 p-5 sm:p-6 overflow-x-auto text-sm leading-relaxed font-mono selection:bg-zinc-800 selection:text-white text-left"
     >
-        <pre x-ref="codeContent" class="text-sm font-mono text-zinc-100 text-left"><code class="font-mono text-zinc-100 text-left">@if ($highlighted){!! trim((string)($codeSlot ?? $slot)) !!}@else{!! trim((string)$displayCode) !!}@endif</code></pre>
+        <pre x-ref="codeContent" class="text-sm font-mono text-zinc-100 text-left"><code class="font-mono text-zinc-100 text-left">@if ($highlighted){!! trim((string)$inputCode) !!}@else{!! trim((string)$displayCode) !!}@endif</code></pre>
     </div>
 </div>

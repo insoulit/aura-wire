@@ -1,10 +1,11 @@
 @props([
     'direction' => 'row', // 'row' | 'col' | 'column' | 'row-reverse' | 'col-reverse'
-    'align' => 'center', // 'start' | 'center' | 'end' | 'baseline' | 'stretch'
+    'align' => null, // 'start' | 'center' | 'end' | 'baseline' | 'stretch'
     'justify' => 'start', // 'start' | 'center' | 'end' | 'between' | 'around' | 'evenly'
-    'gap' => null, // 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '1' | '2' | '3' | '4' | '5' | '6' | '8' | '10'
+    'gap' => null, // 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '1' | '2' | '3' | '4' | '5' | '6' | '8' | '10' | '12'
     'wrap' => false,
     'inline' => false,
+    'width' => null, // 'full' | 'auto' | 'fit'
     'as' => 'div',
 ])
 
@@ -12,6 +13,8 @@
     $tag = $as;
 
     $displayClass = $inline ? 'inline-flex' : 'flex';
+
+    $isCol = in_array($direction, ['col', 'column', 'col-reverse', 'column-reverse']);
 
     $directionClass = match ($direction) {
         'col', 'column' => 'flex-col',
@@ -26,7 +29,7 @@
         'end' => 'items-end',
         'baseline' => 'items-baseline',
         'stretch' => 'items-stretch',
-        default => 'items-center',
+        default => $isCol ? 'items-stretch' : 'items-center',
     };
 
     $justifyClass = match ($justify) {
@@ -56,8 +59,15 @@
     };
 
     $wrapClass = $wrap ? 'flex-wrap' : '';
+
+    $widthClass = match ($width) {
+        'full' => 'w-full',
+        'auto' => 'w-auto',
+        'fit' => 'w-fit',
+        default => $inline ? '' : 'w-full',
+    };
 @endphp
 
-<{{ $tag }} {{ $attributes->merge(['class' => "{$displayClass} {$directionClass} {$alignClass} {$justifyClass} {$gapClass} {$wrapClass}"]) }}>
+<{{ $tag }} {{ $attributes->merge(['class' => "{$displayClass} {$widthClass} {$directionClass} {$alignClass} {$justifyClass} {$gapClass} {$wrapClass}"]) }}>
     {{ $slot }}
 </{{ $tag }}>
