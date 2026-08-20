@@ -69,12 +69,12 @@
     $isDark = $variant === 'dark';
 
     $containerClasses = $isDark
-        ? 'w-full rounded-2xl border border-zinc-800 bg-zinc-950 text-zinc-100 shadow-2xs transition-all relative overflow-hidden text-left'
-        : 'w-full rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 shadow-2xs transition-all relative overflow-hidden text-left';
+        ? 'w-full rounded-2xl border border-zinc-800 bg-zinc-950 text-zinc-100 shadow-2xs transition-all relative text-left'
+        : 'w-full rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 shadow-2xs transition-all relative text-left';
 
     $headerClasses = $isDark
-        ? 'px-3.5 sm:px-4 py-3 bg-zinc-900 border-b border-zinc-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-4 select-none text-left'
-        : 'px-3.5 sm:px-4 py-3 bg-zinc-50 dark:bg-zinc-900/60 border-b border-zinc-200 dark:border-zinc-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-4 select-none text-left';
+        ? 'px-3.5 sm:px-4 py-3 bg-zinc-900 border-b border-zinc-800 rounded-t-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-4 select-none text-left'
+        : 'px-3.5 sm:px-4 py-3 bg-zinc-50 dark:bg-zinc-900/60 border-b border-zinc-200 dark:border-zinc-800 rounded-t-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-4 select-none text-left';
 
     $titleClasses = $isDark
         ? 'text-xs font-bold tracking-wider text-zinc-300 font-sans shrink-0 text-left'
@@ -173,7 +173,7 @@
         <div
             x-show="tab === 'preview'"
             style="{{ $initialTab === 'preview' ? '' : 'display: none;' }}"
-            class="p-6 sm:p-8 bg-white dark:bg-zinc-950 flex flex-wrap items-center justify-center gap-4 min-h-[120px] relative"
+            class="p-6 sm:p-8 bg-white dark:bg-zinc-950 flex flex-wrap items-center justify-center gap-4 min-h-[120px] rounded-b-2xl relative"
         >
             @if (isset($preview))
                 {{ $preview }}
@@ -187,7 +187,7 @@
     <div
         x-show="tab === 'code'"
         style="{{ $initialTab === 'code' ? '' : 'display: none;' }}"
-        class="bg-zinc-950 text-zinc-100 p-5 sm:p-6 overflow-x-auto text-sm leading-relaxed font-mono selection:bg-zinc-800 selection:text-white text-left"
+        class="bg-zinc-950 text-zinc-100 p-5 sm:p-6 overflow-x-auto text-sm leading-relaxed font-mono selection:bg-zinc-800 selection:text-white text-left rounded-b-2xl"
     >
         <pre x-ref="codeContent" class="text-sm font-mono text-zinc-100 text-left"><code class="font-mono text-zinc-100 text-left">@if ($highlighted){!! trim((string)$inputCode) !!}@else{!! trim((string)$displayCode) !!}@endif</code></pre>
     </div>
