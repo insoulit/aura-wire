@@ -1,5 +1,5 @@
 @props([
-    'as' => 'div',
+    'as' => 'p',
     'size' => 'sm', // 'xs' | 'sm' | 'md' | 'lg'
     'variant' => 'default', // 'default' | 'subtle' | 'muted' | 'primary' | 'accent' | 'dark' | 'positive' | 'warning' | 'danger'
     'weight' => 'bold', // 'medium' | 'semibold' | 'bold' | 'extrabold'
