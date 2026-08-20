@@ -10,9 +10,23 @@
 @php
     $tag = $as;
 
-    $isPadded = filter_var($padding, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE) ?? ($padding !== 'none' && $padding !== '0' && (bool) $padding);
-    $hasCustomPadding = str_contains($attributes->get('class', ''), 'p-') || str_contains($attributes->get('class', ''), 'px-') || str_contains($attributes->get('class', ''), 'py-');
-    $paddingClass = $hasCustomPadding ? '' : ($isPadded ? 'px-4 sm:px-6 lg:px-8 py-8' : '');
+    $hasCustomPadding = str_contains($attributes->get('class', ''), 'p-') || str_contains($attributes->get('class', ''), 'px-') || str_contains($attributes->get('class', ''), 'py-') || str_contains($attributes->get('class', ''), 'pt-') || str_contains($attributes->get('class', ''), 'pb-');
+    
+    $paddingClass = match ($padding) {
+        false, 'none', '0' => '',
+        'top', 'pt' => 'pt-8 sm:pt-10',
+        'top-sm', 'pt-sm' => 'pt-4 sm:pt-6',
+        'top-md', 'pt-md' => 'pt-8 sm:pt-10',
+        'top-lg', 'pt-lg' => 'pt-12 sm:pt-16',
+        'bottom', 'pb' => 'pb-8 sm:pb-10',
+        'x', 'px' => 'px-4 sm:px-6 lg:px-8',
+        'y', 'py' => 'py-8 sm:py-10',
+        'sm' => 'px-3 sm:px-4 py-4',
+        'md' => 'px-4 sm:px-6 lg:px-8 py-8',
+        'lg' => 'px-6 sm:px-8 lg:px-12 py-12',
+        true => 'px-4 sm:px-6 lg:px-8 py-8',
+        default => $hasCustomPadding ? '' : 'px-4 sm:px-6 lg:px-8 py-8',
+    };
 
     $sizeClass = match ($size) {
         'sm' => 'max-w-sm',

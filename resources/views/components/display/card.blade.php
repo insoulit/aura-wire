@@ -4,11 +4,25 @@
     'divided' => true,
     'gap' => null,
     'size' => null, // 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl', '7xl', 'full'
+    'padding' => null, // 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 ])
 
 @php
     $hasCustomPadding = str_contains($attributes->get('class', ''), 'p-') || str_contains($attributes->get('class', ''), 'px-') || str_contains($attributes->get('class', ''), 'py-');
-    $paddingClass = $hasCustomPadding ? '' : 'p-6';
+    $paddingClass = match ($padding) {
+        'none', false => 'p-0',
+        'xs' => 'p-2.5',
+        'sm' => 'p-3.5 sm:p-4',
+        'md' => 'p-5 sm:p-6',
+        'lg' => 'p-6 sm:p-8',
+        'xl' => 'p-8 sm:p-10',
+        default => $hasCustomPadding ? '' : 'p-6',
+    };
+    $radiusClass = match ($padding) {
+        'xs', 'sm' => 'rounded-xl',
+        'xl' => 'rounded-3xl',
+        default => 'rounded-2xl',
+    };
     $isDivided = filter_var($divided, FILTER_VALIDATE_BOOLEAN);
     $headerDivider = $isDivided ? 'mb-4 pb-4 border-b border-zinc-100 dark:border-zinc-800/80' : 'mb-3.5';
     $footerDivider = $isDivided ? 'mt-auto pt-4 border-t border-zinc-100 dark:border-zinc-800/80' : 'mt-auto pt-4';
@@ -46,7 +60,7 @@
     };
 @endphp
 
-<{{ $tag }} {{ $attributes->merge(['class' => "w-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl {$paddingClass} {$hoverClass} {$sizeClass} flex flex-col transition-all duration-200 group"]) }}>
+<{{ $tag }} {{ $attributes->merge(['class' => "w-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 {$radiusClass} {$paddingClass} {$hoverClass} {$sizeClass} flex flex-col transition-all duration-200 group"]) }}>
     @if ($title || isset($header))
         <div class="{{ $headerClass }} flex items-center justify-between">
             @if (isset($header))
