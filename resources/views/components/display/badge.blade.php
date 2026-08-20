@@ -18,10 +18,12 @@
     };
 
     $sizeClasses = match ($size) {
-        'sm' => 'px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
-        'md' => 'px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider',
-        'lg' => 'px-3 py-1 text-xs font-bold uppercase tracking-wider',
-        default => 'px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider',
+        'xs' => 'px-2 py-0.5 text-[11px] font-bold uppercase tracking-wider',
+        'sm' => 'px-2.5 py-0.5 text-xs font-bold uppercase tracking-wider',
+        'md' => 'px-3 py-1 text-xs sm:text-[13px] font-bold uppercase tracking-wider',
+        'lg' => 'px-3.5 py-1.5 text-sm font-bold uppercase tracking-wider',
+        'xl' => 'px-4 py-2 text-sm sm:text-base font-bold uppercase tracking-wider',
+        default => 'px-3 py-1 text-xs sm:text-[13px] font-bold uppercase tracking-wider',
     };
 
     $shapeClass = match (true) {
