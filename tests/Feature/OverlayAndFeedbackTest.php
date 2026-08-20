@@ -78,7 +78,8 @@ it('renders tooltip hover overlay component', function () {
 
     expect($html)->toContain('Click to copy API Key')
         ->toContain('Copy')
-        ->toContain('bottom-full');
+        ->toContain('x-teleport="body"')
+        ->toContain('-translate-y-full');
 });
 
 it('renders popover floating panel component with rounded-xl panel', function () {

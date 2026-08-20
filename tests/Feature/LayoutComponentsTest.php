@@ -77,7 +77,7 @@ it('renders container component with size presets', function () {
     expect($lg)->toContain('max-w-lg')
         ->toContain('Large Content');
 
-    expect($default)->toContain('max-w-7xl')
+    expect($default)->toContain('max-w-6xl')
         ->toContain('Default Content');
 });
 
@@ -129,7 +129,9 @@ it('renders flex layout component with align, justify, gap, and direction props'
 
     $col = Blade::render('<x-aura::flex direction="col" align="start" justify="end" gap="2">Column Content</x-aura::flex>');
 
-    expect($flex)->toContain('flex flex-row')
+    expect($flex)->toContain('flex')
+        ->toContain('flex-row')
+        ->toContain('w-full')
         ->toContain('items-center')
         ->toContain('justify-between')
         ->toContain('gap-4')
@@ -154,4 +156,20 @@ it('renders center layout component horizontally and vertically', function () {
         ->toContain('justify-center')
         ->toContain('gap-3')
         ->toContain('Centered Item');
+});
+
+it('renders grid layout component with responsive columns and gaps', function () {
+    $grid = Blade::render('
+        <x-aura::grid cols="1" md="3" gap="6">
+            <div>Column 1</div>
+            <div>Column 2</div>
+            <div>Column 3</div>
+        </x-aura::grid>
+    ');
+
+    expect($grid)->toContain('grid')
+        ->toContain('grid-cols-1')
+        ->toContain('md:grid-cols-3')
+        ->toContain('gap-6')
+        ->toContain('Column 1');
 });

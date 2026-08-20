@@ -210,3 +210,16 @@ it('renders tag component', function () {
     expect($html)->toContain('Laravel')
         ->toContain('rounded-full');
 });
+
+it('renders animate component with loop and hover interactions', function () {
+    $spin = Blade::render('<x-aura::animate type="spin"><span>Spinning</span></x-aura::animate>');
+    $hover = Blade::render('<x-aura::animate type="hover-scale" inline><span>Hover</span></x-aura::animate>');
+
+    expect($spin)->toContain('animate-spin')
+        ->toContain('Spinning');
+
+    expect($hover)->toContain('hover:scale-110')
+        ->toContain('inline-flex')
+        ->toContain('<span')
+        ->toContain('Hover');
+});

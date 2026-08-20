@@ -50,7 +50,8 @@ it('renders dropdown with header, items, and separator', function () {
         ->toContain('Account')
         ->toContain('Profile Settings')
         ->toContain('Logout')
-        ->toContain('right-0')
+        ->toContain('x-teleport="body"')
+        ->toContain('-translate-x-full')
         ->toContain('w-56')
         ->toContain('text-red-600');
 });

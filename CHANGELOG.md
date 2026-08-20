@@ -2,6 +2,28 @@
 
 All notable changes to `insoulit/aura-wire` will be documented in this file.
 
+## [1.6.0] - 2026-08-20
+
+### Added
+- Animate component (`x-aura::display.animate`) featuring core Tailwind continuous loop animations, micro-interaction hover states, active press feedback, and rotational transforms.
+- Grid layout component (`x-aura::layout.grid`) with responsive column breakpoints, individual gap axes (`gapX`, `gapY`), and flex alignments.
+- Typography suite additions: Blockquote (`x-aura::typography.blockquote`), Keyboard shortcut (`x-aura::typography.kbd`), Inline code (`x-aura::typography.inline-code`), and Lead (`x-aura::typography.lead`).
+- Accordion collapsible dropdown support for sidebar navigation items (`x-aura::sidebar.dropdown`).
+- Stack layout and customizable size/gap attributes for container and card components.
+- Support for fractional gap utilities (`gap="0.5"`) and flexible width modes (`full`, `auto`, `fit`) in layout components.
+
+### Changed
+- Upgraded Popover, Dropdown, and Tooltip floating panels to portal-based `x-teleport="body"` positioning with dynamic viewport bounds calculations.
+- Standardized container default max width to `6xl` and normalized inner padding structures.
+- Streamlined typography heading sizes and semantic variants while delegating oversized marketing styles to the dedicated `display` component.
+- Refactored component padding and border radii logic using structured match expressions across card and container components.
+- Enhanced code preview component with automatic dynamic indentation trimming and normalized snippet rendering.
+- Added `shrink-0` and `whitespace-nowrap` utilities to badge and tag components for consistent UI layouts.
+
+### Fixed
+- Changed default semantic HTML tag for kicker component from `div` to `p`.
+- Fixed card footer alignment and code highlighting edge cases.
+
 ## [1.5.2] - 2026-08-16
 
 ### Added

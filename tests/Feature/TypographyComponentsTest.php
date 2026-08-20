@@ -12,21 +12,21 @@ it('renders display component with sizes and gradients', function () {
         ->toContain('text-4xl sm:text-5xl lg:text-7xl');
 });
 
-it('renders heading component with levels and display size', function () {
-    $html = Blade::render('<x-aura::heading level="1" size="display-xl">Uber Display</x-aura::heading>');
+it('renders heading component with levels and size', function () {
+    $html = Blade::render('<x-aura::heading level="1" size="2xl">Uber Display</x-aura::heading>');
 
     expect($html)->toContain('<h1')
         ->toContain('Uber Display')
-        ->toContain('text-5xl');
+        ->toContain('text-3xl sm:text-4xl');
 });
 
 it('renders heading with custom levels, weights, and alignment', function () {
-    $html = Blade::render('<x-aura::heading level="3" weight="bold" align="center" variant="primary">Section Title</x-aura::heading>');
+    $html = Blade::render('<x-aura::heading level="3" weight="bold" align="center" variant="positive">Section Title</x-aura::heading>');
 
     expect($html)->toContain('<h3')
         ->toContain('Section Title')
         ->toContain('text-center')
-        ->toContain('text-indigo-600')
+        ->toContain('text-emerald-600')
         ->toContain('font-bold');
 });
 
