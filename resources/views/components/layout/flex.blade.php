@@ -2,7 +2,7 @@
     'direction' => 'row', // 'row' | 'col' | 'column' | 'row-reverse' | 'col-reverse'
     'align' => null, // 'start' | 'center' | 'end' | 'baseline' | 'stretch'
     'justify' => 'start', // 'start' | 'center' | 'end' | 'between' | 'around' | 'evenly'
-    'gap' => null, // 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '1' | '2' | '3' | '4' | '5' | '6' | '8' | '10' | '12'
+    'gap' => null, // 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '1' | '2' | '3' | '4' | '5' | '6' | '8' | '10' | '12' | '16' | '20' | '24'
     'wrap' => false,
     'inline' => false,
     'width' => null, // 'full' | 'auto' | 'fit'
@@ -42,7 +42,7 @@
         default => 'justify-start',
     };
 
-    $gapClass = match ($gap) {
+    $gapClass = match ((string) $gap) {
         'none', '0' => 'gap-0',
         '0.5' => 'gap-0.5',
         'xs', '1' => 'gap-1',
@@ -55,6 +55,12 @@
         'xl', '8' => 'gap-8',
         '10' => 'gap-10',
         '12' => 'gap-12',
+        '14' => 'gap-14',
+        '16' => 'gap-16',
+        '20' => 'gap-20',
+        '24' => 'gap-24',
+        '28' => 'gap-28',
+        '32' => 'gap-32',
         default => $gap ? "gap-{$gap}" : '',
     };
 
