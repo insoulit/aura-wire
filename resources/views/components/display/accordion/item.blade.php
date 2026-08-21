@@ -8,7 +8,7 @@
     $itemId = $name ?? 'accordion-'.uniqid();
 @endphp
 
-<div {{ $attributes->merge(['class' => 'py-4']) }}>
+<div {{ $attributes->merge(['class' => 'py-4 first:pt-0 last:pb-0']) }}>
     <button
         type="button"
         @click="toggle('{{ $itemId }}')"

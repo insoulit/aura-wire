@@ -223,3 +223,16 @@ it('renders animate component with loop and hover interactions', function () {
         ->toContain('<span')
         ->toContain('Hover');
 });
+
+it('renders accordion component with bordered and unbordered variants', function () {
+    $bordered = Blade::render('<x-aura::accordion><x-aura::accordion.item title="FAQ 1">Answer 1</x-aura::accordion.item></x-aura::accordion>');
+    $unbordered = Blade::render('<x-aura::accordion bordered="false"><x-aura::accordion.item title="FAQ 1">Answer 1</x-aura::accordion.item></x-aura::accordion>');
+
+    expect($bordered)->toContain('border-y')
+        ->toContain('divide-y')
+        ->toContain('FAQ 1');
+
+    expect($unbordered)->not->toContain('border-y')
+        ->toContain('divide-y')
+        ->toContain('FAQ 1');
+});

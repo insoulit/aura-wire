@@ -1,7 +1,18 @@
 @props([
     'multiple' => false,
     'default' => null,
+    'bordered' => true,
+    'border' => null,
+    'divided' => true,
 ])
+
+@php
+    $isBordered = $border !== null ? filter_var($border, FILTER_VALIDATE_BOOLEAN) : filter_var($bordered, FILTER_VALIDATE_BOOLEAN);
+    $isDivided = filter_var($divided, FILTER_VALIDATE_BOOLEAN);
+
+    $borderClass = $isBordered ? 'border-y border-zinc-200 dark:border-zinc-800' : '';
+    $divideClass = $isDivided ? 'divide-y divide-zinc-200 dark:divide-zinc-800' : '';
+@endphp
 
 <div
     x-data="{
@@ -22,7 +33,7 @@
             }
         }
     }"
-    {{ $attributes->merge(['class' => 'w-full divide-y divide-zinc-200 dark:divide-zinc-800 border-y border-zinc-200 dark:border-zinc-800']) }}
+    {{ $attributes->merge(['class' => "w-full {$divideClass} {$borderClass}"]) }}
 >
     {{ $slot }}
 </div>
