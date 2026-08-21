@@ -2,7 +2,7 @@
 
 All notable changes to `insoulit/aura-wire` will be documented in this file.
 
-## [1.7.0] - 2026-08-21
+## [1.6.1] - 2026-08-21
 
 ### Added
 - Accordion component enhancements: configurable border (`bordered="false"`), divider lines (`divided="false"`), and size variants (`sm`, `md`, `lg`).
