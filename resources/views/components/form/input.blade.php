@@ -6,6 +6,7 @@
     'error' => null,
     'type' => 'text',
     'size' => 'md',
+    'width' => null,
     'invalid' => false,
     'icon' => null,
     'iconTrailing' => null,
@@ -20,6 +21,21 @@
         'md' => 'py-2 px-3.5 text-sm rounded-lg',
         'lg' => 'py-2.5 px-4 text-base rounded-xl',
         default => 'py-2 px-3.5 text-sm rounded-lg',
+    };
+
+    $widthClasses = match ($width) {
+        'auto' => 'w-auto',
+        'xs' => 'w-36',
+        'sm' => 'w-48',
+        'md' => 'w-56 sm:w-64',
+        'lg' => 'w-72 sm:w-80',
+        'xl' => 'w-96',
+        'full' => 'w-full',
+        '48' => 'w-48',
+        '56' => 'w-56',
+        '60' => 'w-60',
+        '64' => 'w-64',
+        default => $width ? (str_starts_with($width, 'w-') ? $width : "w-{$width}") : 'w-full',
     };
 
     $iconSize = match ($size) {
@@ -43,14 +59,14 @@
 @endphp
 
 @if ($label || $hint || $error || ($name && isset($errors) && $errors->has($name)))
-    <div class="space-y-1 w-full">
+    <div class="space-y-1 {{ $widthClasses }}">
         @if ($label)
             <x-aura::label :for="$id" :required="$required" :size="$size === 'sm' ? 'xs' : ($size === 'lg' ? 'md' : 'sm')">
                 {{ $label }}
             </x-aura::label>
         @endif
 
-        <div {{ $attributes->only('class')->merge(['class' => 'relative flex items-center w-full']) }}>
+        <div {{ $attributes->only('class')->merge(['class' => "relative flex items-center {$widthClasses}"]) }}>
             @if (isset($icon) && $icon)
                 <div class="absolute {{ $iconLeftPos }} inset-y-0 flex items-center justify-center pointer-events-none text-zinc-400 dark:text-zinc-500">
                     @if (is_string($icon))
@@ -85,7 +101,7 @@
         <x-aura::error :name="$name" :message="$error" />
     </div>
 @else
-    <div {{ $attributes->only('class')->merge(['class' => 'relative flex items-center w-full']) }}>
+    <div {{ $attributes->only('class')->merge(['class' => "relative flex items-center {$widthClasses}"]) }}>
         @if (isset($icon) && $icon)
             <div class="absolute {{ $iconLeftPos }} inset-y-0 flex items-center justify-center pointer-events-none text-zinc-400 dark:text-zinc-500">
                 @if (is_string($icon))

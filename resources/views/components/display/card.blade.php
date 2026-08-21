@@ -76,7 +76,7 @@
         </div>
     @endif
 
-    <div class="flex flex-col flex-1 {{ $gapClass }}">
+    <div class="flex flex-col flex-1 w-full {{ $gapClass }}">
         {{ $slot }}
     </div>
 

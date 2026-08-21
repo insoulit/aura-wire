@@ -2,17 +2,27 @@
     'name' => null,
     'title' => null,
     'icon' => null,
+    'size' => 'sm',
 ])
 
 @php
     $itemId = $name ?? 'accordion-'.uniqid();
+
+    $titleSizeClass = match ($size) {
+        'xs' => 'text-xs',
+        'sm' => 'text-sm',
+        'md' => 'text-base',
+        'lg' => 'text-base sm:text-lg',
+        'xl' => 'text-lg sm:text-xl',
+        default => 'text-sm',
+    };
 @endphp
 
 <div {{ $attributes->merge(['class' => 'py-4 first:pt-0 last:pb-0']) }}>
     <button
         type="button"
         @click="toggle('{{ $itemId }}')"
-        class="flex w-full items-center justify-between text-left text-sm font-semibold text-zinc-900 dark:text-white hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors cursor-pointer group"
+        class="flex w-full items-center justify-between text-left {{ $titleSizeClass }} font-semibold text-zinc-900 dark:text-white hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors cursor-pointer group"
     >
         <span class="flex items-center gap-3">
             @if ($icon)
