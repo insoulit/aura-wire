@@ -2,6 +2,14 @@
 
 All notable changes to `insoulit/aura-wire` will be documented in this file.
 
+## [1.7.0] - 2026-08-21
+
+### Added
+- Accordion component enhancements: configurable border (`bordered="false"`), divider lines (`divided="false"`), and size variants (`sm`, `md`, `lg`).
+- Card component support for full-width sizing (`size="full"` / `max-w-full`).
+- Flex component expanded gap support across all numeric and string tokens with strict string casting.
+- Form input width configurations for seamless inline and full-width layouts.
+
 ## [1.6.0] - 2026-08-20
 
 ### Added
