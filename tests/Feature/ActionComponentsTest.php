@@ -64,3 +64,25 @@ it('renders dropdown checkbox item for toggle lists', function () {
         ->toContain('checked')
         ->toContain('type="checkbox"');
 });
+
+it('renders dropdown item with size variants and badge', function () {
+    $defaultItem = Blade::render('<x-aura::dropdown.item icon="user" badge="New">Profile</x-aura::dropdown.item>');
+    $xsItem = Blade::render('<x-aura::dropdown.item size="xs" icon="user" badge="Pro">Settings</x-aura::dropdown.item>');
+    $mdItem = Blade::render('<x-aura::dropdown.item size="md" icon="user" badge="Max">Billing</x-aura::dropdown.item>');
+
+    expect($defaultItem)->toContain('px-3 py-2.5 text-sm')
+        ->toContain('text-xs')
+        ->toContain('Profile')
+        ->toContain('New');
+
+    expect($xsItem)->toContain('px-2.5 py-1.5 text-xs')
+        ->toContain('text-[10px]')
+        ->toContain('Settings')
+        ->toContain('Pro');
+
+    expect($mdItem)->toContain('px-3.5 py-3 text-base')
+        ->toContain('text-xs')
+        ->toContain('Billing')
+        ->toContain('Max');
+});
+
