@@ -85,4 +85,3 @@ it('renders dropdown item with size variants and badge', function () {
         ->toContain('Billing')
         ->toContain('Max');
 });
-
