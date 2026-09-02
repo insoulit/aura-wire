@@ -2,6 +2,22 @@
 
 All notable changes to `insoulit/aura-wire` will be documented in this file.
 
+## [1.6.2] - 2026-09-02
+
+### Added
+- Dynamic sizing support (`xs`, `sm`, `md`) and badge styling to `dropdown.item` and `dropdown.checkbox`.
+- Button component support for `xl` size with proportional icon scaling.
+- Form `checkbox` and `radio` component support for `md` size (`w-4 h-4`).
+- Tag component support for `xs` and `xl` size variants matching badge component.
+
+### Changed
+- Proportional scaling for `avatar` online/offline status indicator dot across all sizes.
+
+### Fixed
+- Fixed duplicate HTML element rendering for icon, slot, and badge in `dropdown.item`.
+- Fixed class preservation when rendering blade-icons `svg()` in `icon` component without a container.
+- Fixed `ComponentAttributeBag` compatibility for Laravel 11 (`all()` instead of `toArray()`).
+
 ## [1.6.1] - 2026-08-21
 
 ### Added
