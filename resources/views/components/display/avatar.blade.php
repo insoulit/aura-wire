@@ -26,6 +26,14 @@
         'offline' => 'bg-zinc-400',
         default => null,
     };
+
+    $statusSize = match ($size) {
+        'xs' => 'w-2 h-2',
+        'sm' => 'w-2.5 h-2.5',
+        'lg' => 'w-3.5 h-3.5',
+        'xl' => 'w-4 h-4',
+        default => 'w-3 h-3',
+    };
 @endphp
 
 <div class="relative inline-flex shrink-0">
@@ -42,6 +50,6 @@
     @endif
 
     @if ($statusColor)
-        <span class="absolute bottom-0 right-0 block w-2.5 h-2.5 rounded-full ring-2 ring-white dark:ring-zinc-900 {{ $statusColor }}"></span>
+        <span class="absolute bottom-0 right-0 block {{ $statusSize }} rounded-full ring-2 ring-white dark:ring-zinc-900 {{ $statusColor }}"></span>
     @endif
 </div>

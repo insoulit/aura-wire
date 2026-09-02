@@ -22,11 +22,17 @@ it('renders card component as anchor tag when href is provided', function () {
         ->toContain('Card content');
 });
 
-it('renders avatar component with initials fallback', function () {
+it('renders avatar component with initials fallback and status dot size', function () {
     $html = Blade::render('<x-aura::avatar initials="JD" status="online" size="md" />');
+    $xs = Blade::render('<x-aura::avatar initials="AB" status="online" size="xs" />');
 
     expect($html)->toContain('JD')
-        ->toContain('rounded-full');
+        ->toContain('rounded-full')
+        ->toContain('w-3 h-3');
+
+    expect($xs)->toContain('AB')
+        ->toContain('w-6 h-6')
+        ->toContain('w-2 h-2');
 });
 
 it('renders separator component', function () {
@@ -206,9 +212,17 @@ it('renders image component with aspect ratio and rounded corners', function () 
 
 it('renders tag component', function () {
     $html = Blade::render('<x-aura::tag variant="neutral" removable>Laravel</x-aura::tag>');
+    $xs = Blade::render('<x-aura::tag size="xs">XS Tag</x-aura::tag>');
+    $xl = Blade::render('<x-aura::tag size="xl">XL Tag</x-aura::tag>');
 
     expect($html)->toContain('Laravel')
         ->toContain('rounded-full');
+
+    expect($xs)->toContain('px-1.5 py-0.5 text-[9px]')
+        ->toContain('XS Tag');
+
+    expect($xl)->toContain('px-3.5 py-1.5 text-sm')
+        ->toContain('XL Tag');
 });
 
 it('renders animate component with loop and hover interactions', function () {

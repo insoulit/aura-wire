@@ -44,22 +44,28 @@ it('renders select component with options', function () {
 
 it('renders checkbox component', function () {
     $html = Blade::render('<x-aura::checkbox label="Accept terms" />');
+    $md = Blade::render('<x-aura::checkbox size="md" label="Medium checkbox" />');
 
     expect($html)->toContain('type="checkbox"')
-        ->toContain('Accept terms');
+        ->toContain('Accept terms')
+        ->toContain('w-3.5 h-3.5');
+
+    expect($md)->toContain('w-4 h-4')
+        ->toContain('Medium checkbox');
 });
 
 it('renders radio group component', function () {
     $html = Blade::render('
         <x-aura::form.radio-group label="Plan">
             <x-aura::radio name="plan" value="free" label="Free Plan" />
-            <x-aura::radio name="plan" value="pro" label="Pro Plan" />
+            <x-aura::radio name="plan" value="pro" label="Pro Plan" size="md" />
         </x-aura::form.radio-group>
     ');
 
     expect($html)->toContain('type="radio"')
         ->toContain('Free Plan')
-        ->toContain('Pro Plan');
+        ->toContain('Pro Plan')
+        ->toContain('w-4 h-4');
 });
 
 it('renders switch toggle component', function () {

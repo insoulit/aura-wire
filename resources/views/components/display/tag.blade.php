@@ -1,6 +1,6 @@
 @props([
     'variant' => 'default', // 'default' | 'primary' | 'success' | 'warning' | 'danger'
-    'size' => 'md', // 'sm' | 'md' | 'lg'
+    'size' => 'md', // 'xs' | 'sm' | 'md' | 'lg' | 'xl'
     'shape' => 'pill', // 'pill' | 'rounded'
     'pill' => false,
     'rounded' => false,
@@ -8,9 +8,11 @@
 
 @php
     $sizeClasses = match ($size) {
+        'xs' => 'px-1.5 py-0.5 text-[9px] font-semibold',
         'sm' => 'px-2 py-0.5 text-[10px] font-semibold',
         'md' => 'px-2.5 py-0.5 text-xs font-semibold',
         'lg' => 'px-3 py-1 text-xs font-semibold',
+        'xl' => 'px-3.5 py-1.5 text-sm font-semibold',
         default => 'px-2.5 py-0.5 text-xs font-semibold',
     };
 

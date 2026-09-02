@@ -35,7 +35,7 @@
 
     $isSquare = $square || in_array($shape, ['square', 'circle']);
     $isPill = $pill || in_array($shape, ['pill', 'circle']);
-    $radiusClass = $isPill ? 'rounded-full' : ($size === 'xs' ? 'rounded' : 'rounded-md');
+    $radiusClass = $isPill ? 'rounded-full' : ($size === 'xs' ? 'rounded' : ($size === 'xl' ? 'rounded-lg' : 'rounded-md'));
 
     // Size classes (square/pill use rounded-full or rounded-md/rounded-lg)
     $sizeClasses = match ($size) {
@@ -43,6 +43,7 @@
         'sm' => $isSquare ? "w-8 h-8 p-0 text-xs {$radiusClass} shrink-0" : "px-3.5 py-1.5 text-xs gap-1.5 {$radiusClass}",
         'md' => $isSquare ? "w-9 h-9 p-0 text-sm {$radiusClass} shrink-0" : "px-4 py-2 text-sm gap-2 {$radiusClass}",
         'lg' => $isSquare ? "w-10 h-10 p-0 text-base {$radiusClass} shrink-0" : "px-5.5 py-2.5 text-base gap-2.5 {$radiusClass}",
+        'xl' => $isSquare ? "w-12 h-12 p-0 text-lg {$radiusClass} shrink-0" : "px-6 py-3 text-base sm:text-lg gap-3 {$radiusClass}",
         default => $isSquare ? "w-9 h-9 p-0 text-sm {$radiusClass} shrink-0" : "px-4 py-2 text-sm gap-2 {$radiusClass}",
     };
 

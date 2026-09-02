@@ -65,7 +65,7 @@ it('renders dropdown checkbox item for toggle lists', function () {
         ->toContain('type="checkbox"');
 });
 
-it('renders dropdown item with size variants and badge', function () {
+it('renders dropdown item with size variants and badge without duplication', function () {
     $defaultItem = Blade::render('<x-aura::dropdown.item icon="user" badge="New">Profile</x-aura::dropdown.item>');
     $xsItem = Blade::render('<x-aura::dropdown.item size="xs" icon="user" badge="Pro">Settings</x-aura::dropdown.item>');
     $mdItem = Blade::render('<x-aura::dropdown.item size="md" icon="user" badge="Max">Billing</x-aura::dropdown.item>');
@@ -75,13 +75,35 @@ it('renders dropdown item with size variants and badge', function () {
         ->toContain('Profile')
         ->toContain('New');
 
+    expect(substr_count($defaultItem, 'Profile'))->toBe(1);
+    expect(substr_count($defaultItem, 'New'))->toBe(1);
+
     expect($xsItem)->toContain('px-2.5 py-1.5 text-xs')
         ->toContain('text-[10px]')
         ->toContain('Settings')
         ->toContain('Pro');
 
+    expect(substr_count($xsItem, 'Settings'))->toBe(1);
+
     expect($mdItem)->toContain('px-3.5 py-3 text-base')
         ->toContain('text-xs')
         ->toContain('Billing')
         ->toContain('Max');
+
+    expect(substr_count($mdItem, 'Billing'))->toBe(1);
+});
+
+it('renders dropdown checkbox with dynamic size variants', function () {
+    $xsCheck = Blade::render('<x-aura::dropdown.checkbox size="xs" name="opt_xs" label="Option XS" />');
+    $smCheck = Blade::render('<x-aura::dropdown.checkbox size="sm" name="opt_sm" label="Option SM" />');
+    $mdCheck = Blade::render('<x-aura::dropdown.checkbox size="md" name="opt_md" label="Option MD" />');
+
+    expect($xsCheck)->toContain('px-2.5 py-1.5 text-xs')
+        ->toContain('w-3 h-3');
+
+    expect($smCheck)->toContain('px-3 py-2.5 text-sm')
+        ->toContain('w-3.5 h-3.5');
+
+    expect($mdCheck)->toContain('px-3.5 py-3 text-base')
+        ->toContain('w-4 h-4');
 });

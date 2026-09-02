@@ -59,9 +59,10 @@
     $iconName = 'lucide-'.$mappedName;
     $extraClasses = $attributes->get('class', '');
     $attributesToPass = $attributes->except('class')->all();
+    $svgClass = $hasContainer ? "shrink-0 inline-block {$svgSizeClasses}" : trim("shrink-0 inline-block {$svgSizeClasses} {$extraClasses}");
 
     try {
-        $svgHtml = function_exists('svg') ? svg($iconName, "shrink-0 inline-block {$svgSizeClasses}", $attributesToPass)->toHtml() : null;
+        $svgHtml = function_exists('svg') ? svg($iconName, $svgClass, $attributesToPass)->toHtml() : null;
     } catch (\Throwable $e) {
         $svgHtml = null;
     }

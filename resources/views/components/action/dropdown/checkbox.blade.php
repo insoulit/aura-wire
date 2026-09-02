@@ -4,7 +4,7 @@
     'id' => null,
     'checked' => false,
     'disabled' => false,
-    'size' => 'sm',
+    'size' => 'sm', // 'xs' | 'sm' | 'md' | 'lg'
 ])
 
 @php
@@ -12,22 +12,29 @@
     $modelName = $wireModel->value() ? str_replace(['.', '[', ']', '\'', '"'], '_', $wireModel->value()) : null;
     $id = $id ?? $name ?? $modelName ?? ('dropdown_check_' . Str::random(8));
 
+    $sizeClasses = match ($size) {
+        'xs' => 'px-2.5 py-1.5 text-xs',
+        'md' => 'px-3.5 py-3 text-base',
+        'lg' => 'px-4 py-3.5 text-base',
+        default => 'px-3 py-2.5 text-sm',
+    };
+
     $boxSizeClass = match ($size) {
         'xs' => 'w-3 h-3 rounded-[3px]',
-        'sm' => 'w-3.5 h-3.5 rounded-[4px]',
+        'md' => 'w-4 h-4 rounded-[4px]',
         'lg' => 'w-5 h-5 rounded-lg',
         default => 'w-3.5 h-3.5 rounded-[4px]',
     };
 
     $iconSizeClass = match ($size) {
         'xs' => 'w-2 h-2',
-        'sm' => 'w-2.5 h-2.5',
+        'md' => 'w-3 h-3',
         'lg' => 'w-3.5 h-3.5',
         default => 'w-2.5 h-2.5',
     };
 @endphp
 
-<label for="{{ $id }}" class="group flex items-center justify-between w-full px-3 py-1.5 text-xs font-medium rounded-lg text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800/80 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-pointer select-none {{ $disabled ? 'opacity-50 cursor-not-allowed' : '' }}">
+<label for="{{ $id }}" class="group flex items-center justify-between w-full {{ $sizeClasses }} font-medium rounded-lg text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800/80 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-pointer select-none {{ $disabled ? 'opacity-50 cursor-not-allowed' : '' }}">
     <span>{{ $label ?? $slot }}</span>
     <div class="relative flex items-center shrink-0">
         <input

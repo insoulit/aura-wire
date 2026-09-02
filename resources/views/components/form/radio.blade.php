@@ -21,6 +21,7 @@
     $boxSizeClass = match ($size) {
         'xs' => 'w-3 h-3',
         'sm' => 'w-3.5 h-3.5',
+        'md' => 'w-4 h-4',
         'lg' => 'w-5 h-5',
         default => 'w-3.5 h-3.5',
     };
@@ -28,6 +29,7 @@
     $dotSizeClass = match ($size) {
         'xs' => 'w-1 h-1',
         'sm' => 'w-1.5 h-1.5',
+        'md' => 'w-2 h-2',
         'lg' => 'w-2.5 h-2.5',
         default => 'w-1.5 h-1.5',
     };

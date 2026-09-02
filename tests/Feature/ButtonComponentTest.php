@@ -18,6 +18,14 @@ it('renders button with primary variant and sm size', function () {
         ->toContain('Save');
 });
 
+it('renders button with xl size and matching proportions', function () {
+    $rendered = Blade::render('<x-aura::button variant="primary" size="xl" icon="sparkles">Explore</x-aura::button>');
+
+    expect($rendered)->toContain('px-6 py-3')
+        ->toContain('text-base sm:text-lg')
+        ->toContain('Explore');
+});
+
 it('renders pill shaped button with rounded-full', function () {
     $rendered = Blade::render('<x-aura::button variant="primary" pill>Pill Action</x-aura::button>');
 
