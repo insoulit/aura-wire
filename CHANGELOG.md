@@ -2,6 +2,14 @@
 
 All notable changes to `insoulit/aura-wire` will be documented in this file.
 
+## [1.6.3] - 2026-09-13
+
+### Added
+- Support for Laravel 13 (`illuminate/contracts` `^13.0`).
+- Support for Orchestra Testbench 11 (`orchestra/testbench` `^11.0.0`).
+- Support for Pest 4 (`pestphp/pest` and plugins `^4.0`).
+- Laravel 13 and Testbench 11 to the GitHub Actions CI test matrix.
+
 ## [1.6.2] - 2026-09-02
 
 ### Added
